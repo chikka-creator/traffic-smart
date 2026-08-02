@@ -20,174 +20,85 @@
         }
     </script>
     <style>
-        /* Base */
-        html { scroll-behavior: smooth; }
-
-        /* Fade-in system */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .fade-left {
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .fade-left.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .fade-right {
-            opacity: 0;
-            transform: translateX(50px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .fade-right.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .fade-scale {
-            opacity: 0;
-            transform: scale(0.9);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .fade-scale.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        /* Stagger delay */
-        .delay-100 { transition-delay: 0.1s; }
-        .delay-200 { transition-delay: 0.2s; }
-        .delay-300 { transition-delay: 0.3s; }
-        .delay-400 { transition-delay: 0.4s; }
-        .delay-500 { transition-delay: 0.5s; }
-        .delay-600 { transition-delay: 0.6s; }
-
-        /* Hero load animation */
-        @keyframes heroFadeIn {
-            from { opacity: 0; transform: translateY(30px) scale(0.98); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-        .hero-animate { animation: heroFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-
-        @keyframes heroBgZoom {
-            from { transform: scale(1.1); }
-            to { transform: scale(1); }
-        }
-        .hero-bg-animate { animation: heroBgZoom 2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        html, body { overflow-x: hidden; }
+        .fade-up { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        .fade-left { opacity: 0; transform: translateX(-50px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .fade-left.visible { opacity: 1; transform: translateX(0); }
+        .fade-right { opacity: 0; transform: translateX(50px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .fade-right.visible { opacity: 1; transform: translateX(0); }
+        .delay-100 { transition-delay: 0.1s; } .delay-200 { transition-delay: 0.2s; } .delay-300 { transition-delay: 0.3s; } .delay-400 { transition-delay: 0.4s; }
+        @keyframes heroFadeIn { from { opacity: 0; transform: translateY(30px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        .hero-animate { animation: heroFadeIn 1.2s cubic-bezier(0.16,1,0.3,1) forwards; }
+        @keyframes heroBgZoom { from { transform: scale(1.1); } to { transform: scale(1); } }
+        .hero-bg-animate { animation: heroBgZoom 2s cubic-bezier(0.16,1,0.3,1) forwards; }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
         .nav-animate { animation: fadeInDown 0.6s ease-out forwards; }
-
-        /* Card hover */
-        .feature-card {
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
-        }
-        .feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(10, 26, 50, 0.1);
-        }
-
-        /* Image hover */
-        .img-hover {
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .img-hover:hover {
-            transform: scale(1.03);
-        }
-
-        /* About images */
-        .about-img-1 {
-            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
-        }
-        .about-img-2 {
-            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
-        }
-        .about-img-1:hover {
-            transform: translateY(-4px) rotate(-1deg);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-        }
-        .about-img-2:hover {
-            transform: translateY(-4px) rotate(1deg);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
-        }
-
-        /* CTA button pulse */
-        @keyframes subtlePulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(249, 168, 37, 0.4); }
-            50% { box-shadow: 0 0 0 12px rgba(249, 168, 37, 0); }
-        }
+        @keyframes slideUpBottom { from { opacity: 0; transform: translateY(100%); } to { opacity: 1; transform: translateY(0); } }
+        .bottom-nav-animate { animation: slideUpBottom 0.5s cubic-bezier(0.16,1,0.3,1) forwards; }
+        .feature-card { transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease; }
+        .feature-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(10,26,50,0.1); }
+        .about-img-1 { transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s ease; }
+        .about-img-2 { transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s ease; }
+        .about-img-1:hover { transform: translateY(-4px) rotate(-1deg); box-shadow: 0 25px 50px rgba(0,0,0,0.15); }
+        .about-img-2:hover { transform: translateY(-4px) rotate(1deg); box-shadow: 0 25px 50px rgba(0,0,0,0.2); }
+        @keyframes subtlePulse { 0%,100% { box-shadow: 0 0 0 0 rgba(249,168,37,0.4); } 50% { box-shadow: 0 0 0 12px rgba(249,168,37,0); } }
         .cta-pulse { animation: subtlePulse 2.5s ease-in-out infinite; }
-
-        /* Showcase card tilt */
-        .showcase-card {
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .showcase-card:hover {
-            transform: perspective(800px) rotateY(-2deg) rotateX(1deg);
-        }
-
-        /* Progress bar animation */
-        @keyframes fillBar {
-            from { width: 0; }
-        }
-        .bar-fill { animation: fillBar 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-
-        /* Footer link hover */
-        .footer-link {
-            position: relative;
-            transition: color 0.3s ease;
-        }
-        .footer-link::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #F9A825;
-            transition: width 0.3s ease;
-        }
-        .footer-link:hover::after {
-            width: 100%;
-        }
+        .showcase-card { transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+        .showcase-card:hover { transform: perspective(800px) rotateY(-2deg) rotateX(1deg); }
+        @keyframes fillBar { from { width: 0; } }
+        .bar-fill { animation: fillBar 1.2s cubic-bezier(0.16,1,0.3,1) forwards; }
+        .footer-link { position: relative; transition: color 0.3s ease; }
+        .footer-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: #F9A825; transition: width 0.3s ease; }
+        .footer-link:hover::after { width: 100%; }
+        @media (max-width: 640px) { .about-img-1, .about-img-2 { width: 130px !important; height: 110px !important; } .about-img-2 { margin-top: 0 !important; } }
     </style>
 </head>
 <body class="font-sans text-gray-700 bg-white antialiased">
 
-    <!-- NAVBAR -->
-    <nav class="nav-animate fixed w-full z-50 top-0 bg-white/95 backdrop-blur-md border-b border-gray-200 py-4 px-6 md:px-12 shadow-sm">
+    <!-- TOP NAVBAR (Desktop only) -->
+    <nav class="nav-animate fixed w-full z-50 top-0 bg-white/95 backdrop-blur-md border-b border-gray-200 py-4 px-4 md:px-12 shadow-sm hidden md:block">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <a href="index.html" class="font-heading font-bold text-3xl text-navy flex items-center gap-2 hover:opacity-80 transition-opacity">
                 <i class="fa-solid fa-traffic-light text-amber"></i> Traffic Smart
             </a>
-            <div class="hidden md:flex space-x-10 font-bold text-base tracking-wider text-gray-500 items-center">
+            <div class="flex space-x-8 font-bold text-sm tracking-wider text-gray-500 items-center">
                 <a href="index.html" class="text-navy border-b-[3px] border-amber pb-1 transition-colors">Landing page</a>
                 <a href="materi.html" class="hover:text-navy transition-colors duration-300">Materi</a>
                 <a href="simulasi.html" class="hover:text-navy transition-colors duration-300">Simulasi</a>
                 <a href="games.html" class="hover:text-navy transition-colors duration-300">Link game lain</a>
             </div>
-            <a href="simulasi.html" class="bg-navy text-white px-6 py-3 rounded-xl font-bold text-base hover:bg-slate-800 transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5">
-                <i class="fa-solid fa-play text-sm mr-2 text-amber"></i> Video simulasi
+            <a href="simulasi.html" class="bg-navy text-white px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-slate-800 transition-all duration-300 shadow-md">
+                <i class="fa-solid fa-play text-xs mr-2 text-amber"></i> Video simulasi
+            </a>
+        </div>
+    </nav>
+
+    <!-- BOTTOM NAVBAR (Mobile only) — Pill Style -->
+    <nav id="bottom-nav" class="fixed bottom-4 left-3 right-3 z-50 md:hidden" style="opacity: 0; transform: translateY(24px) scale(0.95); transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1);">
+        <div class="bg-white/95 backdrop-blur-xl rounded-[28px] shadow-[0_8px_40px_rgba(0,0,0,0.14)] border border-gray-100 px-3 py-3 flex justify-between items-center max-w-md mx-auto">
+            <a href="index.html" class="nav-pill-item flex items-center gap-2.5 py-2.5 px-5 rounded-full transition-all duration-300 bg-amber/15 text-amber group" style="opacity:0; transform:translateY(12px); transition: opacity 0.5s ease, transform 0.5s ease, background 0.3s, color 0.3s;">
+                <i class="fa-solid fa-house text-base transition-transform duration-300 group-hover:scale-110"></i>
+                <span class="text-[11px] font-bold overflow-hidden max-w-0 opacity-0 group-hover:max-w-[80px] group-hover:opacity-100 transition-all duration-300 ease-out whitespace-nowrap">Beranda</span>
+            </a>
+            <a href="materi.html" class="nav-pill-item flex items-center gap-2.5 py-2.5 px-5 rounded-full transition-all duration-300 text-gray-400 hover:text-navy hover:bg-gray-100 group" style="opacity:0; transform:translateY(12px); transition: opacity 0.5s ease, transform 0.5s ease, background 0.3s, color 0.3s;">
+                <i class="fa-solid fa-book-open text-base transition-transform duration-300 group-hover:scale-110"></i>
+                <span class="text-[11px] font-bold overflow-hidden max-w-0 opacity-0 group-hover:max-w-[80px] group-hover:opacity-100 transition-all duration-300 ease-out whitespace-nowrap">Materi</span>
+            </a>
+            <a href="simulasi.html" class="nav-pill-item flex items-center gap-2.5 py-2.5 px-5 rounded-full transition-all duration-300 text-gray-400 hover:text-navy hover:bg-gray-100 group" style="opacity:0; transform:translateY(12px); transition: opacity 0.5s ease, transform 0.5s ease, background 0.3s, color 0.3s;">
+                <i class="fa-solid fa-gamepad text-base transition-transform duration-300 group-hover:scale-110"></i>
+                <span class="text-[11px] font-bold overflow-hidden max-w-0 opacity-0 group-hover:max-w-[80px] group-hover:opacity-100 transition-all duration-300 ease-out whitespace-nowrap">Simulasi</span>
+            </a>
+            <a href="games.html" class="nav-pill-item flex items-center gap-2.5 py-2.5 px-5 rounded-full transition-all duration-300 text-gray-400 hover:text-navy hover:bg-gray-100 group" style="opacity:0; transform:translateY(12px); transition: opacity 0.5s ease, transform 0.5s ease, background 0.3s, color 0.3s;">
+                <i class="fa-solid fa-link text-base transition-transform duration-300 group-hover:scale-110"></i>
+                <span class="text-[11px] font-bold overflow-hidden max-w-0 opacity-0 group-hover:max-w-[60px] group-hover:opacity-100 transition-all duration-300 ease-out whitespace-nowrap">Game</span>
             </a>
         </div>
     </nav>
 
     <!-- HERO -->
     <section class="relative h-screen flex items-center justify-center text-center px-4 overflow-hidden">
-        <div class="absolute inset-0 hero-bg-animate" style="background-image: url('homepage.jpeg'); background-size: cover; background-position: center; filter: blur(3px); transform: scale(1.08);"></div>
+        <div class="absolute inset-0 hero-bg-animate" style="background-image: url('https://images.unsplash.com/photo-1533994352035-7a34a95c4e92?auto=format&fit=crop&q=80&w=1920'); background-size: cover; background-position: center; filter: blur(3px); transform: scale(1.08);"></div>
         <div class="absolute inset-0 bg-navy/65"></div>
         <div class="relative z-10 max-w-3xl text-white hero-animate" style="animation-delay: 0.3s; opacity: 0;">
             <h1 class="font-heading font-extrabold text-5xl md:text-7xl mb-6 drop-shadow-lg">Traffic Smart</h1>
@@ -195,122 +106,108 @@
                 Belajar peraturan lalu lintas tidak pernah semenyenangkan ini. Pelajari, simulasikan, dan jadilah pelopor keselamatan berkendara di jalan raya.
             </p>
             <a href="materi.html" class="cta-pulse inline-flex items-center gap-2 bg-amber hover:bg-yellow-500 text-navy font-bold py-4 px-10 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-lg">
-                Mulai Belajar Sekarang <i class="fa-solid fa-arrow-right transition-transform duration-300 group-hover:translate-x-1"></i>
+                Mulai Belajar Sekarang <i class="fa-solid fa-arrow-right"></i>
             </a>
         </div>
     </section>
 
     <!-- ABOUT -->
-    <section class="py-28 px-6 md:px-12 max-w-7xl mx-auto">
-        <div class="flex flex-col lg:flex-row items-center gap-16">
+    <section class="py-20 md:py-28 px-6 md:px-12 max-w-7xl mx-auto pb-32 md:pb-28">
+        <div class="flex flex-col lg:flex-row items-center gap-12 md:gap-16">
             <div class="lg:w-5/12 fade-left">
-                <h2 class="font-heading font-bold text-3xl md:text-4xl text-navy mb-6">Apa itu Traffic Smart?</h2>
-                <p class="text-gray-600 leading-relaxed text-lg">
+                <h2 class="font-heading font-bold text-2xl md:text-4xl text-navy mb-6">Apa itu Traffic Smart?</h2>
+                <p class="text-gray-600 leading-relaxed text-base md:text-lg">
                     Traffic Smart adalah platform edukasi interaktif yang dirancang untuk memberikan pemahaman mendalam mengenai peraturan lalu lintas sesuai dengan Undang-Undang No. 22 Tahun 2009. Melalui pendekatan gamifikasi dan simulasi, kami mengubah materi yang kaku menjadi pengalaman belajar yang menarik, mudah dipahami, dan aplikatif untuk semua kalangan.
                 </p>
             </div>
-            <div class="lg:w-7/12 flex gap-5 justify-center">
-                <img src="about-1.png" alt="Traffic Smart App Interface" class="fade-right delay-100 about-img-1 w-[280px] h-[220px] object-cover rounded-2xl shadow-xl border border-gray-100 flex-shrink-0">
-                <img src="about-2.png" alt="Traffic Smart Branding" class="fade-right delay-300 about-img-2 w-[260px] h-[280px] object-cover rounded-2xl shadow-2xl flex-shrink-0 mt-12 border-4 border-white">
+            <div class="lg:w-7/12 flex gap-4 md:gap-5 justify-center">
+                <img src="about-1.png" alt="Traffic Smart App" class="fade-right delay-100 about-img-1 w-[130px] md:w-[280px] h-[110px] md:h-[220px] object-cover rounded-xl md:rounded-2xl shadow-xl border border-gray-100 flex-shrink-0" onerror="this.src='https://images.unsplash.com/photo-1555899434-94d1368aa7af?auto=format&fit=crop&w=400&q=80'; this.onerror=null;">
+                <img src="about-2.png" alt="Traffic Smart Branding" class="fade-right delay-300 about-img-2 w-[130px] md:w-[260px] h-[150px] md:h-[280px] object-cover rounded-xl md:rounded-2xl shadow-2xl flex-shrink-0 mt-6 md:mt-12 border-2 md:border-4 border-white" onerror="this.src='https://images.unsplash.com/photo-1591523414902-6c3e98ec6d9c?auto=format&fit=crop&w=400&q=80'; this.onerror=null;">
             </div>
         </div>
     </section>
 
     <!-- FEATURES -->
-    <section class="py-24 px-6 md:px-12 bg-lightGray">
+    <section class="py-16 md:py-24 px-6 md:px-12 bg-lightGray pb-32 md:pb-24">
         <div class="max-w-7xl mx-auto">
-            <h2 class="fade-up font-heading font-bold text-3xl md:text-4xl text-navy text-center mb-14">Fitur Utama</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="fade-up delay-100 feature-card bg-white p-8 rounded-3xl shadow-sm border border-gray-100 text-center cursor-pointer">
-                    <div class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-book-open text-blue-500 text-2xl"></i>
-                    </div>
-                    <h4 class="font-bold text-navy text-lg mb-2">Materi</h4>
-                    <p class="text-gray-500 text-sm leading-relaxed">Panduan lengkap rambu dan marka jalan.</p>
+            <h2 class="fade-up font-heading font-bold text-2xl md:text-4xl text-navy text-center mb-10 md:mb-14">Fitur Utama</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+                <div class="fade-up delay-100 feature-card bg-white p-4 md:p-8 rounded-2xl md:rounded-3xl shadow-sm border border-gray-100 text-center">
+                    <div class="w-12 h-12 md:w-16 md:h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-5"><i class="fa-solid fa-book-open text-blue-500 text-lg md:text-2xl"></i></div>
+                    <h4 class="font-bold text-navy text-sm md:text-lg mb-1 md:mb-2">Materi</h4>
+                    <p class="text-gray-500 text-xs md:text-sm leading-relaxed">Panduan lengkap rambu dan marka jalan.</p>
                 </div>
-                <div class="fade-up delay-200 feature-card bg-white p-8 rounded-3xl shadow-sm border border-gray-100 text-center cursor-pointer">
-                    <div class="w-16 h-16 bg-amber/10 rounded-full flex items-center justify-center mx-auto mb-5">
-                        <i class="fa-solid fa-shield-halved text-amber text-2xl"></i>
-                    </div>
-                    <h4 class="font-bold text-navy text-lg mb-2">Simulasi</h4>
-                    <p class="text-gray-500 text-sm leading-relaxed">Praktek berkendara aman di lingkungan virtual.</p>
+                <div class="fade-up delay-200 feature-card bg-white p-4 md:p-8 rounded-2xl md:rounded-3xl shadow-sm border border-gray-100 text-center">
+                    <div class="w-12 h-12 md:w-16 md:h-16 bg-amber/10 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-5"><i class="fa-solid fa-shield-halved text-amber text-lg md:text-2xl"></i></div>
+                    <h4 class="font-bold text-navy text-sm md:text-lg mb-1 md:mb-2">Simulasi</h4>
+                    <p class="text-gray-500 text-xs md:text-sm leading-relaxed">Praktek berkendara aman di virtual.</p>
                 </div>
-                <div class="fade-up delay-300 feature-card bg-white p-8 rounded-3xl shadow-sm border border-gray-100 text-center cursor-pointer">
-                    <div class="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-5">
-                        <i class="fa-solid fa-puzzle-piece text-green-500 text-2xl"></i>
-                    </div>
-                    <h4 class="font-bold text-navy text-lg mb-2">Gamifikasi</h4>
-                    <p class="text-gray-500 text-sm leading-relaxed">Belajar sambil mengumpulkan poin dan badge.</p>
+                <div class="fade-up delay-300 feature-card bg-white p-4 md:p-8 rounded-2xl md:rounded-3xl shadow-sm border border-gray-100 text-center">
+                    <div class="w-12 h-12 md:w-16 md:h-16 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-5"><i class="fa-solid fa-puzzle-piece text-green-500 text-lg md:text-2xl"></i></div>
+                    <h4 class="font-bold text-navy text-sm md:text-lg mb-1 md:mb-2">Gamifikasi</h4>
+                    <p class="text-gray-500 text-xs md:text-sm leading-relaxed">Belajar sambil mengumpulkan poin.</p>
                 </div>
-                <div class="fade-up delay-400 feature-card bg-white p-8 rounded-3xl shadow-sm border border-gray-100 text-center cursor-pointer">
-                    <div class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-5">
-                        <i class="fa-solid fa-link text-blue-500 text-2xl"></i>
-                    </div>
-                    <h4 class="font-bold text-navy text-lg mb-2">Link Game Lain</h4>
-                    <p class="text-gray-500 text-sm leading-relaxed">Eksplorasi referensi game edukasi tambahan.</p>
+                <div class="fade-up delay-400 feature-card bg-white p-4 md:p-8 rounded-2xl md:rounded-3xl shadow-sm border border-gray-100 text-center">
+                    <div class="w-12 h-12 md:w-16 md:h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-5"><i class="fa-solid fa-link text-blue-500 text-lg md:text-2xl"></i></div>
+                    <h4 class="font-bold text-navy text-sm md:text-lg mb-1 md:mb-2">Game Lain</h4>
+                    <p class="text-gray-500 text-xs md:text-sm leading-relaxed">Eksplorasi game edukasi tambahan.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- SHOWCASE -->
-    <section class="py-24 px-6 md:px-12">
-        <div class="max-w-7xl mx-auto bg-navy rounded-[2.5rem] p-10 md:p-16 flex flex-col lg:flex-row items-center gap-12 relative overflow-hidden">
+    <section class="py-16 md:py-24 px-6 md:px-12 pb-32 md:pb-24">
+        <div class="max-w-7xl mx-auto bg-navy rounded-2xl md:rounded-[2.5rem] p-6 md:p-16 flex flex-col lg:flex-row items-center gap-8 md:gap-12 relative overflow-hidden">
             <div class="lg:w-5/12 relative z-10 fade-left">
-                <span class="inline-flex items-center gap-2 bg-white/10 text-amber text-xs font-bold px-4 py-2 rounded-full border border-white/20 mb-6 tracking-wide">
+                <span class="inline-flex items-center gap-2 bg-white/10 text-amber text-[10px] md:text-xs font-bold px-3 md:px-4 py-1.5 md:py-2 rounded-full border border-white/20 mb-4 md:mb-6 tracking-wide">
                     <i class="fa-solid fa-gamepad"></i>Panduan interaktif
                 </span>
-                <h2 class="font-heading font-extrabold text-3xl md:text-4xl text-white mb-6 leading-tight">Test Your Vigilance</h2>
-                <p class="text-gray-300 text-base leading-relaxed mb-8">
-                    Ready to apply what you've learned? Step into our interactive driving simulation. Experience real-world scenarios, practice yielding to priority users, and test your reaction times in a safe, risk-free environment.
+                <h2 class="font-heading font-extrabold text-2xl md:text-4xl text-white mb-4 md:mb-6 leading-tight">Test Your Vigilance</h2>
+                <p class="text-gray-300 text-sm md:text-base leading-relaxed mb-6 md:mb-8">
+                    Ready to apply what you've learned? Step into our interactive driving simulation. Experience real-world scenarios in a safe, risk-free environment.
                 </p>
-                <a href="#" class="inline-flex items-center gap-3 bg-amber hover:bg-yellow-500 text-navy font-bold py-4 px-8 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl">
-                    <i class="fa-brands fa-youtube text-xl"></i> Tonton di YouTube sekarang
+                <a href="simulasi.html" class="inline-flex items-center gap-3 bg-amber hover:bg-yellow-500 text-navy font-bold py-3 md:py-4 px-6 md:px-8 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 text-sm md:text-base">
+                    <i class="fa-solid fa-play"></i> Mulai Simulasi
                 </a>
             </div>
-            <div class="lg:w-7/12 relative z-10 fade-right">
-                <div class="showcase-card bg-slate-800/80 backdrop-blur-sm rounded-2xl p-8 border border-white/10 shadow-2xl">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="w-3 h-3 rounded-full bg-red-400"></div>
-                        <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
-                        <div class="w-3 h-3 rounded-full bg-green-400"></div>
-                        <span class="text-white/40 text-sm ml-2 font-mono">Traffic Smart Dashboard</span>
+            <div class="lg:w-7/12 relative z-10 fade-right w-full">
+                <div class="showcase-card bg-slate-800/80 backdrop-blur-sm rounded-xl md:rounded-2xl p-5 md:p-8 border border-white/10 shadow-2xl">
+                    <div class="flex items-center gap-2 md:gap-3 mb-4 md:mb-6">
+                        <div class="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-red-400"></div>
+                        <div class="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-yellow-400"></div>
+                        <div class="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-green-400"></div>
+                        <span class="text-white/40 text-[10px] md:text-sm ml-1 md:ml-2 font-mono">Traffic Smart Dashboard</span>
                     </div>
-                    <div class="grid grid-cols-3 gap-4 mb-6">
-                        <div class="bg-white/5 rounded-xl p-4 text-center border border-white/10">
-                            <div class="text-amber font-bold text-xl mb-1">Top 15%</div>
-                            <div class="text-gray-400 text-xs">Community Rank</div>
+                    <div class="grid grid-cols-3 gap-2 md:gap-4 mb-4 md:mb-6">
+                        <div class="bg-white/5 rounded-lg md:rounded-xl p-2 md:p-4 text-center border border-white/10">
+                            <div class="text-amber font-bold text-sm md:text-xl mb-0.5 md:mb-1">Top 15%</div>
+                            <div class="text-gray-400 text-[9px] md:text-xs">Rank</div>
                         </div>
-                        <div class="bg-white/5 rounded-xl p-4 text-center border border-white/10">
-                            <div class="text-white font-bold text-xl mb-1">0.8s</div>
-                            <div class="text-gray-400 text-xs">Reaction Time</div>
+                        <div class="bg-white/5 rounded-lg md:rounded-xl p-2 md:p-4 text-center border border-white/10">
+                            <div class="text-white font-bold text-sm md:text-xl mb-0.5 md:mb-1">0.8s</div>
+                            <div class="text-gray-400 text-[9px] md:text-xs">Reaction</div>
                         </div>
-                        <div class="bg-white/5 rounded-xl p-4 text-center border border-white/10">
-                            <div class="text-green-400 font-bold text-xl mb-1">92%</div>
-                            <div class="text-gray-400 text-xs">Rule Accuracy</div>
+                        <div class="bg-white/5 rounded-lg md:rounded-xl p-2 md:p-4 text-center border border-white/10">
+                            <div class="text-green-400 font-bold text-sm md:text-xl mb-0.5 md:mb-1">92%</div>
+                            <div class="text-gray-400 text-[9px] md:text-xs">Accuracy</div>
                         </div>
                     </div>
-                    <div class="space-y-3">
-                        <div class="flex items-center gap-3">
-                            <span class="text-gray-400 text-xs w-28">Community Rank</span>
-                            <div class="flex-1 bg-white/10 rounded-full h-2.5 overflow-hidden">
-                                <div class="bar-fill bg-amber rounded-full h-2.5" style="width: 85%"></div>
-                            </div>
-                            <span class="text-amber text-xs font-bold">Top 15%</span>
+                    <div class="space-y-2 md:space-y-3">
+                        <div class="flex items-center gap-2 md:gap-3">
+                            <span class="text-gray-400 text-[9px] md:text-xs w-16 md:w-28">Rank</span>
+                            <div class="flex-1 bg-white/10 rounded-full h-2 md:h-2.5 overflow-hidden"><div class="bar-fill bg-amber rounded-full h-full" style="width: 85%"></div></div>
+                            <span class="text-amber text-[9px] md:text-xs font-bold">15%</span>
                         </div>
-                        <div class="flex items-center gap-3">
-                            <span class="text-gray-400 text-xs w-28">Reaction Time</span>
-                            <div class="flex-1 bg-white/10 rounded-full h-2.5 overflow-hidden">
-                                <div class="bar-fill bg-blue-400 rounded-full h-2.5" style="width: 70%; transition-delay: 0.2s;"></div>
-                            </div>
-                            <span class="text-white text-xs font-bold">0.8s</span>
+                        <div class="flex items-center gap-2 md:gap-3">
+                            <span class="text-gray-400 text-[9px] md:text-xs w-16 md:w-28">Reaction</span>
+                            <div class="flex-1 bg-white/10 rounded-full h-2 md:h-2.5 overflow-hidden"><div class="bar-fill bg-blue-400 rounded-full h-full" style="width: 70%; transition-delay: 0.2s;"></div></div>
+                            <span class="text-white text-[9px] md:text-xs font-bold">0.8s</span>
                         </div>
-                        <div class="flex items-center gap-3">
-                            <span class="text-gray-400 text-xs w-28">Rule Accuracy</span>
-                            <div class="flex-1 bg-white/10 rounded-full h-2.5 overflow-hidden">
-                                <div class="bar-fill bg-green-400 rounded-full h-2.5" style="width: 92%; transition-delay: 0.4s;"></div>
-                            </div>
-                            <span class="text-green-400 text-xs font-bold">92%</span>
+                        <div class="flex items-center gap-2 md:gap-3">
+                            <span class="text-gray-400 text-[9px] md:text-xs w-16 md:w-28">Accuracy</span>
+                            <div class="flex-1 bg-white/10 rounded-full h-2 md:h-2.5 overflow-hidden"><div class="bar-fill bg-green-400 rounded-full h-full" style="width: 92%; transition-delay: 0.4s;"></div></div>
+                            <span class="text-green-400 text-[9px] md:text-xs font-bold">92%</span>
                         </div>
                     </div>
                 </div>
@@ -319,87 +216,64 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-lightGray border-t border-gray-200 pt-16 pb-8 px-6 md:px-12">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+    <footer class="bg-lightGray border-t border-gray-200 pt-12 md:pt-16 pb-24 md:pb-8 px-6 md:px-12">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-8 md:mb-12">
             <div class="fade-up">
-                <h3 class="font-heading font-bold text-2xl text-navy mb-4">Traffic Smart</h3>
+                <h3 class="font-heading font-bold text-xl md:text-2xl text-navy mb-3 md:mb-4">Traffic Smart</h3>
                 <p class="text-gray-500 text-sm leading-relaxed">Platform edukasi lalu lintas interaktif.</p>
             </div>
             <div class="fade-up delay-100">
-                <h4 class="font-bold text-navy text-base mb-4">Links</h4>
-                <ul class="space-y-3 text-sm text-gray-500">
+                <h4 class="font-bold text-navy text-sm md:text-base mb-3 md:mb-4">Links</h4>
+                <ul class="space-y-2 md:space-y-3 text-xs md:text-sm text-gray-500">
                     <li><a href="materi.html" class="footer-link hover:text-amber transition-colors duration-300">Materi Lalu Lintas</a></li>
-                    <li><a href="#" class="footer-link hover:text-amber transition-colors duration-300">Studi Kasus</a></li>
+                    <li><a href="simulasi.html" class="footer-link hover:text-amber transition-colors duration-300">Simulasi</a></li>
                     <li><a href="games.html" class="footer-link hover:text-amber transition-colors duration-300">Game</a></li>
-                    <li><a href="#" class="footer-link hover:text-amber transition-colors duration-300">Evaluasi</a></li>
                 </ul>
             </div>
             <div class="fade-up delay-200">
-                <h4 class="font-bold text-navy text-base mb-4">Contact</h4>
-                <ul class="space-y-3 text-sm text-gray-500">
-                    <li class="flex items-center gap-2 hover:text-navy transition-colors duration-300 cursor-default"><i class="fa-solid fa-envelope text-amber"></i> Email</li>
-                    <li class="flex items-center gap-2 hover:text-navy transition-colors duration-300 cursor-default"><i class="fa-brands fa-whatsapp text-amber"></i> WhatsApp</li>
-                    <li class="flex items-center gap-2 hover:text-navy transition-colors duration-300 cursor-default"><i class="fa-solid fa-location-dot text-amber"></i> Location</li>
+                <h4 class="font-bold text-navy text-sm md:text-base mb-3 md:mb-4">Contact</h4>
+                <ul class="space-y-2 md:space-y-3 text-xs md:text-sm text-gray-500">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-envelope text-amber"></i> Email</li>
+                    <li class="flex items-center gap-2"><i class="fa-brands fa-whatsapp text-amber"></i> WhatsApp</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-amber"></i> Location</li>
                 </ul>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto border-t border-gray-200 pt-8 text-center text-sm text-gray-400">
+        <div class="max-w-7xl mx-auto border-t border-gray-200 pt-6 md:pt-8 text-center text-xs text-gray-400">
             Copyright &copy; 2024 Traffic Smart SMKN 1
         </div>
     </footer>
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // Intersection Observer for fade-in animations
-            const observerOptions = {
-                threshold: 0.15,
-                rootMargin: '0px 0px -50px 0px'
-            };
+            // Smooth fade-in bottom nav + staggered items
+            setTimeout(() => {
+                const nav = document.getElementById('bottom-nav');
+                if (nav) { nav.style.opacity = '1'; nav.style.transform = 'translateY(0) scale(1)'; }
+                const items = document.querySelectorAll('.nav-pill-item');
+                items.forEach((item, i) => {
+                    setTimeout(() => { item.style.opacity = '1'; item.style.transform = 'translateY(0)'; }, 200 + i * 80);
+                });
+            }, 500);
 
             const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, observerOptions);
+                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+            }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+            document.querySelectorAll('.fade-up, .fade-left, .fade-right').forEach(el => observer.observe(el));
 
-            document.querySelectorAll('.fade-up, .fade-left, .fade-right, .fade-scale').forEach(el => {
-                observer.observe(el);
-            });
-
-            // Animate bars when showcase section is visible
             const barObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.querySelectorAll('.bar-fill').forEach(bar => {
                             const width = bar.style.width;
                             bar.style.width = '0';
-                            requestAnimationFrame(() => {
-                                requestAnimationFrame(() => {
-                                    bar.style.width = width;
-                                });
-                            });
+                            requestAnimationFrame(() => { requestAnimationFrame(() => { bar.style.width = width; }); });
                         });
                     }
                 });
             }, { threshold: 0.3 });
-
             const showcaseSection = document.querySelector('.showcase-card');
             if (showcaseSection) barObserver.observe(showcaseSection);
-
-            // Navbar scroll effect
-            let lastScroll = 0;
-            const nav = document.querySelector('nav');
-            window.addEventListener('scroll', () => {
-                const currentScroll = window.pageYOffset;
-                if (currentScroll > 100) {
-                    nav.classList.add('shadow-md');
-                } else {
-                    nav.classList.remove('shadow-md');
-                }
-                lastScroll = currentScroll;
-            });
         });
     </script>
 </body>
