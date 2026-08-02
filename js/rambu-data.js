@@ -220,17 +220,17 @@ const rambuData = {
             {
                 name: "Zebra Cross (Penyeberangan Pejalan Kaki)",
                 desc: "Marka berupa garis-garis melintang putih lebar di permukaan jalan yang menandakan lokasi penyeberangan pejalan kaki. Pengendara WAJIB BERHENTI dan mendahulukan pejalan kaki yang sedang atau akan menyeberang. Zebra cross memberikan HAK UTAMA kepada pejalan kaki berdasarkan Pasal 114 UU No. 22 Tahun 2009. Pengendara yang tidak berhenti saat ada pejalan kaki di zebra cross dapat dikenakan sanksi tilang. Marka ini biasa ditemukan di dekat sekolah, rumah sakit, pasar, dan kawasan padat pejalan kaki. Lebar garis zebra cross standar adalah 40-60 cm dengan jarak antar garis 60-80 cm.",
-                img: ""
+                img: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 120'%3E%3Crect width='200' height='120' fill='%23444'/%3E%3Crect x='10' y='8' width='180' height='18' rx='2' fill='white'/%3E%3Crect x='10' y='34' width='180' height='18' rx='2' fill='white'/%3E%3Crect x='10' y='60' width='180' height='18' rx='2' fill='white'/%3E%3Crect x='10' y='86' width='180' height='18' rx='2' fill='white'/%3E%3C/svg%3E"
             },
             {
                 name: "Marka Panah Arah di Permukaan Jalan",
                 desc: "Lambang panah yang dicat di permukaan jalan menunjukkan arah yang DIPERBOLEHKAN bagi pengendara di jalur tersebut. Jenis panah: (1) Panah lurus = wajib lurus, (2) Panah belok kiri = harus belok kiri, (3) Panah belok kanan = harus belok kanan, (4) Panah ganda = boleh lurus atau belok. Pengendara WAJIB mengikuti arah panah yang tertera dan tidak boleh berbelok berlawanan dengan arah panah. Pelanggaran marka panah termasuk pelanggaran lalu lintas yang dapat ditilang berdasarkan Pasal 106 ayat 4 UU No. 22 Tahun 2009. Marka panah biasa dipasang di persimpangan besar dan jalan utama.",
-                img: ""
+                img: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23374151'/%3E%3Cpolygon points='100,20 130,80 115,80 115,170 85,170 85,80 70,80' fill='white'/%3E%3C/svg%3E"
             },
             {
                 name: "Garis Pemberhentian (Stop Line)",
-                desc: "Garis melintang putih tebal di permukaan jalan yang menandakan BATAS BERHENTI kendaraan. Pengendara WAJIB berhenti di belakang garis ini saat: (1) lampu lalu lintas menyala merah, (2) ada rambu STOP, (3) ada pejalan kaki yang akan menyeberang di zebra cross, atau (4) ada kendaraan berpioritas yang lewat. Garis pemberhentian biasa dipasang di persimpangan, dekat zebra cross, atau di pintu masuk jalan utama. Jarak antara garis pemberhentian dengan titik pertemuan jalan diatur standar untuk memberikan ruang aman. Berhenti MELEWATI garis ini termasuk pelanggaran.",
-                img: ""
+                desc: "Garis melintang putih tebal di permukaan jalan yang menandakan BATAS BERHENTI kendaraan. Pengendara WAJIB berhenti di belakang garis ini saat: (1) lampu lalu lintas menyala merah, (2) ada rambu STOP, (3) ada pejalan kaki yang akan menyeberang di zebra cross, atau (4) ada kendaraan berpioritas yang lewat. Garis pemberhentian biasa dipasang di persimpangan, dekat zebra cross, atau di pintu masuk jalan utama. Berhenti MELEWATI garis ini termasuk pelanggaran.",
+                img: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 120'%3E%3Crect width='200' height='120' fill='%23374151'/%3E%3Crect x='0' y='45' width='200' height='30' rx='2' fill='white'/%3E%3C/svg%3E"
             }
         ]
     },
@@ -250,23 +250,23 @@ const rambuData = {
             },
             {
                 name: "Garis Utuh Kuning Tunggal (Pemisah Arus Berlawanan)",
-                desc: "Garis kuning memanjang tanpa putus yang memisahkan dua arus lalu lintas dari arah yang BERLAWANAN. Pengendara DILARANG KERAS melintasi garis ini dalam kondisi apapun, kecuali dalam keadaan darurat mendesak. Garis utuh kuning biasa dipasang di ruas jalan di mana mendahului SANGAT BERBAHAYA, seperti di dekat tikungan, tanjakan curam, jembatan, atau area dengan riwayat kecelakaan tinggi. Pelanggaran garis utuh kuning termasuk pelanggaran SERIUS karena berisiko tabrakan frontal yang bisa berakibat fatal. Bedanya dengan garis putih: garis kuning memisahkan arah BERLAWANAN, garis putih memisahkan arah SAMA.",
-                img: ""
-            },
-            {
-                name: "Garis Utuh Kuning Ganda (Larangan Mutlak)",
-                desc: "Dua garis kuning utuh sejajar yang menandakan LARANGAN MUTLAK untuk melintasi dari sisi manapun. TIDAK ADA pengecualian untuk mendahului, bahkan dalam kondisi darurat sekalipun harus sangat hati-hati. Marka ini biasa dipasang di ruas jalan yang SANGAT BERBAHAYA untuk mendahului, seperti: (1) di puncak tanjakan curam, (2) tikungan tajam dengan jarak pandang sangat terbatas, (3) area dengan riwayat kecelakaan fatal, (4) jembatan sempit. Melanggar garis ganda kuning bisa berakibat tilang berat dan bahaya fatal karena tabrakan frontal tidak bisa dihindari.",
-                img: ""
-            },
-            {
-                name: "Garis Serong / Chevron (Area Terlarang)",
-                desc: "Garis-garis serong membentuk pola chevron atau herringbone di permukaan jalan. Area yang ditandai dengan garis serong adalah ZONA TERLARANG yang tidak boleh dilalui kendaraan. Garis serong biasa ditemukan di: (1) area persimpangan besar, (2) di antara jalur penyatu dan jalan utama, (3) di sekitar pembatas jalan (median), (4) di area pulau lalu lintas, dan (5) di area penyeberangan pejalan kaki. Pengendara yang melintasi area garis serong melanggar aturan dan berisiko menabrak kendaraan lain atau rambu. Jarak antara garis serong diatur standar tergantung jenis jalan.",
-                img: ""
+                desc: "Garis kuning memanjang tanpa putus yang memisahkan dua arus lalu lintas dari arah yang BERLAWANAN. Pengendara DILARANG KERAS melintasi garis ini dalam kondisi apapun, kecuali dalam keadaan darurat mendesak. Garis utuh kuning biasa dipasang di ruas jalan di mana mendahului SANGAT BERBAHAYA, seperti di dekat tikungan, tanjakan curam, jembatan, atau area dengan riwayat kecelakaan tinggi. Pelanggaran garis utuh kuning termasuk pelanggaran SERIUS karena berisiko tabrakan frontal yang bisa berakibat fatal.",
+                img: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23374151'/%3E%3Crect x='94' y='0' width='12' height='200' rx='2' fill='%23F59E0B'/%3E%3C/svg%3E"
             },
             {
                 name: "Marka Tepi Jalan (Edge Line)",
-                desc: "Garis memanjang di tepi kiri atau kanan jalan yang membatasi area jalan yang DAPAT dilalui kendaraan. (1) Garis tepi PUTIH di sisi kiri menandakan batas kiri jalan yang bisa dilalui, (2) Garis tepi KUNING di sisi kiri menandakan batas jalan yang tidak boleh dilampaui ke kiri. Pengendara DILARANG melewati garis tepi karena di luar garis merupakan area yang tidak layak untuk kendaraan (trotoar, parit, atau area berbahaya). Garis tepi sangat penting sebagai panduan visual saat berkendara di malam hari atau dalam kondisi hujan. Di jalan tol, garis tepi biasanya berwarna putih dan dilengkapi rumble strip.",
-                img: ""
+                desc: "Garis memanjang di tepi kiri atau kanan jalan yang membatasi area jalan yang DAPAT dilalui kendaraan. (1) Garis tepi PUTIH menandakan batas jalan yang bisa dilalui, (2) Garis tepi KUNING menandakan batas jalan yang tidak boleh dilampaui. Pengendara DILARANG melewati garis tepi karena di luar garis merupakan area yang tidak layak untuk kendaraan (trotoar, parit, atau area berbahaya). Garis tepi sangat penting sebagai panduan visual saat berkendara di malam hari atau dalam kondisi hujan.",
+                img: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23374151'/%3E%3Crect x='15' y='0' width='8' height='200' rx='2' fill='white'/%3E%3Crect x='177' y='0' width='8' height='200' rx='2' fill='white'/%3E%3C/svg%3E"
+            },
+            {
+                name: "Garis Serong / Chevron (Area Terlarang)",
+                desc: "Garis-garis serong membentuk pola chevron atau herringbone di permukaan jalan. Area yang ditandai dengan garis serong adalah ZONA TERLARANG yang tidak boleh dilalui kendaraan. Garis serong biasa ditemukan di: (1) area persimpangan besar, (2) di antara jalur penyatu dan jalan utama, (3) di sekitar pembatas jalan (median), (4) di area pulau lalu lintas, dan (5) di area penyeberangan pejalan kaki. Pengendara yang melintasi area garis serong melanggar aturan dan berisiko menabrak kendaraan lain.",
+                img: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23374151'/%3E%3Cpolyline points='60,20 100,55 140,20' fill='none' stroke='white' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpolyline points='60,70 100,105 140,70' fill='none' stroke='white' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpolyline points='60,120 100,155 140,120' fill='none' stroke='white' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"
+            },
+            {
+                name: "Marka Zigzag (Kawasan Terlarang Parkir)",
+                desc: "Garis zigzag berwarna kuning di tepi jalan yang menandakan KAWASAN DILARANG PARKIR dan DILARANG BERHENTI. Pengendara TIDAK BOLEH memarkirkan kendaraan atau berhenti di area yang ditandai dengan marka zigzag. Marka ini biasa dipasang di sepanjang kawasan sekolah, rumah sakit, jalur pemadam kebakaran, atau area yang harus tetap lancar arus lalu lintasnya. Pelanggaran marka zigzag dapat dikenakan sanksi tilang.",
+                img: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23374151'/%3E%3Cpolyline points='90,10 120,35 90,60 120,85 90,110 120,135 90,160 120,185' fill='none' stroke='%23F59E0B' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"
             }
         ]
     }
@@ -279,6 +279,8 @@ function toggleRambu(type) {
     const titleEl = document.getElementById('detail-title');
     const descEl = document.getElementById('detail-desc');
     const gridEl = document.getElementById('sign-grid');
+    const emptyEl = document.getElementById('detail-empty');
+    const snapContainer = document.getElementById('snap-container');
 
     document.querySelectorAll('.rambu-card').forEach(card => {
         card.classList.remove('ring-[5px]', 'ring-amber', 'shadow-2xl', 'scale-105');
@@ -286,7 +288,10 @@ function toggleRambu(type) {
 
     if (activeRambu === type) {
         detailBox.classList.remove('active');
+        emptyEl.style.display = 'flex';
+        gridEl.style.display = 'none';
         activeRambu = null;
+        if (snapContainer) snapContainer.style.scrollSnapType = 'y mandatory';
         return;
     }
 
@@ -296,29 +301,44 @@ function toggleRambu(type) {
 
     gridEl.innerHTML = data.items.map(item => {
         const imgHtml = item.img
-            ? `<div class="flex justify-center items-center mb-4" style="min-height:120px">
-                <img src="${item.img}" alt="${item.name}" class="max-h-40 max-w-full object-contain rounded-lg" onerror="this.style.display='none'">
+            ? `<div class="flex justify-center items-center mb-2 bg-white rounded-xl p-2" style="min-height:90px">
+                <img src="${item.img}" alt="${item.name}" class="max-h-20 max-w-full object-contain" onerror="this.style.display='none'">
             </div>`
             : '';
         return `
-        <div class="sign-card bg-gray-50 p-5 rounded-2xl border border-gray-200 ${item.img ? 'text-center' : 'text-left'}">
+        <div class="sign-card bg-white p-3 rounded-xl border border-gray-100 ${item.img ? 'text-center' : 'text-left'} hover:shadow-md transition-shadow">
             ${imgHtml}
-            <h5 class="font-bold text-navy text-sm mb-2">${item.name}</h5>
-            <p class="text-xs text-gray-500 leading-relaxed">${item.desc}</p>
+            <h5 class="font-bold text-navy text-xs mb-1 leading-tight">${item.name}</h5>
+            <p class="text-[10px] text-gray-400 leading-relaxed">${item.desc}</p>
         </div>`;
     }).join('');
 
     document.getElementById('card-' + type).classList.add('ring-[5px]', 'ring-amber', 'shadow-2xl', 'scale-105');
+    emptyEl.style.display = 'none';
+    gridEl.style.display = 'grid';
     detailBox.classList.add('active');
     activeRambu = type;
+
+    if (snapContainer) snapContainer.style.scrollSnapType = 'none';
+
+    setTimeout(() => {
+        gridEl.scrollTop = 0;
+    }, 100);
 }
 
 function closeDetail() {
-    document.getElementById('detail-box').classList.remove('active');
+    const detailBox = document.getElementById('detail-box');
+    const emptyEl = document.getElementById('detail-empty');
+    const gridEl = document.getElementById('sign-grid');
+    detailBox.classList.remove('active');
+    emptyEl.style.display = 'flex';
+    gridEl.style.display = 'none';
     document.querySelectorAll('.rambu-card').forEach(card => {
         card.classList.remove('ring-[5px]', 'ring-amber', 'shadow-2xl', 'scale-105');
     });
     activeRambu = null;
+    const snapContainer = document.getElementById('snap-container');
+    if (snapContainer) snapContainer.style.scrollSnapType = 'y mandatory';
 }
 
 document.addEventListener("DOMContentLoaded", () => {
