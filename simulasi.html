@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Smart | Simulasi & Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { brand: { dark: '#111827', primary: '#F59E0B', bg: '#F9FAFB' } },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], heading: ['Poppins', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        #gameCanvas { background-color: #374151; box-shadow: inset 0 0 20px rgba(0,0,0,0.6); }
+    </style>
+</head>
+<body class="font-sans text-gray-700 bg-brand-bg antialiased pt-24">
+
+    <nav class="fixed w-full z-50 top-0 bg-white/90 backdrop-blur-md border-b border-gray-200 py-4 px-6 md:px-12">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="font-heading font-bold text-2xl text-brand-dark flex items-center gap-2">
+                <i class="fa-solid fa-traffic-light text-brand-primary"></i> Traffic Smart
+            </a>
+            <div class="hidden md:flex space-x-8 font-medium text-sm uppercase tracking-wider text-gray-500">
+                <a href="index.html" class="hover:text-brand-dark transition">Landing page</a>
+                <a href="materi.html" class="hover:text-brand-dark transition">Materi</a>
+                <a href="simulasi.html" class="text-brand-dark font-bold border-b-2 border-brand-primary pb-1">Simulasi</a>
+                <a href="games.html" class="hover:text-brand-dark transition">Link game lain</a>
+            </div>
+            <span class="text-xs font-mono bg-amber-100 text-amber-800 px-3 py-1 rounded-full font-bold">Live Simulation Mode</span>
+        </div>
+    </nav>
+
+    <main class="py-8 px-4 md:px-8 max-w-[1300px] mx-auto">
+        <div class="flex flex-col lg:flex-row gap-6">
+            
+            <div class="lg:w-3/4 flex flex-col gap-4">
+                <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-200 flex items-center justify-between">
+                    <div>
+                        <span class="text-xs text-gray-400 uppercase font-bold">Score</span>
+                        <p class="text-2xl font-black text-brand-dark" id="ui-score">0</p>
+                    </div>
+                    <div class="bg-gray-100 px-4 py-2 rounded-lg font-mono font-bold text-brand-dark">
+                        <i class="fa-regular fa-clock mr-1"></i> <span id="ui-timer">01:00</span>
+                    </div>
+                </div>
+
+                <div class="relative w-full aspect-video rounded-xl overflow-hidden shadow-lg border border-gray-300">
+                    <canvas id="gameCanvas" width="800" height="450" class="w-full h-full object-cover"></canvas>
+                    
+                    <div id="game-overlay" class="absolute inset-0 bg-brand-dark/85 backdrop-blur-sm flex flex-col items-center justify-center text-white z-10 p-6 text-center">
+                        <h2 id="overlay-title" class="font-heading font-black text-3xl md:text-4xl mb-3">Simulasi Berkendara</h2>
+                        <p id="overlay-desc" class="text-gray-300 mb-6 text-sm max-w-md">Gunakan panah ATAS untuk Gas, BAWAH untuk Rem. Hindari mobil lain dan berhenti di lampu merah!</p>
+                        <button onclick="startGame()" class="bg-brand-primary text-brand-dark font-bold py-3 px-8 rounded-full shadow-lg hover:bg-yellow-400 transition transform hover:scale-105">
+                            MULAI SIMULASI
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:w-1/4 flex flex-col gap-6">
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200 flex flex-col items-center justify-center flex-1">
+                    <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-6">Virtual D-Pad</h4>
+                    <div class="grid grid-cols-3 gap-2">
+                        <div></div>
+                        <button class="w-14 h-14 bg-brand-dark text-white rounded-xl shadow active:bg-gray-700 flex items-center justify-center text-lg" onmousedown="setKey('up', true)" onmouseup="setKey('up', false)" ontouchstart="setKey('up', true)" ontouchend="setKey('up', false)"><i class="fa-solid fa-arrow-up"></i></button>
+                        <div></div>
+                        <button class="w-14 h-14 bg-brand-dark text-white rounded-xl shadow active:bg-gray-700 flex items-center justify-center text-lg" onmousedown="setKey('left', true)" onmouseup="setKey('left', false)" ontouchstart="setKey('left', true)" ontouchend="setKey('left', false)"><i class="fa-solid fa-arrow-left"></i></button>
+                        <button class="w-14 h-14 bg-gray-200 text-gray-500 rounded-xl shadow flex items-center justify-center"><i class="fa-solid fa-bullseye"></i></button>
+                        <button class="w-14 h-14 bg-brand-dark text-white rounded-xl shadow active:bg-gray-700 flex items-center justify-center text-lg" onmousedown="setKey('right', true)" onmouseup="setKey('right', false)" ontouchstart="setKey('right', true)" ontouchend="setKey('right', false)"><i class="fa-solid fa-arrow-right"></i></button>
+                        <div></div>
+                        <button class="w-14 h-14 bg-brand-dark text-white rounded-xl shadow active:bg-gray-700 flex items-center justify-center text-lg" onmousedown="setKey('down', true)" onmouseup="setKey('down', false)" ontouchstart="setKey('down', true)" ontouchend="setKey('down', false)"><i class="fa-solid fa-arrow-down"></i></button>
+                        <div></div>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-6 text-center">Gunakan tombol di atas atau Keyboard PC.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-gray-200 py-6 px-6 text-center text-xs text-gray-400 mt-12">
+        Copyright © 2026 Traffic Smart SMKN 1 Surabaya.
+    </footer>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        let isPlaying = false;
+        let score = 0;
+        let timeLeft = 60;
+        let timerInterval;
+        const keys = { up: false, down: false, left: false, right: false };
+
+        function setKey(k, v) { keys[k] = v; }
+        window.addEventListener('keydown', (e) => {
+            if(e.key === 'ArrowUp') keys.up = true;
+            if(e.key === 'ArrowDown') keys.down = true;
+            if(e.key === 'ArrowLeft') keys.left = true;
+            if(e.key === 'ArrowRight') keys.right = true;
+        });
+        window.addEventListener('keyup', (e) => {
+            if(e.key === 'ArrowUp') keys.up = false;
+            if(e.key === 'ArrowDown') keys.down = false;
+            if(e.key === 'ArrowLeft') keys.left = false;
+            if(e.key === 'ArrowRight') keys.right = false;
+        });
+
+        const car = { x: 400, y: 350, w: 40, h: 70 };
+        let obstacles = [];
+        let roadOffset = 0;
+        let gameSpeed = 5;
+
+        function startGame() {
+            document.getElementById('game-overlay').style.display = 'none';
+            car.x = canvas.width / 2 - 20;
+            obstacles = [];
+            score = 0;
+            timeLeft = 60;
+            isPlaying = true;
+            
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                if(timeLeft > 0) {
+                    timeLeft--;
+                    score += 10;
+                    document.getElementById('ui-score').innerText = score;
+                    let m = Math.floor(timeLeft / 60), s = timeLeft % 60;
+                    document.getElementById('ui-timer').innerText = `0${m}:${s < 10 ? '0':''}${s}`;
+                } else {
+                    endGame("Waktu Simulasi Selesai!");
+                }
+            }, 1000);
+
+            gameLoop();
+        }
+
+        function drawCar(x, y, color) {
+            ctx.fillStyle = color;
+            ctx.fillRect(x, y, 40, 70);
+            ctx.fillStyle = '#1e293b';
+            ctx.fillRect(x + 5, y + 15, 30, 20);
+            ctx.fillRect(x + 5, y + 45, 30, 15);
+        }
+
+        function update() {
+            if(!isPlaying) return;
+            if(keys.left && car.x > 150) car.x -= 5;
+            if(keys.right && car.x < canvas.width - 190) car.x += 5;
+            
+            if(keys.down) gameSpeed = 2;
+            else if(keys.up) gameSpeed = 8;
+            else gameSpeed = 5;
+
+            roadOffset = (roadOffset + gameSpeed) % 40;
+
+            if(Math.random() < 0.02) {
+                const lanes = [220, 380, 540];
+                obstacles.push({ x: lanes[Math.floor(Math.random()*lanes.length)], y: -100, speed: Math.random() * 2 + 2 });
+            }
+
+            obstacles.forEach(obs => {
+                obs.y += (gameSpeed - obs.speed + 1);
+                if (car.x < obs.x + 40 && car.x + 40 > obs.x && car.y < obs.y + 70 && car.y + 70 > obs.y) {
+                    endGame("Tabrakan Terdeteksi!");
+                }
+            });
+            obstacles = obstacles.filter(obs => obs.y < canvas.height + 100);
+        }
+
+        function draw() {
+            ctx.fillStyle = '#22c55e'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#374151'; ctx.fillRect(150, 0, 500, canvas.height);
+            
+            ctx.fillStyle = 'white';
+            for(let i = -40; i < canvas.height; i+=80) {
+                ctx.fillRect(316, i + roadOffset, 5, 40);
+                ctx.fillRect(483, i + roadOffset, 5, 40);
+            }
+
+            obstacles.forEach(obs => drawCar(obs.x, obs.y, '#ef4444'));
+            if(isPlaying) drawCar(car.x, car.y, '#3B82F6');
+        }
+
+        function gameLoop() {
+            update();
+            draw();
+            if(isPlaying) requestAnimationFrame(gameLoop);
+        }
+
+        function endGame(reason) {
+            isPlaying = false;
+            clearInterval(timerInterval);
+            const overlay = document.getElementById('game-overlay');
+            overlay.style.display = 'flex';
+            document.getElementById('overlay-title').innerText = reason;
+            document.getElementById('overlay-desc').innerText = `Skor Akhir: ${score}`;
+        }
+        draw();
+    </script>
+</body>
+</html>
