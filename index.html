@@ -13,80 +13,393 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: { brand: { dark: '#111827', primary: '#F59E0B', primaryHover: '#D97706', bg: '#F9FAFB' } },
+                    colors: { navy: '#0A1A32', amber: '#F9A825', lightGray: '#F5F7FA' },
                     fontFamily: { sans: ['Inter', 'sans-serif'], heading: ['Poppins', 'sans-serif'] }
                 }
             }
         }
     </script>
     <style>
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+        /* Base */
+        html { scroll-behavior: smooth; }
+
+        /* Fade-in system */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .fade-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .fade-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-scale {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .fade-scale.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Stagger delay */
+        .delay-100 { transition-delay: 0.1s; }
+        .delay-200 { transition-delay: 0.2s; }
+        .delay-300 { transition-delay: 0.3s; }
+        .delay-400 { transition-delay: 0.4s; }
+        .delay-500 { transition-delay: 0.5s; }
+        .delay-600 { transition-delay: 0.6s; }
+
+        /* Hero load animation */
+        @keyframes heroFadeIn {
+            from { opacity: 0; transform: translateY(30px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .hero-animate { animation: heroFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+        @keyframes heroBgZoom {
+            from { transform: scale(1.1); }
+            to { transform: scale(1); }
+        }
+        .hero-bg-animate { animation: heroBgZoom 2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .nav-animate { animation: fadeInDown 0.6s ease-out forwards; }
+
+        /* Card hover */
+        .feature-card {
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(10, 26, 50, 0.1);
+        }
+
+        /* Image hover */
+        .img-hover {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .img-hover:hover {
+            transform: scale(1.03);
+        }
+
+        /* About images */
+        .about-img-1 {
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+        }
+        .about-img-2 {
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+        }
+        .about-img-1:hover {
+            transform: translateY(-4px) rotate(-1deg);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+        .about-img-2:hover {
+            transform: translateY(-4px) rotate(1deg);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+
+        /* CTA button pulse */
+        @keyframes subtlePulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(249, 168, 37, 0.4); }
+            50% { box-shadow: 0 0 0 12px rgba(249, 168, 37, 0); }
+        }
+        .cta-pulse { animation: subtlePulse 2.5s ease-in-out infinite; }
+
+        /* Showcase card tilt */
+        .showcase-card {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .showcase-card:hover {
+            transform: perspective(800px) rotateY(-2deg) rotateX(1deg);
+        }
+
+        /* Progress bar animation */
+        @keyframes fillBar {
+            from { width: 0; }
+        }
+        .bar-fill { animation: fillBar 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+        /* Footer link hover */
+        .footer-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .footer-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #F9A825;
+            transition: width 0.3s ease;
+        }
+        .footer-link:hover::after {
+            width: 100%;
+        }
     </style>
 </head>
-<body class="font-sans text-gray-700 bg-brand-bg antialiased">
+<body class="font-sans text-gray-700 bg-white antialiased">
 
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 py-4 px-6 md:px-12">
+    <!-- NAVBAR -->
+    <nav class="nav-animate fixed w-full z-50 top-0 bg-white/95 backdrop-blur-md border-b border-gray-200 py-4 px-6 md:px-12 shadow-sm">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="font-heading font-bold text-2xl text-brand-dark flex items-center gap-2">
-                <i class="fa-solid fa-traffic-light text-brand-primary"></i> Traffic Smart
+            <a href="index.html" class="font-heading font-bold text-3xl text-navy flex items-center gap-2 hover:opacity-80 transition-opacity">
+                <i class="fa-solid fa-traffic-light text-amber"></i> Traffic Smart
             </a>
-            <div class="hidden md:flex space-x-8 font-medium text-sm uppercase tracking-wider text-gray-500">
-                <a href="index.html" class="text-brand-dark font-bold border-b-2 border-brand-primary pb-1">Landing page</a>
-                <a href="materi.html" class="hover:text-brand-dark transition">Materi</a>
-                <a href="simulasi.html" class="hover:text-brand-dark transition">Simulasi</a>
-                <a href="games.html" class="hover:text-brand-dark transition">Link game lain</a>
+            <div class="hidden md:flex space-x-10 font-bold text-base tracking-wider text-gray-500 items-center">
+                <a href="index.html" class="text-navy border-b-[3px] border-amber pb-1 transition-colors">Landing page</a>
+                <a href="materi.html" class="hover:text-navy transition-colors duration-300">Materi</a>
+                <a href="simulasi.html" class="hover:text-navy transition-colors duration-300">Simulasi</a>
+                <a href="games.html" class="hover:text-navy transition-colors duration-300">Link game lain</a>
             </div>
-            <a href="simulasi.html" class="bg-brand-dark text-white px-4 py-2 rounded-md font-medium text-sm hover:bg-gray-800 transition">
-                Mulai Game
+            <a href="simulasi.html" class="bg-navy text-white px-6 py-3 rounded-xl font-bold text-base hover:bg-slate-800 transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5">
+                <i class="fa-solid fa-play text-sm mr-2 text-amber"></i> Video simulasi
             </a>
         </div>
     </nav>
 
-    <section class="relative h-[85vh] flex items-center justify-center text-center px-4 pt-20 overflow-hidden">
-        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1555899434-94d1368aa7af?auto=format&fit=crop&q=80&w=1920')] bg-cover bg-center"></div>
-        <div class="absolute inset-0 bg-brand-dark/75 mix-blend-multiply backdrop-blur-[2px]"></div>
-        
-        <div class="relative z-10 max-w-3xl text-white reveal active">
+    <!-- HERO -->
+    <section class="relative h-screen flex items-center justify-center text-center px-4 overflow-hidden">
+        <div class="absolute inset-0 hero-bg-animate" style="background-image: url('homepage.jpeg'); background-size: cover; background-position: center; filter: blur(3px); transform: scale(1.08);"></div>
+        <div class="absolute inset-0 bg-navy/65"></div>
+        <div class="relative z-10 max-w-3xl text-white hero-animate" style="animation-delay: 0.3s; opacity: 0;">
             <h1 class="font-heading font-extrabold text-5xl md:text-7xl mb-6 drop-shadow-lg">Traffic Smart</h1>
             <p class="text-lg md:text-xl font-light mb-10 text-gray-200 leading-relaxed max-w-2xl mx-auto">
-                Belajar peraturan lalu lintas tidak pernah semenyenangkan ini. Pelajari, simulasikan, dan jadilah pelopor keselamatan berkendara di jalan raya Indonesia.
+                Belajar peraturan lalu lintas tidak pernah semenyenangkan ini. Pelajari, simulasikan, dan jadilah pelopor keselamatan berkendara di jalan raya.
             </p>
-            <a href="materi.html" class="inline-flex items-center gap-2 bg-brand-primary hover:bg-brand-primaryHover text-brand-dark font-bold py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-105">
-                Mulai Belajar Sekarang <i class="fa-solid fa-arrow-right"></i>
+            <a href="materi.html" class="cta-pulse inline-flex items-center gap-2 bg-amber hover:bg-yellow-500 text-navy font-bold py-4 px-10 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-lg">
+                Mulai Belajar Sekarang <i class="fa-solid fa-arrow-right transition-transform duration-300 group-hover:translate-x-1"></i>
             </a>
         </div>
     </section>
 
-    <section class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
+    <!-- ABOUT -->
+    <section class="py-28 px-6 md:px-12 max-w-7xl mx-auto">
         <div class="flex flex-col lg:flex-row items-center gap-16">
-            <div class="lg:w-1/2 reveal">
-                <span class="text-xs font-mono font-bold text-brand-primary uppercase tracking-widest bg-amber-50 px-3 py-1 rounded-full">Edukasi Interaktif</span>
-                <h2 class="font-heading font-bold text-3xl md:text-4xl text-brand-dark mt-4 mb-6">Apa itu Traffic Smart?</h2>
-                <p class="text-gray-600 leading-relaxed mb-4">
-                    Traffic Smart adalah platform edukasi interaktif yang dirancang khusus untuk pelajar dan pengendara pemula guna memahami peraturan lalu lintas berdasarkan Undang-Undang No. 22 Tahun 2009.
-                </p>
-                <p class="text-gray-600 leading-relaxed">
-                    Dengan pendekatan gamifikasi dan simulasi virtual, kami membimbing Anda memahami rambu, marka, serta etika berkendara yang aman di jalan raya.
+            <div class="lg:w-5/12 fade-left">
+                <h2 class="font-heading font-bold text-3xl md:text-4xl text-navy mb-6">Apa itu Traffic Smart?</h2>
+                <p class="text-gray-600 leading-relaxed text-lg">
+                    Traffic Smart adalah platform edukasi interaktif yang dirancang untuk memberikan pemahaman mendalam mengenai peraturan lalu lintas sesuai dengan Undang-Undang No. 22 Tahun 2009. Melalui pendekatan gamifikasi dan simulasi, kami mengubah materi yang kaku menjadi pengalaman belajar yang menarik, mudah dipahami, dan aplikatif untuk semua kalangan.
                 </p>
             </div>
-            <div class="lg:w-1/2 flex gap-4 reveal">
-                <img src="https://images.unsplash.com/photo-1512758117908-16e03328e441?auto=format&fit=crop&w=400&q=80" alt="Traffic" class="w-1/2 rounded-2xl shadow-xl object-cover h-64 border-4 border-white">
-                <img src="https://images.unsplash.com/photo-1591523414902-6c3e98ec6d9c?auto=format&fit=crop&w=400&q=80" alt="Rider" class="w-1/2 rounded-2xl shadow-xl object-cover h-64 border-4 border-white mt-8">
+            <div class="lg:w-7/12 flex gap-5 justify-center">
+                <img src="about-1.png" alt="Traffic Smart App Interface" class="fade-right delay-100 about-img-1 w-[280px] h-[220px] object-cover rounded-2xl shadow-xl border border-gray-100 flex-shrink-0">
+                <img src="about-2.png" alt="Traffic Smart Branding" class="fade-right delay-300 about-img-2 w-[260px] h-[280px] object-cover rounded-2xl shadow-2xl flex-shrink-0 mt-12 border-4 border-white">
             </div>
         </div>
     </section>
 
-    <footer class="bg-white border-t border-gray-200 py-8 px-6 text-center text-xs text-gray-400">
-        Copyright © 2026 Traffic Smart SMKN 1 Surabaya. All rights reserved.
+    <!-- FEATURES -->
+    <section class="py-24 px-6 md:px-12 bg-lightGray">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="fade-up font-heading font-bold text-3xl md:text-4xl text-navy text-center mb-14">Fitur Utama</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="fade-up delay-100 feature-card bg-white p-8 rounded-3xl shadow-sm border border-gray-100 text-center cursor-pointer">
+                    <div class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-book-open text-blue-500 text-2xl"></i>
+                    </div>
+                    <h4 class="font-bold text-navy text-lg mb-2">Materi</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed">Panduan lengkap rambu dan marka jalan.</p>
+                </div>
+                <div class="fade-up delay-200 feature-card bg-white p-8 rounded-3xl shadow-sm border border-gray-100 text-center cursor-pointer">
+                    <div class="w-16 h-16 bg-amber/10 rounded-full flex items-center justify-center mx-auto mb-5">
+                        <i class="fa-solid fa-shield-halved text-amber text-2xl"></i>
+                    </div>
+                    <h4 class="font-bold text-navy text-lg mb-2">Simulasi</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed">Praktek berkendara aman di lingkungan virtual.</p>
+                </div>
+                <div class="fade-up delay-300 feature-card bg-white p-8 rounded-3xl shadow-sm border border-gray-100 text-center cursor-pointer">
+                    <div class="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-5">
+                        <i class="fa-solid fa-puzzle-piece text-green-500 text-2xl"></i>
+                    </div>
+                    <h4 class="font-bold text-navy text-lg mb-2">Gamifikasi</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed">Belajar sambil mengumpulkan poin dan badge.</p>
+                </div>
+                <div class="fade-up delay-400 feature-card bg-white p-8 rounded-3xl shadow-sm border border-gray-100 text-center cursor-pointer">
+                    <div class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-5">
+                        <i class="fa-solid fa-link text-blue-500 text-2xl"></i>
+                    </div>
+                    <h4 class="font-bold text-navy text-lg mb-2">Link Game Lain</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed">Eksplorasi referensi game edukasi tambahan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SHOWCASE -->
+    <section class="py-24 px-6 md:px-12">
+        <div class="max-w-7xl mx-auto bg-navy rounded-[2.5rem] p-10 md:p-16 flex flex-col lg:flex-row items-center gap-12 relative overflow-hidden">
+            <div class="lg:w-5/12 relative z-10 fade-left">
+                <span class="inline-flex items-center gap-2 bg-white/10 text-amber text-xs font-bold px-4 py-2 rounded-full border border-white/20 mb-6 tracking-wide">
+                    <i class="fa-solid fa-gamepad"></i>Panduan interaktif
+                </span>
+                <h2 class="font-heading font-extrabold text-3xl md:text-4xl text-white mb-6 leading-tight">Test Your Vigilance</h2>
+                <p class="text-gray-300 text-base leading-relaxed mb-8">
+                    Ready to apply what you've learned? Step into our interactive driving simulation. Experience real-world scenarios, practice yielding to priority users, and test your reaction times in a safe, risk-free environment.
+                </p>
+                <a href="#" class="inline-flex items-center gap-3 bg-amber hover:bg-yellow-500 text-navy font-bold py-4 px-8 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl">
+                    <i class="fa-brands fa-youtube text-xl"></i> Tonton di YouTube sekarang
+                </a>
+            </div>
+            <div class="lg:w-7/12 relative z-10 fade-right">
+                <div class="showcase-card bg-slate-800/80 backdrop-blur-sm rounded-2xl p-8 border border-white/10 shadow-2xl">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                        <span class="text-white/40 text-sm ml-2 font-mono">Traffic Smart Dashboard</span>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4 mb-6">
+                        <div class="bg-white/5 rounded-xl p-4 text-center border border-white/10">
+                            <div class="text-amber font-bold text-xl mb-1">Top 15%</div>
+                            <div class="text-gray-400 text-xs">Community Rank</div>
+                        </div>
+                        <div class="bg-white/5 rounded-xl p-4 text-center border border-white/10">
+                            <div class="text-white font-bold text-xl mb-1">0.8s</div>
+                            <div class="text-gray-400 text-xs">Reaction Time</div>
+                        </div>
+                        <div class="bg-white/5 rounded-xl p-4 text-center border border-white/10">
+                            <div class="text-green-400 font-bold text-xl mb-1">92%</div>
+                            <div class="text-gray-400 text-xs">Rule Accuracy</div>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <span class="text-gray-400 text-xs w-28">Community Rank</span>
+                            <div class="flex-1 bg-white/10 rounded-full h-2.5 overflow-hidden">
+                                <div class="bar-fill bg-amber rounded-full h-2.5" style="width: 85%"></div>
+                            </div>
+                            <span class="text-amber text-xs font-bold">Top 15%</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-gray-400 text-xs w-28">Reaction Time</span>
+                            <div class="flex-1 bg-white/10 rounded-full h-2.5 overflow-hidden">
+                                <div class="bar-fill bg-blue-400 rounded-full h-2.5" style="width: 70%; transition-delay: 0.2s;"></div>
+                            </div>
+                            <span class="text-white text-xs font-bold">0.8s</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-gray-400 text-xs w-28">Rule Accuracy</span>
+                            <div class="flex-1 bg-white/10 rounded-full h-2.5 overflow-hidden">
+                                <div class="bar-fill bg-green-400 rounded-full h-2.5" style="width: 92%; transition-delay: 0.4s;"></div>
+                            </div>
+                            <span class="text-green-400 text-xs font-bold">92%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-lightGray border-t border-gray-200 pt-16 pb-8 px-6 md:px-12">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+            <div class="fade-up">
+                <h3 class="font-heading font-bold text-2xl text-navy mb-4">Traffic Smart</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">Platform edukasi lalu lintas interaktif.</p>
+            </div>
+            <div class="fade-up delay-100">
+                <h4 class="font-bold text-navy text-base mb-4">Links</h4>
+                <ul class="space-y-3 text-sm text-gray-500">
+                    <li><a href="materi.html" class="footer-link hover:text-amber transition-colors duration-300">Materi Lalu Lintas</a></li>
+                    <li><a href="#" class="footer-link hover:text-amber transition-colors duration-300">Studi Kasus</a></li>
+                    <li><a href="games.html" class="footer-link hover:text-amber transition-colors duration-300">Game</a></li>
+                    <li><a href="#" class="footer-link hover:text-amber transition-colors duration-300">Evaluasi</a></li>
+                </ul>
+            </div>
+            <div class="fade-up delay-200">
+                <h4 class="font-bold text-navy text-base mb-4">Contact</h4>
+                <ul class="space-y-3 text-sm text-gray-500">
+                    <li class="flex items-center gap-2 hover:text-navy transition-colors duration-300 cursor-default"><i class="fa-solid fa-envelope text-amber"></i> Email</li>
+                    <li class="flex items-center gap-2 hover:text-navy transition-colors duration-300 cursor-default"><i class="fa-brands fa-whatsapp text-amber"></i> WhatsApp</li>
+                    <li class="flex items-center gap-2 hover:text-navy transition-colors duration-300 cursor-default"><i class="fa-solid fa-location-dot text-amber"></i> Location</li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto border-t border-gray-200 pt-8 text-center text-sm text-gray-400">
+            Copyright &copy; 2024 Traffic Smart SMKN 1
+        </div>
     </footer>
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            // Intersection Observer for fade-in animations
+            const observerOptions = {
+                threshold: 0.15,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
             const observer = new IntersectionObserver((entries) => {
-                entries.forEach(e => { if(e.isIntersecting) e.target.classList.add("active"); });
-            }, { threshold: 0.1 });
-            document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-up, .fade-left, .fade-right, .fade-scale').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Animate bars when showcase section is visible
+            const barObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.querySelectorAll('.bar-fill').forEach(bar => {
+                            const width = bar.style.width;
+                            bar.style.width = '0';
+                            requestAnimationFrame(() => {
+                                requestAnimationFrame(() => {
+                                    bar.style.width = width;
+                                });
+                            });
+                        });
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            const showcaseSection = document.querySelector('.showcase-card');
+            if (showcaseSection) barObserver.observe(showcaseSection);
+
+            // Navbar scroll effect
+            let lastScroll = 0;
+            const nav = document.querySelector('nav');
+            window.addEventListener('scroll', () => {
+                const currentScroll = window.pageYOffset;
+                if (currentScroll > 100) {
+                    nav.classList.add('shadow-md');
+                } else {
+                    nav.classList.remove('shadow-md');
+                }
+                lastScroll = currentScroll;
+            });
         });
     </script>
 </body>

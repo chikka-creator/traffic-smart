@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Traffic Smart | Simulasi & Game</title>
+    <title>Traffic Smart | Simulasi Berkendara</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
@@ -13,199 +13,629 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: { brand: { dark: '#111827', primary: '#F59E0B', bg: '#F9FAFB' } },
+                    colors: { navy: '#0A1A32', amber: '#F9A825', lightGray: '#F5F7FA' },
                     fontFamily: { sans: ['Inter', 'sans-serif'], heading: ['Poppins', 'sans-serif'] }
                 }
             }
         }
     </script>
     <style>
-        #gameCanvas { background-color: #374151; box-shadow: inset 0 0 20px rgba(0,0,0,0.6); }
+        #gameCanvas {
+            background: #2d5016;
+            image-rendering: pixelated;
+        }
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
+        .pulse { animation: pulse 1s ease-in-out infinite; }
+        @keyframes slideUp { from{transform:translateY(20px);opacity:0} to{transform:translateY(0);opacity:1} }
+        .slide-up { animation: slideUp 0.4s ease-out forwards; }
+        @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
+        .shake { animation: shake 0.3s ease-in-out; }
+        .notification-enter { animation: slideUp 0.3s ease-out forwards; }
     </style>
 </head>
-<body class="font-sans text-gray-700 bg-brand-bg antialiased pt-24">
+<body class="font-sans text-gray-700 bg-navy antialiased min-h-screen">
 
-    <nav class="fixed w-full z-50 top-0 bg-white/90 backdrop-blur-md border-b border-gray-200 py-4 px-6 md:px-12">
+    <nav class="fixed w-full z-50 top-0 bg-navy/95 backdrop-blur-md border-b border-white/10 py-4 px-6 md:px-12">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="font-heading font-bold text-2xl text-brand-dark flex items-center gap-2">
-                <i class="fa-solid fa-traffic-light text-brand-primary"></i> Traffic Smart
+            <a href="index.html" class="font-heading font-bold text-2xl text-white flex items-center gap-2 hover:opacity-80 transition">
+                <i class="fa-solid fa-traffic-light text-amber"></i> Traffic Smart
             </a>
-            <div class="hidden md:flex space-x-8 font-medium text-sm uppercase tracking-wider text-gray-500">
-                <a href="index.html" class="hover:text-brand-dark transition">Landing page</a>
-                <a href="materi.html" class="hover:text-brand-dark transition">Materi</a>
-                <a href="simulasi.html" class="text-brand-dark font-bold border-b-2 border-brand-primary pb-1">Simulasi</a>
-                <a href="games.html" class="hover:text-brand-dark transition">Link game lain</a>
+            <div class="hidden md:flex space-x-8 font-bold text-sm tracking-wider text-gray-400 items-center">
+                <a href="index.html" class="hover:text-white transition">Landing page</a>
+                <a href="materi.html" class="hover:text-white transition">Materi</a>
+                <a href="simulasi.html" class="text-white border-b-[3px] border-amber pb-1">Simulasi</a>
+                <a href="games.html" class="hover:text-white transition">Link game lain</a>
             </div>
-            <span class="text-xs font-mono bg-amber-100 text-amber-800 px-3 py-1 rounded-full font-bold">Live Simulation Mode</span>
+            <span class="text-xs font-mono bg-amber/20 text-amber px-4 py-2 rounded-full font-bold border border-amber/30">
+                <i class="fa-solid fa-circle text-green-400 text-[8px] mr-1 pulse"></i> Live Simulation
+            </span>
         </div>
     </nav>
 
-    <main class="py-8 px-4 md:px-8 max-w-[1300px] mx-auto">
-        <div class="flex flex-col lg:flex-row gap-6">
-            
-            <div class="lg:w-3/4 flex flex-col gap-4">
-                <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-200 flex items-center justify-between">
-                    <div>
-                        <span class="text-xs text-gray-400 uppercase font-bold">Score</span>
-                        <p class="text-2xl font-black text-brand-dark" id="ui-score">0</p>
+    <main class="pt-20 pb-8 px-4 md:px-8 max-w-[1400px] mx-auto">
+        <div class="flex flex-col xl:flex-row gap-6">
+
+            <!-- Game Area -->
+            <div class="xl:w-3/4 flex flex-col gap-4">
+                <!-- HUD -->
+                <div class="bg-slate-800/80 backdrop-blur rounded-2xl p-4 border border-white/10 flex items-center justify-between">
+                    <div class="flex items-center gap-6">
+                        <div>
+                            <span class="text-[10px] text-gray-500 uppercase font-bold tracking-widest">Skor</span>
+                            <p class="text-3xl font-black text-amber" id="ui-score">0</p>
+                        </div>
+                        <div class="w-px h-10 bg-white/10"></div>
+                        <div>
+                            <span class="text-[10px] text-gray-500 uppercase font-bold tracking-widest">Pelanggaran</span>
+                            <p class="text-3xl font-black text-red-400" id="ui-violations">0</p>
+                        </div>
                     </div>
-                    <div class="bg-gray-100 px-4 py-2 rounded-lg font-mono font-bold text-brand-dark">
-                        <i class="fa-regular fa-clock mr-1"></i> <span id="ui-timer">01:00</span>
+                    <div class="flex items-center gap-4">
+                        <div class="bg-slate-700/50 px-5 py-2.5 rounded-xl font-mono font-bold text-white text-lg border border-white/5">
+                            <i class="fa-regular fa-clock mr-2 text-amber"></i><span id="ui-timer">01:00</span>
+                        </div>
+                        <button onclick="togglePause()" class="w-10 h-10 bg-slate-700/50 rounded-xl flex items-center justify-center text-white hover:bg-slate-600/50 transition border border-white/5" id="pause-btn">
+                            <i class="fa-solid fa-pause text-sm"></i>
+                        </button>
                     </div>
                 </div>
 
-                <div class="relative w-full aspect-video rounded-xl overflow-hidden shadow-lg border border-gray-300">
-                    <canvas id="gameCanvas" width="800" height="450" class="w-full h-full object-cover"></canvas>
-                    
-                    <div id="game-overlay" class="absolute inset-0 bg-brand-dark/85 backdrop-blur-sm flex flex-col items-center justify-center text-white z-10 p-6 text-center">
-                        <h2 id="overlay-title" class="font-heading font-black text-3xl md:text-4xl mb-3">Simulasi Berkendara</h2>
-                        <p id="overlay-desc" class="text-gray-300 mb-6 text-sm max-w-md">Gunakan panah ATAS untuk Gas, BAWAH untuk Rem. Hindari mobil lain dan berhenti di lampu merah!</p>
-                        <button onclick="startGame()" class="bg-brand-primary text-brand-dark font-bold py-3 px-8 rounded-full shadow-lg hover:bg-yellow-400 transition transform hover:scale-105">
-                            MULAI SIMULASI
+                <!-- Canvas -->
+                <div class="relative w-full aspect-[16/9] rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                    <canvas id="gameCanvas" width="960" height="540" class="w-full h-full"></canvas>
+
+                    <!-- Start Overlay -->
+                    <div id="start-overlay" class="absolute inset-0 bg-navy/90 backdrop-blur-md flex flex-col items-center justify-center text-white z-20 p-6 text-center">
+                        <div class="w-20 h-20 bg-amber/20 rounded-2xl flex items-center justify-center mb-6 border border-amber/30">
+                            <i class="fa-solid fa-car-side text-amber text-3xl"></i>
+                        </div>
+                        <h2 class="font-heading font-black text-4xl md:text-5xl mb-3">Simulasi Berkendara</h2>
+                        <p class="text-gray-400 mb-3 text-sm max-w-lg leading-relaxed">Kendarai kendaraan melewati jalan kota. Patuhi lampu lalu lintas, hindari tabrakan, dan jangan melanggar rambu!</p>
+                        <div class="flex flex-wrap justify-center gap-3 mb-8 text-xs">
+                            <span class="bg-white/10 px-3 py-1.5 rounded-lg border border-white/10"><i class="fa-solid fa-arrow-up mr-1 text-amber"></i> Gas</span>
+                            <span class="bg-white/10 px-3 py-1.5 rounded-lg border border-white/10"><i class="fa-solid fa-arrow-down mr-1 text-amber"></i> Rem</span>
+                            <span class="bg-white/10 px-3 py-1.5 rounded-lg border border-white/10"><i class="fa-solid fa-arrow-left mr-1 text-amber"></i> Kiri</span>
+                            <span class="bg-white/10 px-3 py-1.5 rounded-lg border border-white/10"><i class="fa-solid fa-arrow-right mr-1 text-amber"></i> Kanan</span>
+                        </div>
+                        <button onclick="startGame()" class="bg-amber hover:bg-yellow-500 text-navy font-black py-4 px-10 rounded-2xl shadow-lg shadow-amber/30 transition-all transform hover:scale-105 text-lg">
+                            <i class="fa-solid fa-play mr-2"></i> MULAI SIMULASI
                         </button>
+                    </div>
+
+                    <!-- Pause Overlay -->
+                    <div id="pause-overlay" class="absolute inset-0 bg-navy/80 backdrop-blur-sm flex flex-col items-center justify-center text-white z-20 hidden">
+                        <i class="fa-solid fa-pause text-5xl text-amber mb-4"></i>
+                        <h2 class="font-heading font-black text-3xl mb-2">Dijeda</h2>
+                        <p class="text-gray-400 mb-6">Tekan tombol jeda lagi untuk melanjutkan</p>
+                        <button onclick="togglePause()" class="bg-amber hover:bg-yellow-500 text-navy font-bold py-3 px-8 rounded-xl transition">
+                            LANJUTKAN
+                        </button>
+                    </div>
+
+                    <!-- Game Over Overlay -->
+                    <div id="gameover-overlay" class="absolute inset-0 bg-navy/90 backdrop-blur-md flex flex-col items-center justify-center text-white z-20 hidden p-6 text-center">
+                        <div class="w-20 h-20 bg-red-500/20 rounded-2xl flex items-center justify-center mb-6 border border-red-500/30">
+                            <i class="fa-solid fa-car-burst text-red-400 text-3xl"></i>
+                        </div>
+                        <h2 id="gameover-title" class="font-heading font-black text-4xl mb-2">Simulasi Selesai!</h2>
+                        <p id="gameover-reason" class="text-gray-400 mb-6"></p>
+                        <div class="grid grid-cols-3 gap-4 mb-8 w-full max-w-md">
+                            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                                <div class="text-amber font-black text-2xl" id="final-score">0</div>
+                                <div class="text-gray-500 text-xs mt-1">Skor</div>
+                            </div>
+                            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                                <div class="text-green-400 font-black text-2xl" id="final-compliance">0%</div>
+                                <div class="text-gray-500 text-xs mt-1">Kepatuhan</div>
+                            </div>
+                            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                                <div class="text-red-400 font-black text-2xl" id="final-violations">0</div>
+                                <div class="text-gray-500 text-xs mt-1">Pelanggaran</div>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <button onclick="startGame()" class="bg-amber hover:bg-yellow-500 text-navy font-bold py-3 px-8 rounded-xl transition shadow-lg shadow-amber/30">
+                                <i class="fa-solid fa-rotate-right mr-2"></i> MAIN LAGI
+                            </button>
+                            <a href="index.html" class="bg-white/10 hover:bg-white/20 text-white font-bold py-3 px-8 rounded-xl transition border border-white/10">
+                                KEMBALI
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Notification Area -->
+                    <div id="notification-area" class="absolute top-4 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2 pointer-events-none"></div>
+                </div>
+
+                <!-- Speed Bar -->
+                <div class="bg-slate-800/80 backdrop-blur rounded-2xl p-4 border border-white/10">
+                    <div class="flex items-center gap-4">
+                        <span class="text-[10px] text-gray-500 uppercase font-bold tracking-widest w-16">Kecepatan</span>
+                        <div class="flex-1 bg-slate-700/50 rounded-full h-3 overflow-hidden">
+                            <div id="speed-bar" class="h-full bg-gradient-to-r from-green-400 to-amber rounded-full transition-all duration-300" style="width: 50%"></div>
+                        </div>
+                        <span class="text-white font-mono font-bold text-sm w-20 text-right" id="speed-text">50 km/h</span>
                     </div>
                 </div>
             </div>
 
-            <div class="lg:w-1/4 flex flex-col gap-6">
-                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200 flex flex-col items-center justify-center flex-1">
-                    <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-6">Virtual D-Pad</h4>
-                    <div class="grid grid-cols-3 gap-2">
+            <!-- Sidebar -->
+            <div class="xl:w-1/4 flex flex-col gap-4">
+                <!-- Controls -->
+                <div class="bg-slate-800/80 backdrop-blur rounded-2xl p-6 border border-white/10">
+                    <h4 class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-5 text-center">Virtual Controls</h4>
+                    <div class="grid grid-cols-3 gap-2 max-w-[180px] mx-auto">
                         <div></div>
-                        <button class="w-14 h-14 bg-brand-dark text-white rounded-xl shadow active:bg-gray-700 flex items-center justify-center text-lg" onmousedown="setKey('up', true)" onmouseup="setKey('up', false)" ontouchstart="setKey('up', true)" ontouchend="setKey('up', false)"><i class="fa-solid fa-arrow-up"></i></button>
+                        <button class="w-14 h-14 bg-slate-700/50 hover:bg-slate-600/50 text-white rounded-xl transition active:scale-95 flex items-center justify-center border border-white/10" onmousedown="setKey('up',true)" onmouseup="setKey('up',false)" ontouchstart="setKey('up',true)" ontouchend="setKey('up',false)"><i class="fa-solid fa-arrow-up"></i></button>
                         <div></div>
-                        <button class="w-14 h-14 bg-brand-dark text-white rounded-xl shadow active:bg-gray-700 flex items-center justify-center text-lg" onmousedown="setKey('left', true)" onmouseup="setKey('left', false)" ontouchstart="setKey('left', true)" ontouchend="setKey('left', false)"><i class="fa-solid fa-arrow-left"></i></button>
-                        <button class="w-14 h-14 bg-gray-200 text-gray-500 rounded-xl shadow flex items-center justify-center"><i class="fa-solid fa-bullseye"></i></button>
-                        <button class="w-14 h-14 bg-brand-dark text-white rounded-xl shadow active:bg-gray-700 flex items-center justify-center text-lg" onmousedown="setKey('right', true)" onmouseup="setKey('right', false)" ontouchstart="setKey('right', true)" ontouchend="setKey('right', false)"><i class="fa-solid fa-arrow-right"></i></button>
+                        <button class="w-14 h-14 bg-slate-700/50 hover:bg-slate-600/50 text-white rounded-xl transition active:scale-95 flex items-center justify-center border border-white/10" onmousedown="setKey('left',true)" onmouseup="setKey('left',false)" ontouchstart="setKey('left',true)" ontouchend="setKey('left',false)"><i class="fa-solid fa-arrow-left"></i></button>
+                        <button class="w-14 h-14 bg-slate-600/30 text-gray-600 rounded-xl flex items-center justify-center border border-white/5 cursor-not-allowed"><i class="fa-solid fa-bullseye"></i></button>
+                        <button class="w-14 h-14 bg-slate-700/50 hover:bg-slate-600/50 text-white rounded-xl transition active:scale-95 flex items-center justify-center border border-white/10" onmousedown="setKey('right',true)" onmouseup="setKey('right',false)" ontouchstart="setKey('right',true)" ontouchend="setKey('right',false)"><i class="fa-solid fa-arrow-right"></i></button>
                         <div></div>
-                        <button class="w-14 h-14 bg-brand-dark text-white rounded-xl shadow active:bg-gray-700 flex items-center justify-center text-lg" onmousedown="setKey('down', true)" onmouseup="setKey('down', false)" ontouchstart="setKey('down', true)" ontouchend="setKey('down', false)"><i class="fa-solid fa-arrow-down"></i></button>
+                        <button class="w-14 h-14 bg-slate-700/50 hover:bg-slate-600/50 text-white rounded-xl transition active:scale-95 flex items-center justify-center border border-white/10" onmousedown="setKey('down',true)" onmouseup="setKey('down',false)" ontouchstart="setKey('down',true)" ontouchend="setKey('down',false)"><i class="fa-solid fa-arrow-down"></i></button>
                         <div></div>
                     </div>
-                    <p class="text-xs text-gray-400 mt-6 text-center">Gunakan tombol di atas atau Keyboard PC.</p>
+                </div>
+
+                <!-- Legend -->
+                <div class="bg-slate-800/80 backdrop-blur rounded-2xl p-6 border border-white/10">
+                    <h4 class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-4">Panduan Cepat</h4>
+                    <div class="space-y-3 text-xs">
+                        <div class="flex items-center gap-3"><div class="w-3 h-3 rounded-full bg-green-400 flex-shrink-0"></div><span class="text-gray-400">Lampu Hijau = Jalan</span></div>
+                        <div class="flex items-center gap-3"><div class="w-3 h-3 rounded-full bg-red-500 flex-shrink-0"></div><span class="text-gray-400">Lampu Merah = Berhenti</span></div>
+                        <div class="flex items-center gap-3"><div class="w-3 h-3 rounded-full bg-amber flex-shrink-0"></div><span class="text-gray-400">Lampu Kuning = Waspada</span></div>
+                        <div class="flex items-center gap-3"><div class="w-3 h-8 bg-white/20 rounded flex-shrink-0"></div><span class="text-gray-400">Zebra Cross = Beri Jalan</span></div>
+                    </div>
+                </div>
+
+                <!-- Tips -->
+                <div class="bg-amber/10 rounded-2xl p-6 border border-amber/20">
+                    <h4 class="text-amber font-bold text-sm mb-2 flex items-center gap-2"><i class="fa-solid fa-lightbulb"></i> Tips</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed">Patuhi lampu lalu lintas dan jaga jarak aman dengan kendaraan lain. Skor bertambah setiap detik tanpa pelanggaran!</p>
                 </div>
             </div>
         </div>
     </main>
 
-    <footer class="bg-white border-t border-gray-200 py-6 px-6 text-center text-xs text-gray-400 mt-12">
-        Copyright © 2026 Traffic Smart SMKN 1 Surabaya.
-    </footer>
-
     <script>
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
-        
-        let isPlaying = false;
-        let score = 0;
-        let timeLeft = 60;
+
+        let isPlaying = false, isPaused = false;
+        let score = 0, violations = 0, timeLeft = 60;
         let timerInterval;
+        let gameSpeed = 3, maxSpeed = 8;
         const keys = { up: false, down: false, left: false, right: false };
+        let roadOffset = 0;
+
+        // Player car
+        const player = { x: 400, y: 400, w: 44, h: 78, lane: 1, targetX: 400 };
+
+        // Traffic
+        let cars = [];
+        let trafficLights = [
+            { x: 240, y: -200, state: 'green', timer: 180 },
+            { x: 560, y: -600, state: 'red', timer: 120 }
+        ];
+        let pedestrians = [];
+        let roadSigns = [];
+        let buildings = [];
+
+        // Generate buildings once
+        function generateBuildings() {
+            buildings = [];
+            for (let y = -200; y < canvas.height + 200; y += 120) {
+                buildings.push({ x: Math.random() < 0.5 ? 20 + Math.random() * 80 : canvas.width - 120 + Math.random() * 80, y: y, w: 60 + Math.random() * 40, h: 80 + Math.random() * 40, color: ['#4a6fa5','#5b7faa','#6b8fb5','#3d5a8a','#7a9fc0'][Math.floor(Math.random()*5)] });
+            }
+        }
+        generateBuildings();
 
         function setKey(k, v) { keys[k] = v; }
         window.addEventListener('keydown', (e) => {
-            if(e.key === 'ArrowUp') keys.up = true;
-            if(e.key === 'ArrowDown') keys.down = true;
-            if(e.key === 'ArrowLeft') keys.left = true;
-            if(e.key === 'ArrowRight') keys.right = true;
+            if (e.key === 'ArrowUp' || e.key === 'w') keys.up = true;
+            if (e.key === 'ArrowDown' || e.key === 's') keys.down = true;
+            if (e.key === 'ArrowLeft' || e.key === 'a') keys.left = true;
+            if (e.key === 'ArrowRight' || e.key === 'd') keys.right = true;
+            if (e.key === 'Escape' || e.key === 'p') togglePause();
         });
         window.addEventListener('keyup', (e) => {
-            if(e.key === 'ArrowUp') keys.up = false;
-            if(e.key === 'ArrowDown') keys.down = false;
-            if(e.key === 'ArrowLeft') keys.left = false;
-            if(e.key === 'ArrowRight') keys.right = false;
+            if (e.key === 'ArrowUp' || e.key === 'w') keys.up = false;
+            if (e.key === 'ArrowDown' || e.key === 's') keys.down = false;
+            if (e.key === 'ArrowLeft' || e.key === 'a') keys.left = false;
+            if (e.key === 'ArrowRight' || e.key === 'd') keys.right = false;
         });
 
-        const car = { x: 400, y: 350, w: 40, h: 70 };
-        let obstacles = [];
-        let roadOffset = 0;
-        let gameSpeed = 5;
+        function showNotification(text, type = 'violation') {
+            const area = document.getElementById('notification-area');
+            const el = document.createElement('div');
+            const colors = type === 'violation' ? 'bg-red-500/90 border-red-400/50 text-white' : 'bg-green-500/90 border-green-400/50 text-white';
+            const icons = type === 'violation' ? 'fa-triangle-exclamation' : 'fa-circle-check';
+            el.className = `notification-enter ${colors} px-5 py-2.5 rounded-xl text-sm font-bold border backdrop-blur-sm flex items-center gap-2`;
+            el.innerHTML = `<i class="fa-solid ${icons}"></i> ${text}`;
+            area.appendChild(el);
+            setTimeout(() => { el.style.opacity = '0'; el.style.transition = 'opacity 0.3s'; setTimeout(() => el.remove(), 300); }, 2500);
+        }
 
         function startGame() {
-            document.getElementById('game-overlay').style.display = 'none';
-            car.x = canvas.width / 2 - 20;
-            obstacles = [];
-            score = 0;
-            timeLeft = 60;
+            document.getElementById('start-overlay').classList.add('hidden');
+            document.getElementById('gameover-overlay').classList.add('hidden');
+            document.getElementById('pause-overlay').classList.add('hidden');
+            isPaused = false;
+
+            score = 0; violations = 0; timeLeft = 60;
+            gameSpeed = 3;
+            cars = []; pedestrians = []; roadSigns = [];
+            player.x = canvas.width / 2 - 22;
+            player.y = 400;
+
+            trafficLights = [
+                { x: 240, y: -200, state: 'green', timer: 180 },
+                { x: 560, y: -600, state: 'red', timer: 120 }
+            ];
+
+            document.getElementById('ui-score').innerText = '0';
+            document.getElementById('ui-violations').innerText = '0';
+            document.getElementById('ui-timer').innerText = '01:00';
+
             isPlaying = true;
-            
+
             clearInterval(timerInterval);
             timerInterval = setInterval(() => {
-                if(timeLeft > 0) {
+                if (!isPlaying || isPaused) return;
+                if (timeLeft > 0) {
                     timeLeft--;
                     score += 10;
                     document.getElementById('ui-score').innerText = score;
                     let m = Math.floor(timeLeft / 60), s = timeLeft % 60;
-                    document.getElementById('ui-timer').innerText = `0${m}:${s < 10 ? '0':''}${s}`;
+                    document.getElementById('ui-timer').innerText = `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
                 } else {
-                    endGame("Waktu Simulasi Selesai!");
+                    endGame("Waktu Habis!", "Simulasi telah selesai. Skor akhir kamu:");
                 }
             }, 1000);
 
             gameLoop();
         }
 
-        function drawCar(x, y, color) {
-            ctx.fillStyle = color;
-            ctx.fillRect(x, y, 40, 70);
-            ctx.fillStyle = '#1e293b';
-            ctx.fillRect(x + 5, y + 15, 30, 20);
-            ctx.fillRect(x + 5, y + 45, 30, 15);
+        function togglePause() {
+            if (!isPlaying) return;
+            isPaused = !isPaused;
+            document.getElementById('pause-overlay').classList.toggle('hidden', !isPaused);
+            document.getElementById('pause-btn').innerHTML = isPaused ? '<i class="fa-solid fa-play text-sm"></i>' : '<i class="fa-solid fa-pause text-sm"></i>';
+            if (!isPaused) gameLoop();
+        }
+
+        function endGame(title, reason) {
+            isPlaying = false;
+            clearInterval(timerInterval);
+            document.getElementById('gameover-overlay').classList.remove('hidden');
+            document.getElementById('gameover-title').innerText = title;
+            document.getElementById('gameover-reason').innerText = reason;
+            document.getElementById('final-score').innerText = score;
+            document.getElementById('final-violations').innerText = violations;
+            const total = score + violations * 50;
+            const compliance = total > 0 ? Math.round((score / total) * 100) : 100;
+            document.getElementById('final-compliance').innerText = compliance + '%';
         }
 
         function update() {
-            if(!isPlaying) return;
-            if(keys.left && car.x > 150) car.x -= 5;
-            if(keys.right && car.x < canvas.width - 190) car.x += 5;
-            
-            if(keys.down) gameSpeed = 2;
-            else if(keys.up) gameSpeed = 8;
-            else gameSpeed = 5;
+            if (!isPlaying || isPaused) return;
 
-            roadOffset = (roadOffset + gameSpeed) % 40;
+            // Player movement
+            if (keys.left && player.x > 180) player.x -= 4;
+            if (keys.right && player.x < canvas.width - 220) player.x += 4;
+            if (keys.up && gameSpeed < maxSpeed) gameSpeed += 0.15;
+            else if (keys.down && gameSpeed > 1) gameSpeed -= 0.25;
+            else if (!keys.up && gameSpeed > 3) gameSpeed -= 0.05;
 
-            if(Math.random() < 0.02) {
-                const lanes = [220, 380, 540];
-                obstacles.push({ x: lanes[Math.floor(Math.random()*lanes.length)], y: -100, speed: Math.random() * 2 + 2 });
+            roadOffset = (roadOffset + gameSpeed) % 60;
+
+            // Update speed UI
+            const speedPercent = (gameSpeed / maxSpeed) * 100;
+            document.getElementById('speed-bar').style.width = speedPercent + '%';
+            document.getElementById('speed-text').innerText = Math.round(gameSpeed * 15) + ' km/h';
+            if (gameSpeed > 6) document.getElementById('speed-bar').className = 'h-full bg-gradient-to-r from-red-400 to-red-500 rounded-full transition-all duration-300';
+            else if (gameSpeed > 4) document.getElementById('speed-bar').className = 'h-full bg-gradient-to-r from-amber to-yellow-400 rounded-full transition-all duration-300';
+            else document.getElementById('speed-bar').className = 'h-full bg-gradient-to-r from-green-400 to-amber rounded-full transition-all duration-300';
+
+            // Spawn traffic cars
+            if (Math.random() < 0.015) {
+                const lanes = [200, 340, 480];
+                const colors = ['#ef4444','#3b82f6','#22c55e','#f97316','#8b5cf6','#ec4899','#06b6d4'];
+                const types = ['sedan','suv','truck'];
+                cars.push({
+                    x: lanes[Math.floor(Math.random() * lanes.length)],
+                    y: -100,
+                    speed: 1 + Math.random() * 2,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    type: types[Math.floor(Math.random() * types.length)],
+                    w: 40, h: 70
+                });
             }
 
-            obstacles.forEach(obs => {
-                obs.y += (gameSpeed - obs.speed + 1);
-                if (car.x < obs.x + 40 && car.x + 40 > obs.x && car.y < obs.y + 70 && car.y + 70 > obs.y) {
-                    endGame("Tabrakan Terdeteksi!");
+            // Spawn pedestrians near zebra crossings
+            if (Math.random() < 0.005) {
+                pedestrians.push({ x: 170 + Math.random() * 620, y: -30, speed: 0.5 + Math.random(), direction: Math.random() < 0.5 ? 1 : -1 });
+            }
+
+            // Update cars
+            cars.forEach(c => { c.y += (gameSpeed - c.speed + 1); });
+            cars = cars.filter(c => c.y < canvas.height + 150);
+
+            // Update pedestrians
+            pedestrians.forEach(p => { p.y += gameSpeed * 0.6; });
+            pedestrians = pedestrians.filter(p => p.y < canvas.height + 50);
+
+            // Traffic light logic
+            trafficLights.forEach(tl => {
+                tl.timer--;
+                if (tl.timer <= 0) {
+                    if (tl.state === 'green') { tl.state = 'yellow'; tl.timer = 60; }
+                    else if (tl.state === 'yellow') { tl.state = 'red'; tl.timer = 180; }
+                    else { tl.state = 'green'; tl.timer = 200; }
                 }
             });
-            obstacles = obstacles.filter(obs => obs.y < canvas.height + 100);
+
+            // Move traffic lights with road
+            trafficLights.forEach(tl => { tl.y += gameSpeed; if (tl.y > canvas.height + 300) { tl.y = -300 - Math.random() * 200; tl.state = Math.random() < 0.5 ? 'green' : 'red'; tl.timer = 120 + Math.random() * 120; } });
+
+            // Collision detection
+            cars.forEach(c => {
+                if (player.x < c.x + c.w && player.x + player.w > c.x && player.y < c.y + c.h && player.y + player.h > c.y) {
+                    violations++;
+                    document.getElementById('ui-violations').innerText = violations;
+                    score = Math.max(0, score - 25);
+                    document.getElementById('ui-score').innerText = score;
+                    showNotification('Tabrakan! -25 poin', 'violation');
+                    c.y = canvas.height + 200;
+                    document.querySelector('.xl\\:w-3/4')?.classList.add('shake');
+                    setTimeout(() => document.querySelector('.xl\\:w-3/4')?.classList.remove('shake'), 300);
+                }
+            });
+
+            // Check red light violation
+            trafficLights.forEach(tl => {
+                if (tl.state === 'red' && tl.y > player.y - 60 && tl.y < player.y + 20 && Math.abs(player.x - tl.x) < 80) {
+                    if (gameSpeed > 1) {
+                        violations++;
+                        document.getElementById('ui-violations').innerText = violations;
+                        score = Math.max(0, score - 50);
+                        document.getElementById('ui-score').innerText = score;
+                        showNotification('Menerobos lampu merah! -50 poin', 'violation');
+                        tl.timer = Math.min(tl.timer, 30);
+                    }
+                }
+            });
+
+            // Check pedestrian collision
+            pedestrians.forEach(p => {
+                if (Math.abs(player.x + 22 - p.x) < 30 && Math.abs(player.y - p.y) < 40) {
+                    violations++;
+                    document.getElementById('ui-violations').innerText = violations;
+                    score = Math.max(0, score - 40);
+                    document.getElementById('ui-score').innerText = score;
+                    showNotification('Menabrak pejalan kaki! -40 poin', 'violation');
+                    p.y = canvas.height + 100;
+                }
+            });
+        }
+
+        function drawRoundRect(x, y, w, h, r) {
+            ctx.beginPath();
+            ctx.moveTo(x + r, y);
+            ctx.lineTo(x + w - r, y);
+            ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+            ctx.lineTo(x + w, y + h - r);
+            ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+            ctx.lineTo(x + r, y + h);
+            ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+            ctx.lineTo(x, y + r);
+            ctx.quadraticCurveTo(x, y, x + r, y);
+            ctx.closePath();
+        }
+
+        function drawCar(x, y, color, type, isPlayer) {
+            ctx.save();
+            // Shadow
+            ctx.fillStyle = 'rgba(0,0,0,0.2)';
+            drawRoundRect(x + 4, y + 4, 44, 78, 8);
+            ctx.fill();
+
+            // Body
+            ctx.fillStyle = color;
+            drawRoundRect(x, y, 44, 78, 8);
+            ctx.fill();
+
+            // Roof / window
+            ctx.fillStyle = isPlayer ? 'rgba(100,200,255,0.6)' : 'rgba(150,150,150,0.5)';
+            drawRoundRect(x + 6, y + 18, 32, 18, 4);
+            ctx.fill();
+
+            // Rear window
+            ctx.fillStyle = isPlayer ? 'rgba(100,200,255,0.4)' : 'rgba(150,150,150,0.3)';
+            drawRoundRect(x + 8, y + 48, 28, 14, 3);
+            ctx.fill();
+
+            // Headlights
+            ctx.fillStyle = '#fde68a';
+            ctx.fillRect(x + 4, y + 2, 8, 4);
+            ctx.fillRect(x + 32, y + 2, 8, 4);
+
+            // Taillights
+            ctx.fillStyle = '#ef4444';
+            ctx.fillRect(x + 4, y + 72, 8, 4);
+            ctx.fillRect(x + 32, y + 72, 8, 4);
+
+            ctx.restore();
+        }
+
+        function drawTrafficLight(tl) {
+            const x = tl.x - 15, y = tl.y;
+            // Pole
+            ctx.fillStyle = '#4a4a4a';
+            ctx.fillRect(tl.x - 3, y + 45, 6, 40);
+            // Box
+            ctx.fillStyle = '#1a1a1a';
+            drawRoundRect(x, y, 30, 48, 6);
+            ctx.fill();
+            // Lights
+            ctx.fillStyle = tl.state === 'red' ? '#ef4444' : '#3a1a1a';
+            ctx.beginPath(); ctx.arc(tl.x, y + 12, 7, 0, Math.PI * 2); ctx.fill();
+            if (tl.state === 'red') { ctx.fillStyle = 'rgba(239,68,68,0.3)'; ctx.beginPath(); ctx.arc(tl.x, y + 12, 12, 0, Math.PI * 2); ctx.fill(); }
+
+            ctx.fillStyle = tl.state === 'yellow' ? '#eab308' : '#3a3a1a';
+            ctx.beginPath(); ctx.arc(tl.x, y + 24, 7, 0, Math.PI * 2); ctx.fill();
+            if (tl.state === 'yellow') { ctx.fillStyle = 'rgba(234,179,8,0.3)'; ctx.beginPath(); ctx.arc(tl.x, y + 24, 12, 0, Math.PI * 2); ctx.fill(); }
+
+            ctx.fillStyle = tl.state === 'green' ? '#22c55e' : '#1a3a1a';
+            ctx.beginPath(); ctx.arc(tl.x, y + 36, 7, 0, Math.PI * 2); ctx.fill();
+            if (tl.state === 'green') { ctx.fillStyle = 'rgba(34,197,94,0.3)'; ctx.beginPath(); ctx.arc(tl.x, y + 36, 12, 0, Math.PI * 2); ctx.fill(); }
+        }
+
+        function drawBuilding(b) {
+            ctx.fillStyle = b.color;
+            drawRoundRect(b.x, b.y, b.w, b.h, 4);
+            ctx.fill();
+            // Windows
+            ctx.fillStyle = 'rgba(255,255,200,0.5)';
+            for (let wy = b.y + 10; wy < b.y + b.h - 15; wy += 18) {
+                for (let wx = b.x + 8; wx < b.x + b.w - 15; wx += 16) {
+                    ctx.fillRect(wx, wy, 8, 10);
+                }
+            }
+        }
+
+        function drawZebraCross(y) {
+            ctx.fillStyle = 'rgba(255,255,255,0.85)';
+            for (let i = 0; i < 8; i++) {
+                ctx.fillRect(170 + i * 75, y, 40, 12);
+            }
+        }
+
+        function drawPedestrian(p) {
+            ctx.fillStyle = '#fbbf24';
+            ctx.beginPath(); ctx.arc(p.x, p.y - 18, 5, 0, Math.PI * 2); ctx.fill();
+            ctx.fillStyle = '#fbbf24';
+            ctx.fillRect(p.x - 3, p.y - 13, 6, 14);
+            ctx.fillRect(p.x - 7, p.y - 10, 5, 3);
+            ctx.fillRect(p.x + 2, p.y - 10, 5, 3);
+            ctx.fillRect(p.x - 4, p.y + 1, 3, 8);
+            ctx.fillRect(p.x + 1, p.y + 1, 3, 8);
         }
 
         function draw() {
-            ctx.fillStyle = '#22c55e'; ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = '#374151'; ctx.fillRect(150, 0, 500, canvas.height);
-            
-            ctx.fillStyle = 'white';
-            for(let i = -40; i < canvas.height; i+=80) {
-                ctx.fillRect(316, i + roadOffset, 5, 40);
-                ctx.fillRect(483, i + roadOffset, 5, 40);
+            // Grass
+            ctx.fillStyle = '#2d5a1e';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Grass texture
+            ctx.fillStyle = '#265018';
+            for (let i = 0; i < 30; i++) {
+                const gx = (i * 97 + 30) % canvas.width;
+                const gy = (i * 73 + 20) % canvas.height;
+                ctx.fillRect(gx, gy, 2, 6);
             }
 
-            obstacles.forEach(obs => drawCar(obs.x, obs.y, '#ef4444'));
-            if(isPlaying) drawCar(car.x, car.y, '#3B82F6');
+            // Buildings
+            buildings.forEach(b => {
+                const by = ((b.y + roadOffset * 0.3) % (canvas.height + 200)) - 200;
+                if (b.x < 160) drawBuilding({ ...b, y: by });
+                else drawBuilding({ ...b, y: by });
+            });
+
+            // Sidewalk left
+            ctx.fillStyle = '#9ca3af';
+            ctx.fillRect(155, 0, 30, canvas.height);
+            ctx.fillStyle = '#d1d5db';
+            ctx.fillRect(155, 0, 4, canvas.height);
+
+            // Sidewalk right
+            ctx.fillStyle = '#9ca3af';
+            ctx.fillRect(canvas.width - 185, 0, 30, canvas.height);
+            ctx.fillStyle = '#d1d5db';
+            ctx.fillRect(canvas.width - 159, 0, 4, canvas.height);
+
+            // Road
+            ctx.fillStyle = '#374151';
+            ctx.fillRect(185, 0, canvas.width - 370, canvas.height);
+
+            // Road edge lines
+            ctx.fillStyle = '#fbbf24';
+            ctx.fillRect(185, 0, 3, canvas.height);
+            ctx.fillRect(canvas.width - 188, 0, 3, canvas.height);
+
+            // Lane markings
+            ctx.fillStyle = 'rgba(255,255,255,0.7)';
+            for (let i = -60; i < canvas.height + 60; i += 60) {
+                ctx.fillRect(355, i + roadOffset, 4, 30);
+                ctx.fillRect(520, i + roadOffset, 4, 30);
+            }
+
+            // Zebra crossings
+            const zebraY1 = ((-roadOffset * 3) % 800 + 800) % 800 - 100;
+            const zebraY2 = ((-roadOffset * 3 + 400) % 800 + 800) % 800 - 100;
+            drawZebraCross(zebraY1);
+            drawZebraCross(zebraY2);
+
+            // Traffic lights
+            trafficLights.forEach(tl => drawTrafficLight(tl));
+
+            // Pedestrians
+            pedestrians.forEach(p => drawPedestrian(p));
+
+            // Traffic cars
+            cars.forEach(c => drawCar(c.x, c.y, c.color, c.type, false));
+
+            // Player car
+            if (isPlaying) {
+                drawCar(player.x, player.y, '#3b82f6', 'sedan', true);
+
+                // Headlight glow
+                ctx.fillStyle = 'rgba(253,230,138,0.15)';
+                ctx.beginPath();
+                ctx.moveTo(player.x + 5, player.y);
+                ctx.lineTo(player.x - 10, player.y - 60);
+                ctx.lineTo(player.x + 54, player.y - 60);
+                ctx.lineTo(player.x + 39, player.y);
+                ctx.closePath();
+                ctx.fill();
+            }
         }
 
         function gameLoop() {
+            if (!isPlaying || isPaused) return;
             update();
             draw();
-            if(isPlaying) requestAnimationFrame(gameLoop);
+            requestAnimationFrame(gameLoop);
         }
 
-        function endGame(reason) {
-            isPlaying = false;
-            clearInterval(timerInterval);
-            const overlay = document.getElementById('game-overlay');
-            overlay.style.display = 'flex';
-            document.getElementById('overlay-title').innerText = reason;
-            document.getElementById('overlay-desc').innerText = `Skor Akhir: ${score}`;
+        // Initial draw
+        function drawIdle() {
+            // Grass
+            ctx.fillStyle = '#2d5a1e';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Sidewalk
+            ctx.fillStyle = '#9ca3af';
+            ctx.fillRect(155, 0, 30, canvas.height);
+            ctx.fillRect(canvas.width - 185, 0, 30, canvas.height);
+
+            // Road
+            ctx.fillStyle = '#374151';
+            ctx.fillRect(185, 0, canvas.width - 370, canvas.height);
+
+            // Lane markings
+            ctx.fillStyle = 'rgba(255,255,255,0.5)';
+            for (let i = 0; i < canvas.height; i += 60) {
+                ctx.fillRect(355, i, 4, 30);
+                ctx.fillRect(520, i, 4, 30);
+            }
+
+            // Edge lines
+            ctx.fillStyle = '#fbbf24';
+            ctx.fillRect(185, 0, 3, canvas.height);
+            ctx.fillRect(canvas.width - 188, 0, 3, canvas.height);
         }
-        draw();
+        drawIdle();
     </script>
 </body>
 </html>
