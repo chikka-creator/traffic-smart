@@ -51,7 +51,7 @@
         .footer-link { position: relative; transition: color 0.3s ease; }
         .footer-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: #F9A825; transition: width 0.3s ease; }
         .footer-link:hover::after { width: 100%; }
-        @media (max-width: 640px) { .about-img-1, .about-img-2 { width: 130px !important; height: 110px !important; } .about-img-2 { margin-top: 0 !important; } }
+        @media (max-width: 640px) { .about-img-1, .about-img-2 { width: 150px !important; height: 180px !important; } }
     </style>
 </head>
 <body class="font-sans text-gray-700 bg-white antialiased">
@@ -98,7 +98,7 @@
 
     <!-- HERO -->
     <section class="relative h-screen flex items-center justify-center text-center px-4 overflow-hidden">
-        <div class="absolute inset-0 hero-bg-animate bg-[100%_500%] bg-no-repeat" style="background-image: url('homepage.jpeg'); background-size: cover; filter: blur(3px); transform: scale(1);"></div>
+        <div class="absolute inset-0 hero-bg-animate bg-[100%_500%] bg-no-repeat" style="background-image: url('homepage.webp'); background-size: cover; filter: blur(3px); transform: scale(1);"></div>
         <div class="absolute inset-0 bg-navy/65"></div>
         <div class="relative z-10 max-w-3xl text-white hero-animate" style="animation-delay: 0.3s; opacity: 0;">
             <h1 class="font-heading font-extrabold text-5xl md:text-7xl mb-6 drop-shadow-lg">Traffic Smart</h1>
@@ -120,9 +120,9 @@
                     Traffic Smart adalah platform edukasi interaktif yang dirancang untuk memberikan pemahaman mendalam mengenai peraturan lalu lintas sesuai dengan Undang-Undang No. 22 Tahun 2009. Melalui pendekatan gamifikasi dan simulasi, kami mengubah materi yang kaku menjadi pengalaman belajar yang menarik, mudah dipahami, dan aplikatif untuk semua kalangan.
                 </p>
             </div>
-            <div class="lg:w-7/12 flex gap-4 md:gap-5 justify-center">
-                <img src="about-1.png" alt="Traffic Smart App" class="fade-right delay-100 about-img-1 w-[130px] md:w-[280px] h-[110px] md:h-[220px] object-cover rounded-xl md:rounded-2xl shadow-xl border border-gray-100 flex-shrink-0" onerror="this.src='https://images.unsplash.com/photo-1555899434-94d1368aa7af?auto=format&fit=crop&w=400&q=80'; this.onerror=null;">
-                <img src="about-2.png" alt="Traffic Smart Branding" class="fade-right delay-300 about-img-2 w-[130px] md:w-[260px] h-[150px] md:h-[280px] object-cover rounded-xl md:rounded-2xl shadow-2xl flex-shrink-0 mt-6 md:mt-12 border-2 md:border-4 border-white" onerror="this.src='https://images.unsplash.com/photo-1591523414902-6c3e98ec6d9c?auto=format&fit=crop&w=400&q=80'; this.onerror=null;">
+            <div class="lg:w-7/12 flex gap-4 md:gap-6 justify-center items-center">
+                <img src="about1.webp" alt="Traffic Smart Smart Traffic System" class="fade-right delay-100 about-img-1 w-[150px] md:w-[260px] h-[180px] md:h-[280px] object-cover rounded-xl md:rounded-2xl shadow-xl border border-gray-100 flex-shrink-0">
+                <img src="about2.webp" alt="Traffic Smart Rider Education" class="fade-right delay-300 about-img-2 w-[150px] md:w-[260px] h-[180px] md:h-[280px] object-cover rounded-xl md:rounded-2xl shadow-2xl flex-shrink-0">
             </div>
         </div>
     </section>
@@ -158,55 +158,67 @@
 
     <!-- SHOWCASE -->
     <section class="py-16 md:py-24 px-6 md:px-12 pb-32 md:pb-24">
-        <div class="max-w-7xl mx-auto bg-navy rounded-2xl md:rounded-[2.5rem] p-6 md:p-16 flex flex-col lg:flex-row items-center gap-8 md:gap-12 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto bg-navy rounded-2xl md:rounded-[2.5rem] p-6 md:p-16 flex flex-col lg:flex-row items-center gap-8 md:gap-16 relative overflow-hidden">
+            <!-- Decorative -->
+            <div class="absolute top-0 right-0 w-64 h-64 bg-amber/5 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 w-48 h-48 bg-blue-500/5 rounded-full blur-3xl"></div>
+
+            <!-- Kiri: Teks -->
             <div class="lg:w-5/12 relative z-10 fade-left">
-                <span class="inline-flex items-center gap-2 bg-white/10 text-amber text-[10px] md:text-xs font-bold px-3 md:px-4 py-1.5 md:py-2 rounded-full border border-white/20 mb-4 md:mb-6 tracking-wide">
-                    <i class="fa-solid fa-gamepad"></i>Panduan interaktif
+                <span class="inline-flex items-center gap-2 bg-amber/15 text-amber text-[10px] md:text-xs font-bold px-3 md:px-4 py-1.5 md:py-2 rounded-full border border-amber/30 mb-4 md:mb-6 tracking-wider">
+                    <i class="fa-solid fa-gamepad"></i> Simulasi Interaktif
                 </span>
-                <h2 class="font-heading font-extrabold text-2xl md:text-4xl text-white mb-4 md:mb-6 leading-tight">Test Your Vigilance</h2>
-                <p class="text-gray-300 text-sm md:text-base leading-relaxed mb-6 md:mb-8">
-                    Ready to apply what you've learned? Step into our interactive driving simulation. Experience real-world scenarios in a safe, risk-free environment.
+                <h2 class="font-heading font-black text-2xl md:text-4xl text-white mb-4 md:mb-6 leading-tight">Uji Ketangkasan<br><span class="text-amber">Berkendaramu</span></h2>
+                <p class="text-gray-400 text-sm md:text-base leading-relaxed mb-6 md:mb-8">
+                    Siap menerapkan ilmu yang sudah dipelajari? Masuk ke simulasi berkendara interaktif dan rasakan skenario lalu lintas nyata tanpa risiko.
                 </p>
-                <a href="simulasi.html" class="inline-flex items-center gap-3 bg-amber hover:bg-yellow-500 text-navy font-bold py-3 md:py-4 px-6 md:px-8 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 text-sm md:text-base">
-                    <i class="fa-solid fa-play"></i> Mulai Simulasi
+                <a href="simulasi.html" class="inline-flex items-center gap-3 bg-amber hover:bg-yellow-500 text-navy font-bold py-3 md:py-4 px-7 md:px-9 rounded-2xl shadow-lg shadow-amber/30 transition-all duration-300 transform hover:scale-105 text-sm md:text-base">
+                    <i class="fa-solid fa-play text-xs"></i> Mulai Simulasi
                 </a>
             </div>
+
+            <!-- Kanan: Dashboard -->
             <div class="lg:w-7/12 relative z-10 fade-right w-full">
-                <div class="showcase-card bg-slate-800/80 backdrop-blur-sm rounded-xl md:rounded-2xl p-5 md:p-8 border border-white/10 shadow-2xl">
-                    <div class="flex items-center gap-2 md:gap-3 mb-4 md:mb-6">
-                        <div class="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-red-400"></div>
-                        <div class="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-yellow-400"></div>
-                        <div class="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-green-400"></div>
+                <div class="showcase-card bg-white/5 backdrop-blur-sm rounded-2xl md:rounded-3xl p-5 md:p-8 border border-white/10 shadow-2xl">
+                    <!-- Title bar -->
+                    <div class="flex items-center gap-2 md:gap-3 mb-5 md:mb-7">
+                        <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-400"></div>
                         <span class="text-white/40 text-[10px] md:text-sm ml-1 md:ml-2 font-mono">Traffic Smart Dashboard</span>
                     </div>
-                    <div class="grid grid-cols-3 gap-2 md:gap-4 mb-4 md:mb-6">
-                        <div class="bg-white/5 rounded-lg md:rounded-xl p-2 md:p-4 text-center border border-white/10">
-                            <div class="text-amber font-bold text-sm md:text-xl mb-0.5 md:mb-1">Top 15%</div>
-                            <div class="text-gray-400 text-[9px] md:text-xs">Rank</div>
+
+                    <!-- Stat cards -->
+                    <div class="grid grid-cols-3 gap-2 md:gap-4 mb-5 md:mb-7">
+                        <div class="bg-white/5 rounded-xl md:rounded-2xl p-3 md:p-5 text-center border border-white/10 hover:border-amber/30 transition-colors">
+                            <div class="text-amber font-bold text-lg md:text-2xl mb-0.5 md:mb-1">Top 15%</div>
+                            <div class="text-gray-500 text-[9px] md:text-xs font-medium">Peringkat</div>
                         </div>
-                        <div class="bg-white/5 rounded-lg md:rounded-xl p-2 md:p-4 text-center border border-white/10">
-                            <div class="text-white font-bold text-sm md:text-xl mb-0.5 md:mb-1">0.8s</div>
-                            <div class="text-gray-400 text-[9px] md:text-xs">Reaction</div>
+                        <div class="bg-white/5 rounded-xl md:rounded-2xl p-3 md:p-5 text-center border border-white/10 hover:border-blue-400/30 transition-colors">
+                            <div class="text-white font-bold text-lg md:text-2xl mb-0.5 md:mb-1">0.8s</div>
+                            <div class="text-gray-500 text-[9px] md:text-xs font-medium">Respon</div>
                         </div>
-                        <div class="bg-white/5 rounded-lg md:rounded-xl p-2 md:p-4 text-center border border-white/10">
-                            <div class="text-green-400 font-bold text-sm md:text-xl mb-0.5 md:mb-1">92%</div>
-                            <div class="text-gray-400 text-[9px] md:text-xs">Accuracy</div>
+                        <div class="bg-white/5 rounded-xl md:rounded-2xl p-3 md:p-5 text-center border border-white/10 hover:border-green-400/30 transition-colors">
+                            <div class="text-green-400 font-bold text-lg md:text-2xl mb-0.5 md:mb-1">92%</div>
+                            <div class="text-gray-500 text-[9px] md:text-xs font-medium">Akurasi</div>
                         </div>
                     </div>
-                    <div class="space-y-2 md:space-y-3">
+
+                    <!-- Progress bars -->
+                    <div class="space-y-3 md:space-y-4">
                         <div class="flex items-center gap-2 md:gap-3">
-                            <span class="text-gray-400 text-[9px] md:text-xs w-16 md:w-28">Rank</span>
-                            <div class="flex-1 bg-white/10 rounded-full h-2 md:h-2.5 overflow-hidden"><div class="bar-fill bg-amber rounded-full h-full" style="width: 85%"></div></div>
+                            <span class="text-gray-400 text-[9px] md:text-xs w-16 md:w-24 font-medium">Peringkat</span>
+                            <div class="flex-1 bg-white/10 rounded-full h-2.5 md:h-3 overflow-hidden"><div class="bar-fill bg-amber rounded-full h-full" style="width: 85%"></div></div>
                             <span class="text-amber text-[9px] md:text-xs font-bold">15%</span>
                         </div>
                         <div class="flex items-center gap-2 md:gap-3">
-                            <span class="text-gray-400 text-[9px] md:text-xs w-16 md:w-28">Reaction</span>
-                            <div class="flex-1 bg-white/10 rounded-full h-2 md:h-2.5 overflow-hidden"><div class="bar-fill bg-blue-400 rounded-full h-full" style="width: 70%; transition-delay: 0.2s;"></div></div>
-                            <span class="text-white text-[9px] md:text-xs font-bold">0.8s</span>
+                            <span class="text-gray-400 text-[9px] md:text-xs w-16 md:w-24 font-medium">Respon</span>
+                            <div class="flex-1 bg-white/10 rounded-full h-2.5 md:h-3 overflow-hidden"><div class="bar-fill bg-blue-400 rounded-full h-full" style="width: 70%; transition-delay: 0.2s;"></div></div>
+                            <span class="text-blue-400 text-[9px] md:text-xs font-bold">0.8s</span>
                         </div>
                         <div class="flex items-center gap-2 md:gap-3">
-                            <span class="text-gray-400 text-[9px] md:text-xs w-16 md:w-28">Accuracy</span>
-                            <div class="flex-1 bg-white/10 rounded-full h-2 md:h-2.5 overflow-hidden"><div class="bar-fill bg-green-400 rounded-full h-full" style="width: 92%; transition-delay: 0.4s;"></div></div>
+                            <span class="text-gray-400 text-[9px] md:text-xs w-16 md:w-24 font-medium">Akurasi</span>
+                            <div class="flex-1 bg-white/10 rounded-full h-2.5 md:h-3 overflow-hidden"><div class="bar-fill bg-green-400 rounded-full h-full" style="width: 92%; transition-delay: 0.4s;"></div></div>
                             <span class="text-green-400 text-[9px] md:text-xs font-bold">92%</span>
                         </div>
                     </div>
@@ -240,7 +252,7 @@
             </div>
         </div>
         <div class="max-w-7xl mx-auto border-t border-gray-200 pt-6 md:pt-8 text-center text-xs text-gray-400">
-            Copyright &copy; 2024 Traffic Smart SMKN 1
+            Copyright &copy; 2025 Traffic Smart SMKN 1
         </div>
     </footer>
 
