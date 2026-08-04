@@ -1236,11 +1236,12 @@
             "font-bold text-sm text-red-700 bg-red-100 border border-red-200 p-3 rounded-lg inline-block";
         }
 
+        document.getElementById("home-highscore").innerText = finalScore;
+
         const alertHs = document.getElementById("highscore-alert");
         if (finalScore > highScore) {
           highScore = finalScore;
           localStorage.setItem("trafficSmartHighScore", highScore);
-          document.getElementById("home-highscore").innerText = highScore;
           alertHs.classList.remove("hidden");
         } else {
           alertHs.classList.add("hidden");

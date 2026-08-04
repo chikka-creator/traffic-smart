@@ -1,294 +1,294 @@
-<!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Traffic Smart | Beranda</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: { navy: '#0A1A32', amber: '#F9A825', lightGray: '#F5F7FA' },
-                    fontFamily: { sans: ['Inter', 'sans-serif'], heading: ['Poppins', 'sans-serif'] }
+    <!DOCTYPE html>
+    <html lang="id" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Traffic Smart | Beranda</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: { navy: '#0A1A32', amber: '#F9A825', lightGray: '#F5F7FA' },
+                        fontFamily: { sans: ['Inter', 'sans-serif'], heading: ['Poppins', 'sans-serif'] }
+                    }
                 }
             }
-        }
-    </script>
-    <style>
-        html, body { overflow-x: hidden; }
-        .fade-up { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
-        .fade-up.visible { opacity: 1; transform: translateY(0); }
-        .fade-left { opacity: 0; transform: translateX(-50px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
-        .fade-left.visible { opacity: 1; transform: translateX(0); }
-        .fade-right { opacity: 0; transform: translateX(50px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
-        .fade-right.visible { opacity: 1; transform: translateX(0); }
-        .delay-100 { transition-delay: 0.1s; } .delay-200 { transition-delay: 0.2s; } .delay-300 { transition-delay: 0.3s; } .delay-400 { transition-delay: 0.4s; }
-        @keyframes heroFadeIn { from { opacity: 0; transform: translateY(30px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
-        .hero-animate { animation: heroFadeIn 1.2s cubic-bezier(0.16,1,0.3,1) forwards; }
-        @keyframes heroBgZoom { from { transform: scale(1.1); } to { transform: scale(1); } }
-        .hero-bg-animate { animation: heroBgZoom 2s cubic-bezier(0.16,1,0.3,1) forwards; }
-        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-        .nav-animate { animation: fadeInDown 0.6s ease-out forwards; }
-        @keyframes slideUpBottom { from { opacity: 0; transform: translateY(100%); } to { opacity: 1; transform: translateY(0); } }
-        .bottom-nav-animate { animation: slideUpBottom 0.5s cubic-bezier(0.16,1,0.3,1) forwards; }
-        .feature-card { transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease; }
-        .feature-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(10,26,50,0.1); }
-        .about-img-1 { transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s ease; }
-        .about-img-2 { transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s ease; }
-        .about-img-1:hover { transform: translateY(-4px) rotate(-1deg); box-shadow: 0 25px 50px rgba(0,0,0,0.15); }
-        .about-img-2:hover { transform: translateY(-4px) rotate(1deg); box-shadow: 0 25px 50px rgba(0,0,0,0.2); }
-        @keyframes subtlePulse { 0%,100% { box-shadow: 0 0 0 0 rgba(249,168,37,0.4); } 50% { box-shadow: 0 0 0 12px rgba(249,168,37,0); } }
-        .cta-pulse { animation: subtlePulse 2.5s ease-in-out infinite; }
-        .showcase-card { transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); }
-        .showcase-card:hover { transform: perspective(800px) rotateY(-2deg) rotateX(1deg); }
-        @keyframes fillBar { from { width: 0; } }
-        .bar-fill { animation: fillBar 1.2s cubic-bezier(0.16,1,0.3,1) forwards; }
-        .footer-link { position: relative; transition: color 0.3s ease; }
-        .footer-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: #F9A825; transition: width 0.3s ease; }
-        .footer-link:hover::after { width: 100%; }
-        @media (max-width: 640px) { .about-img-1, .
-        @media (max-width: 640px) { .about-img-1, .about-img-2 { max-width: 45% !important; } }
-    </style>
-</head>
-<body class="font-sans text-gray-700 bg-white antialiased">
+        </script>
+        <style>
+            html, body { overflow-x: hidden; }
+            .fade-up { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+            .fade-up.visible { opacity: 1; transform: translateY(0); }
+            .fade-left { opacity: 0; transform: translateX(-50px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+            .fade-left.visible { opacity: 1; transform: translateX(0); }
+            .fade-right { opacity: 0; transform: translateX(50px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+            .fade-right.visible { opacity: 1; transform: translateX(0); }
+            .delay-100 { transition-delay: 0.1s; } .delay-200 { transition-delay: 0.2s; } .delay-300 { transition-delay: 0.3s; } .delay-400 { transition-delay: 0.4s; }
+            @keyframes heroFadeIn { from { opacity: 0; transform: translateY(30px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+            .hero-animate { animation: heroFadeIn 1.2s cubic-bezier(0.16,1,0.3,1) forwards; }
+            @keyframes heroBgZoom { from { transform: scale(1.1); } to { transform: scale(1); } }
+            .hero-bg-animate { animation: heroBgZoom 2s cubic-bezier(0.16,1,0.3,1) forwards; }
+            @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+            .nav-animate { animation: fadeInDown 0.6s ease-out forwards; }
+            @keyframes slideUpBottom { from { opacity: 0; transform: translateY(100%); } to { opacity: 1; transform: translateY(0); } }
+            .bottom-nav-animate { animation: slideUpBottom 0.5s cubic-bezier(0.16,1,0.3,1) forwards; }
+            .feature-card { transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease; }
+            .feature-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(10,26,50,0.1); }
+            .about-img-1 { transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s ease; }
+            .about-img-2 { transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s ease; }
+            .about-img-1:hover { transform: translateY(-4px) rotate(-1deg); box-shadow: 0 25px 50px rgba(0,0,0,0.15); }
+            .about-img-2:hover { transform: translateY(-4px) rotate(1deg); box-shadow: 0 25px 50px rgba(0,0,0,0.2); }
+            @keyframes subtlePulse { 0%,100% { box-shadow: 0 0 0 0 rgba(249,168,37,0.4); } 50% { box-shadow: 0 0 0 12px rgba(249,168,37,0); } }
+            .cta-pulse { animation: subtlePulse 2.5s ease-in-out infinite; }
+            .showcase-card { transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+            .showcase-card:hover { transform: perspective(800px) rotateY(-2deg) rotateX(1deg); }
+            @keyframes fillBar { from { width: 0; } }
+            .bar-fill { animation: fillBar 1.2s cubic-bezier(0.16,1,0.3,1) forwards; }
+            .footer-link { position: relative; transition: color 0.3s ease; }
+            .footer-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: #F9A825; transition: width 0.3s ease; }
+            .footer-link:hover::after { width: 100%; }
+            @media (max-width: 640px) { .about-img-1, .
+            @media (max-width: 640px) { .about-img-1, .about-img-2 { max-width: 45% !important; } }
+        </style>
+    </head>
+    <body class="font-sans text-gray-700 bg-white antialiased">
 
-    <!-- TOP NAVBAR (Desktop only) -->
-    <nav class="nav-animate fixed w-full z-50 top-0 bg-white/95 backdrop-blur-md border-b border-gray-200 py-4 px-4 md:px-12 shadow-sm hidden md:block">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="font-heading font-bold text-3xl text-navy flex items-center gap-2 hover:opacity-80 transition-opacity">
-                <i class="fa-solid fa-traffic-light text-amber"></i> Traffic Smart
-            </a>
-            <div class="flex space-x-8 font-bold text-sm tracking-wider text-gray-500 items-center">
-                <a href="index.html" class="text-navy border-b-[3px] border-amber pb-1 transition-colors">Landing page</a>
-                <a href="materi.html" class="hover:text-navy transition-colors duration-300">Materi</a>
-                <a href="simulasi.html" class="hover:text-navy transition-colors duration-300">Simulasi</a>
-                <a href="games.html" class="hover:text-navy transition-colors duration-300">Link game lain</a>
-            </div>
-            <a href="simulasi.html" class="bg-navy text-white px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-slate-800 transition-all duration-300 shadow-md">
-                <i class="fa-solid fa-play text-xs mr-2 text-amber"></i> Video simulasi
-            </a>
-        </div>
-    </nav>
-
-    <!-- BOTTOM NAVBAR (Mobile only) — Pill Style -->
-    <nav id="bottom-nav" class="fixed bottom-4 left-3 right-3 z-50 md:hidden" style="opacity: 0; transform: translateY(24px) scale(0.95); transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1);">
-        <div class="bg-white/95 backdrop-blur-xl rounded-[28px] shadow-[0_8px_40px_rgba(0,0,0,0.14)] border border-gray-100 px-3 py-3 flex justify-between items-center max-w-md mx-auto">
-            <a href="index.html" class="nav-pill-item flex items-center gap-2.5 py-2.5 px-5 rounded-full transition-all duration-300 bg-amber/15 text-amber group" style="opacity:0; transform:translateY(12px); transition: opacity 0.5s ease, transform 0.5s ease, background 0.3s, color 0.3s;">
-                <i class="fa-solid fa-house text-base transition-transform duration-300 group-hover:scale-110"></i>
-                <span class="text-[11px] font-bold overflow-hidden max-w-0 opacity-0 group-hover:max-w-[80px] group-hover:opacity-100 transition-all duration-300 ease-out whitespace-nowrap">Beranda</span>
-            </a>
-            <a href="materi.html" class="nav-pill-item flex items-center gap-2.5 py-2.5 px-5 rounded-full transition-all duration-300 text-gray-400 hover:text-navy hover:bg-gray-100 group" style="opacity:0; transform:translateY(12px); transition: opacity 0.5s ease, transform 0.5s ease, background 0.3s, color 0.3s;">
-                <i class="fa-solid fa-book-open text-base transition-transform duration-300 group-hover:scale-110"></i>
-                <span class="text-[11px] font-bold overflow-hidden max-w-0 opacity-0 group-hover:max-w-[80px] group-hover:opacity-100 transition-all duration-300 ease-out whitespace-nowrap">Materi</span>
-            </a>
-            <a href="simulasi.html" class="nav-pill-item flex items-center gap-2.5 py-2.5 px-5 rounded-full transition-all duration-300 text-gray-400 hover:text-navy hover:bg-gray-100 group" style="opacity:0; transform:translateY(12px); transition: opacity 0.5s ease, transform 0.5s ease, background 0.3s, color 0.3s;">
-                <i class="fa-solid fa-gamepad text-base transition-transform duration-300 group-hover:scale-110"></i>
-                <span class="text-[11px] font-bold overflow-hidden max-w-0 opacity-0 group-hover:max-w-[80px] group-hover:opacity-100 transition-all duration-300 ease-out whitespace-nowrap">Simulasi</span>
-            </a>
-            <a href="games.html" class="nav-pill-item flex items-center gap-2.5 py-2.5 px-5 rounded-full transition-all duration-300 text-gray-400 hover:text-navy hover:bg-gray-100 group" style="opacity:0; transform:translateY(12px); transition: opacity 0.5s ease, transform 0.5s ease, background 0.3s, color 0.3s;">
-                <i class="fa-solid fa-link text-base transition-transform duration-300 group-hover:scale-110"></i>
-                <span class="text-[11px] font-bold overflow-hidden max-w-0 opacity-0 group-hover:max-w-[60px] group-hover:opacity-100 transition-all duration-300 ease-out whitespace-nowrap">Game</span>
-            </a>
-        </div>
-    </nav>
-
-    <!-- HERO -->
-    <section class="relative h-screen flex items-center justify-center text-center px-4 overflow-hidden">
-        <div class="absolute inset-0 hero-bg-animate bg-[100%_500%] bg-no-repeat" style="background-image: url('homepage.webp'); background-size: cover; filter: blur(3px); transform: scale(1);"></div>
-        <div class="absolute inset-0 bg-navy/65"></div>
-        <div class="relative z-10 max-w-3xl text-white hero-animate" style="animation-delay: 0.3s; opacity: 0;">
-            <h1 class="font-heading font-extrabold text-5xl md:text-7xl mb-6 drop-shadow-lg">Traffic Smart</h1>
-            <p class="text-lg md:text-xl font-light mb-10 text-gray-200 leading-relaxed max-w-2xl mx-auto">
-                Belajar peraturan lalu lintas tidak pernah semenyenangkan ini. Pelajari, simulasikan, dan jadilah pelopor keselamatan berkendara di jalan raya.
-            </p>
-            <a href="materi.html" class="cta-pulse inline-flex items-center gap-2 bg-amber hover:bg-yellow-500 text-navy font-bold py-4 px-10 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-lg">
-                Mulai Belajar Sekarang <i class="fa-solid fa-arrow-right"></i>
-            </a>
-        </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section class="py-20 md:py-28 px-6 md:px-12 max-w-7xl mx-auto pb-32 md:pb-28">
-        <div class="flex flex-col lg:flex-row items-center gap-12 md:gap-16">
-            <div class="lg:w-5/12 fade-left">
-                <h2 class="font-heading font-bold text-2xl md:text-4xl text-navy mb-6">Apa itu Traffic Smart?</h2>
-                <p class="text-gray-600 leading-relaxed text-base md:text-lg">
-                    Traffic Smart adalah platform edukasi interaktif yang dirancang untuk memberikan pemahaman mendalam mengenai peraturan lalu lintas sesuai dengan Undang-Undang No. 22 Tahun 2009. Melalui pendekatan gamifikasi dan simulasi, kami mengubah materi yang kaku menjadi pengalaman belajar yang menarik, mudah dipahami, dan aplikatif untuk semua kalangan.
-                </p>
-            </div>
-            <div class="lg:w-7/12 flex gap-4 md:gap-6 justify-center items-start">
-                <img src="about1.webp" alt="Traffic Smart Smart Traffic System" class="fade-right delay-100 about-img-1 max-w-[45%] md:max-w-[48%] h-auto rounded-xl md:rounded-2xl shadow-xl border border-gray-100 flex-shrink-0 mt-2 md:mt-4">
-                <img src="about2.webp" alt="Traffic Smart Rider Education" class="fade-right delay-300 about-img-2 max-w-[50%] md:max-w-[52%] h-auto rounded-xl md:rounded-2xl shadow-2xl flex-shrink-0">
-            </div>
-        </div>
-    </section>
-
-    <!-- FEATURES -->
-    <section class="py-16 md:py-24 px-6 md:px-12 bg-lightGray pb-32 md:pb-24">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="fade-up font-heading font-bold text-2xl md:text-4xl text-navy text-center mb-10 md:mb-14">Fitur Utama</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-                <div class="fade-up delay-100 feature-card bg-white p-4 md:p-8 rounded-2xl md:rounded-3xl shadow-sm border border-gray-100 text-center">
-                    <div class="w-12 h-12 md:w-16 md:h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-5"><i class="fa-solid fa-book-open text-blue-500 text-lg md:text-2xl"></i></div>
-                    <h4 class="font-bold text-navy text-sm md:text-lg mb-1 md:mb-2">Materi</h4>
-                    <p class="text-gray-500 text-xs md:text-sm leading-relaxed">Panduan lengkap rambu dan marka jalan.</p>
+        <!-- TOP NAVBAR (Desktop only) -->
+        <nav class="nav-animate fixed w-full z-50 top-0 bg-white/95 backdrop-blur-md border-b border-gray-200 py-4 px-4 md:px-12 shadow-sm hidden md:block">
+            <div class="max-w-7xl mx-auto flex justify-between items-center">
+                <a href="index.html" class="font-heading font-bold text-3xl text-navy flex items-center gap-2 hover:opacity-80 transition-opacity">
+                    <i class="fa-solid fa-traffic-light text-amber"></i> Traffic Smart
+                </a>
+                <div class="flex space-x-8 font-bold text-sm tracking-wider text-gray-500 items-center">
+                    <a href="index.html" class="text-navy border-b-[3px] border-amber pb-1 transition-colors">Landing page</a>
+                    <a href="materi.html" class="hover:text-navy transition-colors duration-300">Materi</a>
+                    <a href="simulasi.html" class="hover:text-navy transition-colors duration-300">Simulasi</a>
+                    <a href="games.html" class="hover:text-navy transition-colors duration-300">Link game lain</a>
                 </div>
-                <div class="fade-up delay-200 feature-card bg-white p-4 md:p-8 rounded-2xl md:rounded-3xl shadow-sm border border-gray-100 text-center">
-                    <div class="w-12 h-12 md:w-16 md:h-16 bg-amber/10 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-5"><i class="fa-solid fa-shield-halved text-amber text-lg md:text-2xl"></i></div>
-                    <h4 class="font-bold text-navy text-sm md:text-lg mb-1 md:mb-2">Simulasi</h4>
-                    <p class="text-gray-500 text-xs md:text-sm leading-relaxed">Praktek berkendara aman di virtual.</p>
-                </div>
-                <div class="fade-up delay-300 feature-card bg-white p-4 md:p-8 rounded-2xl md:rounded-3xl shadow-sm border border-gray-100 text-center">
-                    <div class="w-12 h-12 md:w-16 md:h-16 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-5"><i class="fa-solid fa-puzzle-piece text-green-500 text-lg md:text-2xl"></i></div>
-                    <h4 class="font-bold text-navy text-sm md:text-lg mb-1 md:mb-2">Gamifikasi</h4>
-                    <p class="text-gray-500 text-xs md:text-sm leading-relaxed">Belajar sambil mengumpulkan poin.</p>
-                </div>
-                <div class="fade-up delay-400 feature-card bg-white p-4 md:p-8 rounded-2xl md:rounded-3xl shadow-sm border border-gray-100 text-center">
-                    <div class="w-12 h-12 md:w-16 md:h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-5"><i class="fa-solid fa-link text-blue-500 text-lg md:text-2xl"></i></div>
-                    <h4 class="font-bold text-navy text-sm md:text-lg mb-1 md:mb-2">Game Lain</h4>
-                    <p class="text-gray-500 text-xs md:text-sm leading-relaxed">Eksplorasi game edukasi tambahan.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SHOWCASE -->
-    <section class="py-16 md:py-24 px-6 md:px-12 pb-32 md:pb-24">
-        <div class="max-w-7xl mx-auto bg-navy rounded-2xl md:rounded-[2.5rem] p-6 md:p-16 flex flex-col lg:flex-row items-center gap-8 md:gap-16 relative overflow-hidden">
-            <!-- Decorative -->
-            <div class="absolute top-0 right-0 w-64 h-64 bg-amber/5 rounded-full blur-3xl"></div>
-            <div class="absolute bottom-0 left-0 w-48 h-48 bg-blue-500/5 rounded-full blur-3xl"></div>
-
-            <!-- Kiri: Teks -->
-            <div class="lg:w-5/12 relative z-10 fade-left">
-                <span class="inline-flex items-center gap-2 bg-amber/15 text-amber text-[10px] md:text-xs font-bold px-3 md:px-4 py-1.5 md:py-2 rounded-full border border-amber/30 mb-4 md:mb-6 tracking-wider">
-                    <i class="fa-solid fa-gamepad"></i> Simulasi Interaktif
-                </span>
-                <h2 class="font-heading font-black text-2xl md:text-4xl text-white mb-4 md:mb-6 leading-tight">Uji Ketangkasan<br><span class="text-amber">Berkendaramu</span></h2>
-                <p class="text-gray-400 text-sm md:text-base leading-relaxed mb-6 md:mb-8">
-                    Siap menerapkan ilmu yang sudah dipelajari? Masuk ke simulasi berkendara interaktif dan rasakan skenario lalu lintas nyata tanpa risiko.
-                </p>
-                <a href="simulasi.html" class="inline-flex items-center gap-3 bg-amber hover:bg-yellow-500 text-navy font-bold py-3 md:py-4 px-7 md:px-9 rounded-2xl shadow-lg shadow-amber/30 transition-all duration-300 transform hover:scale-105 text-sm md:text-base">
-                    <i class="fa-solid fa-play text-xs"></i> Mulai Simulasi
+                <a href="simulasi.html" class="bg-navy text-white px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-slate-800 transition-all duration-300 shadow-md">
+                    <i class="fa-solid fa-play text-xs mr-2 text-amber"></i> Video simulasi
                 </a>
             </div>
+        </nav>
 
-            <!-- Kanan: Dashboard -->
-            <div class="lg:w-7/12 relative z-10 fade-right w-full">
-                <div class="showcase-card bg-white/5 backdrop-blur-sm rounded-2xl md:rounded-3xl p-5 md:p-8 border border-white/10 shadow-2xl">
-                    <!-- Title bar -->
-                    <div class="flex items-center gap-2 md:gap-3 mb-5 md:mb-7">
-                        <div class="w-3 h-3 rounded-full bg-red-400"></div>
-                        <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
-                        <div class="w-3 h-3 rounded-full bg-green-400"></div>
-                        <span class="text-white/40 text-[10px] md:text-sm ml-1 md:ml-2 font-mono">Traffic Smart Dashboard</span>
+        <!-- BOTTOM NAVBAR (Mobile only) — Pill Style -->
+        <nav id="bottom-nav" class="fixed bottom-4 left-3 right-3 z-50 md:hidden" style="opacity: 0; transform: translateY(24px) scale(0.95); transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1);">
+            <div class="bg-white/95 backdrop-blur-xl rounded-[28px] shadow-[0_8px_40px_rgba(0,0,0,0.14)] border border-gray-100 px-3 py-3 flex justify-between items-center max-w-md mx-auto">
+                <a href="index.html" class="nav-pill-item flex items-center gap-2.5 py-2.5 px-5 rounded-full transition-all duration-300 bg-amber/15 text-amber group" style="opacity:0; transform:translateY(12px); transition: opacity 0.5s ease, transform 0.5s ease, background 0.3s, color 0.3s;">
+                    <i class="fa-solid fa-house text-base transition-transform duration-300 group-hover:scale-110"></i>
+                    <span class="text-[11px] font-bold overflow-hidden max-w-0 opacity-0 group-hover:max-w-[80px] group-hover:opacity-100 transition-all duration-300 ease-out whitespace-nowrap">Beranda</span>
+                </a>
+                <a href="materi.html" class="nav-pill-item flex items-center gap-2.5 py-2.5 px-5 rounded-full transition-all duration-300 text-gray-400 hover:text-navy hover:bg-gray-100 group" style="opacity:0; transform:translateY(12px); transition: opacity 0.5s ease, transform 0.5s ease, background 0.3s, color 0.3s;">
+                    <i class="fa-solid fa-book-open text-base transition-transform duration-300 group-hover:scale-110"></i>
+                    <span class="text-[11px] font-bold overflow-hidden max-w-0 opacity-0 group-hover:max-w-[80px] group-hover:opacity-100 transition-all duration-300 ease-out whitespace-nowrap">Materi</span>
+                </a>
+                <a href="simulasi.html" class="nav-pill-item flex items-center gap-2.5 py-2.5 px-5 rounded-full transition-all duration-300 text-gray-400 hover:text-navy hover:bg-gray-100 group" style="opacity:0; transform:translateY(12px); transition: opacity 0.5s ease, transform 0.5s ease, background 0.3s, color 0.3s;">
+                    <i class="fa-solid fa-gamepad text-base transition-transform duration-300 group-hover:scale-110"></i>
+                    <span class="text-[11px] font-bold overflow-hidden max-w-0 opacity-0 group-hover:max-w-[80px] group-hover:opacity-100 transition-all duration-300 ease-out whitespace-nowrap">Simulasi</span>
+                </a>
+                <a href="games.html" class="nav-pill-item flex items-center gap-2.5 py-2.5 px-5 rounded-full transition-all duration-300 text-gray-400 hover:text-navy hover:bg-gray-100 group" style="opacity:0; transform:translateY(12px); transition: opacity 0.5s ease, transform 0.5s ease, background 0.3s, color 0.3s;">
+                    <i class="fa-solid fa-link text-base transition-transform duration-300 group-hover:scale-110"></i>
+                    <span class="text-[11px] font-bold overflow-hidden max-w-0 opacity-0 group-hover:max-w-[60px] group-hover:opacity-100 transition-all duration-300 ease-out whitespace-nowrap">Game</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- HERO -->
+        <section class="relative h-screen flex items-center justify-center text-center px-4 overflow-hidden">
+            <div class="absolute inset-0 hero-bg-animate bg-[100%_500%] bg-no-repeat" style="background-image: url('homepage.webp'); background-size: cover; filter: blur(3px); transform: scale(1);"></div>
+            <div class="absolute inset-0 bg-navy/65"></div>
+            <div class="relative z-10 max-w-3xl text-white hero-animate" style="animation-delay: 0.3s; opacity: 0;">
+                <h1 class="font-heading font-extrabold text-5xl md:text-7xl mb-6 drop-shadow-lg">Traffic Smart</h1>
+                <p class="text-lg md:text-xl font-light mb-10 text-gray-200 leading-relaxed max-w-2xl mx-auto">
+                    Belajar peraturan lalu lintas tidak pernah semenyenangkan ini. Pelajari, simulasikan, dan jadilah pelopor keselamatan berkendara di jalan raya.
+                </p>
+                <a href="materi.html" class="cta-pulse inline-flex items-center gap-2 bg-amber hover:bg-yellow-500 text-navy font-bold py-4 px-10 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-lg">
+                    Mulai Belajar Sekarang <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section class="py-20 md:py-28 px-6 md:px-12 max-w-7xl mx-auto pb-32 md:pb-28">
+            <div class="flex flex-col lg:flex-row items-center gap-12 md:gap-16">
+                <div class="lg:w-5/12 fade-left">
+                    <h2 class="font-heading font-bold text-2xl md:text-4xl text-navy mb-6">Apa itu Traffic Smart?</h2>
+                    <p class="text-gray-600 leading-relaxed text-base md:text-lg">
+                        Traffic Smart adalah platform edukasi interaktif yang dirancang untuk memberikan pemahaman mendalam mengenai peraturan lalu lintas sesuai dengan Undang-Undang No. 22 Tahun 2009. Melalui pendekatan gamifikasi dan simulasi, kami mengubah materi yang kaku menjadi pengalaman belajar yang menarik, mudah dipahami, dan aplikatif untuk semua kalangan.
+                    </p>
+                </div>
+                <div class="lg:w-7/12 flex gap-4 md:gap-6 justify-center items-start">
+                    <img src="about1.webp" alt="Traffic Smart Smart Traffic System" class="fade-right delay-100 about-img-1 max-w-[45%] md:max-w-[48%] h-auto rounded-xl md:rounded-2xl shadow-xl border border-gray-100 flex-shrink-0 mt-2 md:mt-4">
+                    <img src="about2.webp" alt="Traffic Smart Rider Education" class="fade-right delay-300 about-img-2 max-w-[50%] md:max-w-[52%] h-auto rounded-xl md:rounded-2xl shadow-2xl flex-shrink-0">
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURES -->
+        <section class="py-16 md:py-24 px-6 md:px-12 bg-lightGray pb-32 md:pb-24">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="fade-up font-heading font-bold text-2xl md:text-4xl text-navy text-center mb-10 md:mb-14">Fitur Utama</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+                    <div class="fade-up delay-100 feature-card bg-white p-4 md:p-8 rounded-2xl md:rounded-3xl shadow-sm border border-gray-100 text-center">
+                        <div class="w-12 h-12 md:w-16 md:h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-5"><i class="fa-solid fa-book-open text-blue-500 text-lg md:text-2xl"></i></div>
+                        <h4 class="font-bold text-navy text-sm md:text-lg mb-1 md:mb-2">Materi</h4>
+                        <p class="text-gray-500 text-xs md:text-sm leading-relaxed">Panduan lengkap rambu dan marka jalan.</p>
                     </div>
-
-                    <!-- Stat cards -->
-                    <div class="grid grid-cols-3 gap-2 md:gap-4 mb-5 md:mb-7">
-                        <div class="bg-white/5 rounded-xl md:rounded-2xl p-3 md:p-5 text-center border border-white/10 hover:border-amber/30 transition-colors">
-                            <div class="text-amber font-bold text-lg md:text-2xl mb-0.5 md:mb-1">Top 15%</div>
-                            <div class="text-gray-500 text-[9px] md:text-xs font-medium">Peringkat</div>
-                        </div>
-                        <div class="bg-white/5 rounded-xl md:rounded-2xl p-3 md:p-5 text-center border border-white/10 hover:border-blue-400/30 transition-colors">
-                            <div class="text-white font-bold text-lg md:text-2xl mb-0.5 md:mb-1">0.8s</div>
-                            <div class="text-gray-500 text-[9px] md:text-xs font-medium">Respon</div>
-                        </div>
-                        <div class="bg-white/5 rounded-xl md:rounded-2xl p-3 md:p-5 text-center border border-white/10 hover:border-green-400/30 transition-colors">
-                            <div class="text-green-400 font-bold text-lg md:text-2xl mb-0.5 md:mb-1">92%</div>
-                            <div class="text-gray-500 text-[9px] md:text-xs font-medium">Akurasi</div>
-                        </div>
+                    <div class="fade-up delay-200 feature-card bg-white p-4 md:p-8 rounded-2xl md:rounded-3xl shadow-sm border border-gray-100 text-center">
+                        <div class="w-12 h-12 md:w-16 md:h-16 bg-amber/10 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-5"><i class="fa-solid fa-shield-halved text-amber text-lg md:text-2xl"></i></div>
+                        <h4 class="font-bold text-navy text-sm md:text-lg mb-1 md:mb-2">Simulasi</h4>
+                        <p class="text-gray-500 text-xs md:text-sm leading-relaxed">Praktek berkendara aman di virtual.</p>
                     </div>
-
-                    <!-- Progress bars -->
-                    <div class="space-y-3 md:space-y-4">
-                        <div class="flex items-center gap-2 md:gap-3">
-                            <span class="text-gray-400 text-[9px] md:text-xs w-16 md:w-24 font-medium">Peringkat</span>
-                            <div class="flex-1 bg-white/10 rounded-full h-2.5 md:h-3 overflow-hidden"><div class="bar-fill bg-amber rounded-full h-full" style="width: 85%"></div></div>
-                            <span class="text-amber text-[9px] md:text-xs font-bold">15%</span>
-                        </div>
-                        <div class="flex items-center gap-2 md:gap-3">
-                            <span class="text-gray-400 text-[9px] md:text-xs w-16 md:w-24 font-medium">Respon</span>
-                            <div class="flex-1 bg-white/10 rounded-full h-2.5 md:h-3 overflow-hidden"><div class="bar-fill bg-blue-400 rounded-full h-full" style="width: 70%; transition-delay: 0.2s;"></div></div>
-                            <span class="text-blue-400 text-[9px] md:text-xs font-bold">0.8s</span>
-                        </div>
-                        <div class="flex items-center gap-2 md:gap-3">
-                            <span class="text-gray-400 text-[9px] md:text-xs w-16 md:w-24 font-medium">Akurasi</span>
-                            <div class="flex-1 bg-white/10 rounded-full h-2.5 md:h-3 overflow-hidden"><div class="bar-fill bg-green-400 rounded-full h-full" style="width: 92%; transition-delay: 0.4s;"></div></div>
-                            <span class="text-green-400 text-[9px] md:text-xs font-bold">92%</span>
-                        </div>
+                    <div class="fade-up delay-300 feature-card bg-white p-4 md:p-8 rounded-2xl md:rounded-3xl shadow-sm border border-gray-100 text-center">
+                        <div class="w-12 h-12 md:w-16 md:h-16 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-5"><i class="fa-solid fa-puzzle-piece text-green-500 text-lg md:text-2xl"></i></div>
+                        <h4 class="font-bold text-navy text-sm md:text-lg mb-1 md:mb-2">Gamifikasi</h4>
+                        <p class="text-gray-500 text-xs md:text-sm leading-relaxed">Belajar sambil mengumpulkan poin.</p>
+                    </div>
+                    <div class="fade-up delay-400 feature-card bg-white p-4 md:p-8 rounded-2xl md:rounded-3xl shadow-sm border border-gray-100 text-center">
+                        <div class="w-12 h-12 md:w-16 md:h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-5"><i class="fa-solid fa-link text-blue-500 text-lg md:text-2xl"></i></div>
+                        <h4 class="font-bold text-navy text-sm md:text-lg mb-1 md:mb-2">Game Lain</h4>
+                        <p class="text-gray-500 text-xs md:text-sm leading-relaxed">Eksplorasi game edukasi tambahan.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-lightGray border-t border-gray-200 pt-12 md:pt-16 pb-24 md:pb-8 px-6 md:px-12">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-8 md:mb-12">
-            <div class="fade-up">
-                <div class="flex items-center gap-2 mb-3">
-                    <i class="fa-solid fa-traffic-light text-amber text-lg"></i>
-                    <span class="font-heading font-bold text-xl md:text-2xl text-navy">Traffic Smart</span>
+        <!-- SHOWCASE -->
+        <section class="py-16 md:py-24 px-6 md:px-12 pb-32 md:pb-24">
+            <div class="max-w-7xl mx-auto bg-navy rounded-2xl md:rounded-[2.5rem] p-6 md:p-16 flex flex-col lg:flex-row items-center gap-8 md:gap-16 relative overflow-hidden">
+                <!-- Decorative -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-amber/5 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 w-48 h-48 bg-blue-500/5 rounded-full blur-3xl"></div>
+
+                <!-- Kiri: Teks -->
+                <div class="lg:w-5/12 relative z-10 fade-left">
+                    <span class="inline-flex items-center gap-2 bg-amber/15 text-amber text-[10px] md:text-xs font-bold px-3 md:px-4 py-1.5 md:py-2 rounded-full border border-amber/30 mb-4 md:mb-6 tracking-wider">
+                        <i class="fa-solid fa-gamepad"></i> Simulasi Interaktif
+                    </span>
+                    <h2 class="font-heading font-black text-2xl md:text-4xl text-white mb-4 md:mb-6 leading-tight">Uji Ketangkasan<br><span class="text-amber">Berkendaramu</span></h2>
+                    <p class="text-gray-400 text-sm md:text-base leading-relaxed mb-6 md:mb-8">
+                        Siap menerapkan ilmu yang sudah dipelajari? Masuk ke simulasi berkendara interaktif dan rasakan skenario lalu lintas nyata tanpa risiko.
+                    </p>
+                    <a href="simulasi.html" class="inline-flex items-center gap-3 bg-amber hover:bg-yellow-500 text-navy font-bold py-3 md:py-4 px-7 md:px-9 rounded-2xl shadow-lg shadow-amber/30 transition-all duration-300 transform hover:scale-105 text-sm md:text-base">
+                        <i class="fa-solid fa-play text-xs"></i> Mulai Simulasi
+                    </a>
                 </div>
-                <p class="text-gray-500 text-sm leading-relaxed">Website edukasi lalu lintas untuk siswa SMA guna meningkatkan kesadaran dan pemahaman tentang keselamatan berlalu lintas.</p>
-            </div>
-            <div class="fade-up delay-100">
-                <h4 class="font-heading font-bold text-sm md:text-base text-navy mb-3 md:mb-4">Kontak</h4>
-                <div class="space-y-2 md:space-y-3 text-xs md:text-sm text-gray-500">
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-envelope text-amber w-4"></i> trafficSmartEdu@gmail.com</div>
-                    <div class="flex items-center gap-2"><i class="fa-brands fa-whatsapp text-green-500 w-4"></i> 0812-4711-9063</div>
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-red-400 w-4"></i> Mahakam Ulu, Kalimantan Timur</div>
+
+                <!-- Kanan: Dashboard -->
+                <div class="lg:w-7/12 relative z-10 fade-right w-full">
+                    <div class="showcase-card bg-white/5 backdrop-blur-sm rounded-2xl md:rounded-3xl p-5 md:p-8 border border-white/10 shadow-2xl">
+                        <!-- Title bar -->
+                        <div class="flex items-center gap-2 md:gap-3 mb-5 md:mb-7">
+                            <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                            <span class="text-white/40 text-[10px] md:text-sm ml-1 md:ml-2 font-mono">Traffic Smart Dashboard</span>
+                        </div>
+
+                        <!-- Stat cards -->
+                        <div class="grid grid-cols-3 gap-2 md:gap-4 mb-5 md:mb-7">
+                            <div class="bg-white/5 rounded-xl md:rounded-2xl p-3 md:p-5 text-center border border-white/10 hover:border-amber/30 transition-colors">
+                                <div class="text-amber font-bold text-lg md:text-2xl mb-0.5 md:mb-1">Top 15%</div>
+                                <div class="text-gray-500 text-[9px] md:text-xs font-medium">Peringkat</div>
+                            </div>
+                            <div class="bg-white/5 rounded-xl md:rounded-2xl p-3 md:p-5 text-center border border-white/10 hover:border-blue-400/30 transition-colors">
+                                <div class="text-white font-bold text-lg md:text-2xl mb-0.5 md:mb-1">0.8s</div>
+                                <div class="text-gray-500 text-[9px] md:text-xs font-medium">Respon</div>
+                            </div>
+                            <div class="bg-white/5 rounded-xl md:rounded-2xl p-3 md:p-5 text-center border border-white/10 hover:border-green-400/30 transition-colors">
+                                <div class="text-green-400 font-bold text-lg md:text-2xl mb-0.5 md:mb-1">92%</div>
+                                <div class="text-gray-500 text-[9px] md:text-xs font-medium">Akurasi</div>
+                            </div>
+                        </div>
+
+                        <!-- Progress bars -->
+                        <div class="space-y-3 md:space-y-4">
+                            <div class="flex items-center gap-2 md:gap-3">
+                                <span class="text-gray-400 text-[9px] md:text-xs w-16 md:w-24 font-medium">Peringkat</span>
+                                <div class="flex-1 bg-white/10 rounded-full h-2.5 md:h-3 overflow-hidden"><div class="bar-fill bg-amber rounded-full h-full" style="width: 85%"></div></div>
+                                <span class="text-amber text-[9px] md:text-xs font-bold">15%</span>
+                            </div>
+                            <div class="flex items-center gap-2 md:gap-3">
+                                <span class="text-gray-400 text-[9px] md:text-xs w-16 md:w-24 font-medium">Respon</span>
+                                <div class="flex-1 bg-white/10 rounded-full h-2.5 md:h-3 overflow-hidden"><div class="bar-fill bg-blue-400 rounded-full h-full" style="width: 70%; transition-delay: 0.2s;"></div></div>
+                                <span class="text-blue-400 text-[9px] md:text-xs font-bold">0.8s</span>
+                            </div>
+                            <div class="flex items-center gap-2 md:gap-3">
+                                <span class="text-gray-400 text-[9px] md:text-xs w-16 md:w-24 font-medium">Akurasi</span>
+                                <div class="flex-1 bg-white/10 rounded-full h-2.5 md:h-3 overflow-hidden"><div class="bar-fill bg-green-400 rounded-full h-full" style="width: 92%; transition-delay: 0.4s;"></div></div>
+                                <span class="text-green-400 text-[9px] md:text-xs font-bold">92%</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="fade-up delay-200">
-                <h4 class="font-heading font-bold text-sm md:text-base text-navy mb-3 md:mb-4">Sekolah</h4>
-                <div class="space-y-2 md:space-y-3 text-xs md:text-sm text-gray-500">
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-school text-amber w-4"></i> SMA Negeri 1 Long Bagun</div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="bg-lightGray border-t border-gray-200 pt-12 md:pt-16 pb-24 md:pb-8 px-6 md:px-12">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-8 md:mb-12">
+                <div class="fade-up">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="fa-solid fa-traffic-light text-amber text-lg"></i>
+                        <span class="font-heading font-bold text-xl md:text-2xl text-navy">Traffic Smart</span>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed">Website edukasi lalu lintas untuk pelajar SMA guna meningkatkan kesadaran dan pemahaman tentang keselamatan berlalu lintas.</p>
+                </div>
+                <div class="fade-up delay-100">
+                    <h4 class="font-heading font-bold text-sm md:text-base text-navy mb-3 md:mb-4">Kontak</h4>
+                    <div class="space-y-2 md:space-y-3 text-xs md:text-sm text-gray-500">
+                        <div class="flex items-center gap-2"><i class="fa-solid fa-envelope text-amber w-4"></i> trafficSmartEdu@gmail.com</div>
+                        <div class="flex items-center gap-2"><i class="fa-brands fa-whatsapp text-green-500 w-4"></i> 0812-4711-9063</div>
+                        <div class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-red-400 w-4"></i> Mahakam Ulu, Kalimantan Timur</div>
+                    </div>
+                </div>
+                <div class="fade-up delay-200">
+                    <h4 class="font-heading font-bold text-sm md:text-base text-navy mb-3 md:mb-4">Sekolah</h4>
+                    <div class="space-y-2 md:space-y-3 text-xs md:text-sm text-gray-500">
+                        <div class="flex items-center gap-2"><i class="fa-solid fa-school text-amber w-4"></i> SMA Negeri 1 Long Bagun</div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="max-w-7xl mx-auto border-t border-gray-200 pt-6 md:pt-8 text-center text-[11px] text-gray-400">
-            &copy; 2026 Traffic Smart &middot; SMA Negeri 1 Long Bagun &middot; Kalimantan Timur
-        </div>
-    </footer>
+            <div class="max-w-7xl mx-auto border-t border-gray-200 pt-6 md:pt-8 text-center text-[11px] text-gray-400">
+                &copy; 2026 Traffic Smart &middot; SMA Negeri 1 Long Bagun &middot; Kalimantan Timur
+            </div>
+        </footer>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            // Smooth fade-in bottom nav + staggered items
-            setTimeout(() => {
-                const nav = document.getElementById('bottom-nav');
-                if (nav) { nav.style.opacity = '1'; nav.style.transform = 'translateY(0) scale(1)'; }
-                const items = document.querySelectorAll('.nav-pill-item');
-                items.forEach((item, i) => {
-                    setTimeout(() => { item.style.opacity = '1'; item.style.transform = 'translateY(0)'; }, 200 + i * 80);
-                });
-            }, 500);
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                // Smooth fade-in bottom nav + staggered items
+                setTimeout(() => {
+                    const nav = document.getElementById('bottom-nav');
+                    if (nav) { nav.style.opacity = '1'; nav.style.transform = 'translateY(0) scale(1)'; }
+                    const items = document.querySelectorAll('.nav-pill-item');
+                    items.forEach((item, i) => {
+                        setTimeout(() => { item.style.opacity = '1'; item.style.transform = 'translateY(0)'; }, 200 + i * 80);
+                    });
+                }, 500);
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-            }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
-            document.querySelectorAll('.fade-up, .fade-left, .fade-right').forEach(el => observer.observe(el));
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+                }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+                document.querySelectorAll('.fade-up, .fade-left, .fade-right').forEach(el => observer.observe(el));
 
-            const barObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.querySelectorAll('.bar-fill').forEach(bar => {
-                            const width = bar.style.width;
-                            bar.style.width = '0';
-                            requestAnimationFrame(() => { requestAnimationFrame(() => { bar.style.width = width; }); });
-                        });
-                    }
-                });
-            }, { threshold: 0.3 });
-            const showcaseSection = document.querySelector('.showcase-card');
-            if (showcaseSection) barObserver.observe(showcaseSection);
-        });
-    </script>
-</body>
-</html>
+                const barObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.querySelectorAll('.bar-fill').forEach(bar => {
+                                const width = bar.style.width;
+                                bar.style.width = '0';
+                                requestAnimationFrame(() => { requestAnimationFrame(() => { bar.style.width = width; }); });
+                            });
+                        }
+                    });
+                }, { threshold: 0.3 });
+                const showcaseSection = document.querySelector('.showcase-card');
+                if (showcaseSection) barObserver.observe(showcaseSection);
+            });
+        </script>
+    </body>
+    </html>
