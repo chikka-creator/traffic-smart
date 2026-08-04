@@ -51,7 +51,8 @@
         .footer-link { position: relative; transition: color 0.3s ease; }
         .footer-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: #F9A825; transition: width 0.3s ease; }
         .footer-link:hover::after { width: 100%; }
-        @media (max-width: 640px) { .about-img-1, .about-img-2 { width: 150px !important; height: 180px !important; } }
+        @media (max-width: 640px) { .about-img-1, .
+        @media (max-width: 640px) { .about-img-1, .about-img-2 { max-width: 45% !important; } }
     </style>
 </head>
 <body class="font-sans text-gray-700 bg-white antialiased">
@@ -120,9 +121,9 @@
                     Traffic Smart adalah platform edukasi interaktif yang dirancang untuk memberikan pemahaman mendalam mengenai peraturan lalu lintas sesuai dengan Undang-Undang No. 22 Tahun 2009. Melalui pendekatan gamifikasi dan simulasi, kami mengubah materi yang kaku menjadi pengalaman belajar yang menarik, mudah dipahami, dan aplikatif untuk semua kalangan.
                 </p>
             </div>
-            <div class="lg:w-7/12 flex gap-4 md:gap-6 justify-center items-center">
-                <img src="about1.webp" alt="Traffic Smart Smart Traffic System" class="fade-right delay-100 about-img-1 w-[150px] md:w-[260px] h-[180px] md:h-[280px] object-cover rounded-xl md:rounded-2xl shadow-xl border border-gray-100 flex-shrink-0">
-                <img src="about2.webp" alt="Traffic Smart Rider Education" class="fade-right delay-300 about-img-2 w-[150px] md:w-[260px] h-[180px] md:h-[280px] object-cover rounded-xl md:rounded-2xl shadow-2xl flex-shrink-0">
+            <div class="lg:w-7/12 flex gap-4 md:gap-6 justify-center items-start">
+                <img src="about1.webp" alt="Traffic Smart Smart Traffic System" class="fade-right delay-100 about-img-1 max-w-[45%] md:max-w-[48%] h-auto rounded-xl md:rounded-2xl shadow-xl border border-gray-100 flex-shrink-0 mt-2 md:mt-4">
+                <img src="about2.webp" alt="Traffic Smart Rider Education" class="fade-right delay-300 about-img-2 max-w-[50%] md:max-w-[52%] h-auto rounded-xl md:rounded-2xl shadow-2xl flex-shrink-0">
             </div>
         </div>
     </section>
