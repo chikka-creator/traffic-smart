@@ -153,6 +153,10 @@
         @keyframes pulse-dot { 0%, 100% { box-shadow: 0 0 0 0 rgba(249,168,37,0.4); } 50% { box-shadow: 0 0 0 8px rgba(249,168,37,0); } }
         .pulse-dot { animation: pulse-dot 2s infinite; }
 
+        /* Hand pointer pulse */
+        @keyframes hand-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
+        .hand-pulse { animation: hand-pulse 2s ease-in-out infinite; }
+
         /* ===== MOBILE RESPONSIVE ===== */
         @media (max-width: 768px) {
             .dot-indicator { display: none !important; }
@@ -206,6 +210,19 @@
         .d8 { transition-delay: 0.6s; }
         .d9 { transition-delay: 0.68s; }
         .d10 { transition-delay: 0.76s; }
+
+        /* ===== ETIKA MODAL ===== */
+        .etika-modal-backdrop {
+            background: rgba(10,26,50,0.5);
+            backdrop-filter: blur(6px);
+        }
+        .etika-modal-content {
+            animation: modalSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes modalSlideUp {
+            from { opacity: 0; transform: translateY(30px) scale(0.96); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
     </style>
 </head>
 
@@ -260,7 +277,6 @@
         <a href="#sec-5" class="dot-indicator w-3 h-3 rounded-full bg-gray-300 block" data-target="sec-5" title="Etika Berkendara"></a>
         <a href="#sec-6" class="dot-indicator w-3 h-3 rounded-full bg-gray-300 block" data-target="sec-6" title="Safety Riding"></a>
         <a href="#sec-7" class="dot-indicator w-3 h-3 rounded-full bg-gray-300 block" data-target="sec-7" title="Simulasi Berkendara"></a>
-        <a href="#sec-8" class="dot-indicator w-3 h-3 rounded-full bg-gray-300 block" data-target="sec-8" title="Sanksi & Pelanggaran"></a>
     </div>
 
     <!-- SNAP CONTAINER -->
@@ -307,6 +323,13 @@
                                     <p class="text-xs md:text-sm text-gray-500 mt-0.5">Terdiri dari Manusia, Kendaraan, serta Jalan/Infrastruktur.</p>
                                 </div>
                             </div>
+                            <div class="flex items-start gap-3 md:gap-4 p-3 md:p-4 bg-white/60 rounded-xl hover:bg-white transition-colors group anim anim-left d6">
+                                <div class="w-9 h-9 md:w-11 md:h-11 rounded-lg md:rounded-xl bg-amber/10 text-amber flex items-center justify-center flex-shrink-0 group-hover:bg-amber group-hover:text-navy transition-colors"><i class="fa-solid fa-bullseye text-sm md:text-lg"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-navy text-sm md:text-base">Tujuan Lalu Lintas</h4>
+                                    <p class="text-xs md:text-sm text-gray-500 mt-0.5">Mewujudkan lalu lintas yang aman, selamat, tertib, lancar, dan terpadu, membangun etika serta budaya berlalu lintas, dan menjamin penegakan serta kepastian hukum bagi masyarakat.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="lg:w-5/12 w-full">
@@ -349,7 +372,7 @@
                             </div>
                             <p class="text-[11px] md:text-sm text-gray-600 leading-relaxed">Manajemen dan rekayasa lalu lintas, analisis dampak lalu lintas.</p>
                         </div>
-                        <a href="https://peraturan.bpk.go.id" target="_blank" class="text-amber text-[10px] md:text-xs font-bold hover:underline flex items-center gap-1 mt-2 md:mt-4 group-hover:gap-2.5 transition-all">Buka regulasi <i class="fa-solid fa-arrow-up-right-from-square text-[8px] md:text-[10px]"></i></a>
+                        <a href="https://peraturan.bpk.go.id/Details/5162/pp-no-32-tahun-2011" target="_blank" class="text-amber text-[10px] md:text-xs font-bold hover:underline flex items-center gap-1 mt-2 md:mt-4 group-hover:gap-2.5 transition-all">Buka regulasi <i class="fa-solid fa-arrow-up-right-from-square text-[8px] md:text-[10px]"></i></a>
                     </div>
                     <div class="group bg-lightGray p-3 md:p-5 rounded-xl md:rounded-2xl border border-gray-100 flex flex-col justify-between hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                         <div>
@@ -359,7 +382,7 @@
                             </div>
                             <p class="text-[11px] md:text-sm text-gray-600 leading-relaxed">Forum Lalu Lintas dan Angkutan Jalan.</p>
                         </div>
-                        <a href="https://peraturan.bpk.go.id" target="_blank" class="text-amber text-[10px] md:text-xs font-bold hover:underline flex items-center gap-1 mt-2 md:mt-4 group-hover:gap-2.5 transition-all">Buka regulasi <i class="fa-solid fa-arrow-up-right-from-square text-[8px] md:text-[10px]"></i></a>
+                        <a href="https://peraturan.bpk.go.id/Details/5168/pp-no-37-tahun-2011" target="_blank" class="text-amber text-[10px] md:text-xs font-bold hover:underline flex items-center gap-1 mt-2 md:mt-4 group-hover:gap-2.5 transition-all">Buka regulasi <i class="fa-solid fa-arrow-up-right-from-square text-[8px] md:text-[10px]"></i></a>
                     </div>
                     <div class="group bg-lightGray p-3 md:p-5 rounded-xl md:rounded-2xl border border-gray-100 flex flex-col justify-between hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                         <div>
@@ -369,7 +392,7 @@
                             </div>
                             <p class="text-[11px] md:text-sm text-gray-600 leading-relaxed">Kendaraan dan persyaratan teknis kelaikan jalan.</p>
                         </div>
-                        <a href="https://peraturan.bpk.go.id" target="_blank" class="text-amber text-[10px] md:text-xs font-bold hover:underline flex items-center gap-1 mt-2 md:mt-4 group-hover:gap-2.5 transition-all">Buka regulasi <i class="fa-solid fa-arrow-up-right-from-square text-[8px] md:text-[10px]"></i></a>
+                        <a href="https://peraturan.bpk.go.id/Details/5268/pp-no-55-tahun-2012" target="_blank" class="text-amber text-[10px] md:text-xs font-bold hover:underline flex items-center gap-1 mt-2 md:mt-4 group-hover:gap-2.5 transition-all">Buka regulasi <i class="fa-solid fa-arrow-up-right-from-square text-[8px] md:text-[10px]"></i></a>
                     </div>
                     <div class="group bg-lightGray p-3 md:p-5 rounded-xl md:rounded-2xl border border-gray-100 flex flex-col justify-between hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                         <div>
@@ -379,7 +402,7 @@
                             </div>
                             <p class="text-[11px] md:text-sm text-gray-600 leading-relaxed">Jaringan lalu lintas dan angkutan jalan, termasuk batasan kecepatan.</p>
                         </div>
-                        <a href="https://peraturan.bpk.go.id" target="_blank" class="text-amber text-[10px] md:text-xs font-bold hover:underline flex items-center gap-1 mt-2 md:mt-4 group-hover:gap-2.5 transition-all">Buka regulasi <i class="fa-solid fa-arrow-up-right-from-square text-[8px] md:text-[10px]"></i></a>
+                        <a href="https://peraturan.bpk.go.id/Details/5414/pp-no-79-tahun-2013" target="_blank" class="text-amber text-[10px] md:text-xs font-bold hover:underline flex items-center gap-1 mt-2 md:mt-4 group-hover:gap-2.5 transition-all">Buka regulasi <i class="fa-solid fa-arrow-up-right-from-square text-[8px] md:text-[10px]"></i></a>
                     </div>
                     <div class="group bg-lightGray p-3 md:p-5 rounded-xl md:rounded-2xl border border-gray-100 flex flex-col justify-between hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                         <div>
@@ -389,7 +412,7 @@
                             </div>
                             <p class="text-[11px] md:text-sm text-gray-600 leading-relaxed">Angkutan jalan secara komprehensif.</p>
                         </div>
-                        <a href="https://peraturan.bpk.go.id" target="_blank" class="text-amber text-[10px] md:text-xs font-bold hover:underline flex items-center gap-1 mt-2 md:mt-4 group-hover:gap-2.5 transition-all">Buka regulasi <i class="fa-solid fa-arrow-up-right-from-square text-[8px] md:text-[10px]"></i></a>
+                        <a href="https://peraturan.bpk.go.id/Details/5516/pp-no-74-tahun-2014" target="_blank" class="text-amber text-[10px] md:text-xs font-bold hover:underline flex items-center gap-1 mt-2 md:mt-4 group-hover:gap-2.5 transition-all">Buka regulasi <i class="fa-solid fa-arrow-up-right-from-square text-[8px] md:text-[10px]"></i></a>
                     </div>
                 </div>
             </div>
@@ -409,8 +432,14 @@
                             <span class="text-amber font-bold text-[10px] md:text-sm tracking-widest uppercase">Materi Ketiga</span>
                         </div>
                         <h2 class="font-heading font-black text-2xl md:text-4xl text-navy mb-1 md:mb-2 leading-tight anim anim-up d3">Peraturan Dasar &<br><span class="text-amber">Batas Kecepatan</span></h2>
-                        <p class="text-gray-400 text-xs md:text-sm mb-4 md:mb-6">Ketentuan wajib berdasarkan UU No. 22 Tahun 2009</p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3 mb-4 md:mb-6 anim anim-up d4">
+                        <p class="text-gray-400 text-xs md:text-sm mb-2 md:mb-3">Ketentuan wajib berdasarkan UU No. 22 Tahun 2009</p>
+                        <div class="bg-amber/5 border-l-4 border-amber p-3 md:p-4 rounded-r-xl mb-2 md:mb-3 anim anim-fade d3">
+                            <p class="text-xs md:text-sm text-gray-600 leading-relaxed"><i class="fa-solid fa-circle-info text-amber mr-1.5"></i> <span class="font-medium text-navy">Berkendara</span> adalah kegiatan menggunakan atau mengemudikan suatu kendaraan untuk berpindah dari suatu tempat ke tempat yang lain dengan mematuhi aturan lalu lintas dan mengutamakan keselamatan.</p>
+                        </div>
+                        <div class="bg-navy/5 border-l-4 border-navy p-3 md:p-4 rounded-r-xl mb-4 md:mb-6 anim anim-fade d3.5">
+                            <p class="text-xs md:text-sm text-gray-600 leading-relaxed"><i class="fa-solid fa-shield-halved text-navy mr-1.5"></i> <span class="font-medium text-navy">Keselamatan Lalu Lintas</span> adalah suatu keadaan terhindarnya setiap orang dari risiko kecelakaan selama berlalu lintas yang disebabkan oleh manusia, kendaraan, jalan, dan/atau lingkungan.</p>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-3 mb-4 md:mb-6 anim anim-up d4">
                             <div class="p-3 md:p-4 bg-amber/5 rounded-xl border border-amber/10 hover:border-amber/30 transition-colors">
                                 <div class="flex items-center gap-1.5 md:gap-2 mb-1 md:mb-1.5">
                                     <i class="fa-solid fa-id-card text-amber text-[10px] md:text-xs"></i>
@@ -424,6 +453,13 @@
                                     <span class="text-[9px] md:text-[11px] font-bold text-amber uppercase tracking-wider">Pasal 106 Ayat 2 & 4</span>
                                 </div>
                                 <p class="text-xs md:text-sm text-navy font-medium leading-relaxed">Wajib mengutamakan keselamatan pejalan kaki/pesepeda serta mematuhi rambu dan marka.</p>
+                            </div>
+                            <div class="p-3 md:p-4 bg-amber/5 rounded-xl border border-amber/10 hover:border-amber/30 transition-colors">
+                                <div class="flex items-center gap-1.5 md:gap-2 mb-1 md:mb-1.5">
+                                    <i class="fa-solid fa-motorcycle text-amber text-[10px] md:text-xs"></i>
+                                    <span class="text-[9px] md:text-[11px] font-bold text-amber uppercase tracking-wider">Pasal 57 Ayat 1</span>
+                                </div>
+                                <p class="text-xs md:text-sm text-navy font-medium leading-relaxed">Setiap Kendaraan Bermotor yang dioperasikan di Jalan wajib dilengkapi dengan perlengkapan Kendaraan Bermotor.</p>
                             </div>
                         </div>
                         <h4 class="font-bold text-navy text-sm md:text-base mb-3 md:mb-4 flex items-center gap-2">
@@ -465,13 +501,13 @@
 
                 <!-- Header -->
                 <div class="mb-3 md:mb-5 flex-shrink-0">
-                    <div class="flex items-center gap-2 md:gap-3 mb-2 md:mb-4">
+                    <div class="flex items-center gap-2 md:gap-3 mb-2 md:mb-4 anim anim-left d1">
                         <div class="w-9 h-9 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-navy flex items-center justify-center text-amber font-heading font-black text-sm md:text-lg shadow-lg shadow-navy/30">04</div>
                         <div class="h-[2px] w-8 md:w-12 bg-navy/20"></div>
                         <span class="text-navy font-bold text-[10px] md:text-sm tracking-widest uppercase">Materi Keempat</span>
                     </div>
-                    <h2 class="font-heading font-black text-2xl md:text-4xl text-navy mb-0.5 md:mb-1 leading-tight">Rambu dan <span class="text-amber">Marka Jalan</span></h2>
-                    <p class="text-gray-400 text-[11px] md:text-sm">Permenhub No. 13 & 34 Tahun 2014 — Klik kartu untuk melihat detail</p>
+                    <h2 class="font-heading font-black text-2xl md:text-4xl text-navy mb-0.5 md:mb-1 leading-tight anim anim-left d2">Rambu dan <span class="text-amber">Marka Jalan</span></h2>
+                    <p class="text-gray-400 text-[11px] md:text-sm anim anim-fade d3">Permenhub No. 13 & 34 Tahun 2014 — Klik kartu untuk melihat detail</p>
                 </div>
 
                 <!-- Content area: left cards + right detail -->
@@ -481,7 +517,7 @@
                     <div class="lg:w-[420px] flex-shrink-0">
                         <div class="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-2 gap-2 md:gap-3">
                             <!-- Peringatan -->
-                            <div onclick="toggleRambu('peringatan')" id="card-peringatan" class="rambu-card group bg-lightGray p-2.5 md:p-4 rounded-xl md:rounded-2xl border-t-[3px] md:border-t-[4px] border-yellow-400 text-center cursor-pointer hover:bg-yellow-50 transition-all">
+                            <div onclick="toggleRambu('peringatan')" id="card-peringatan" class="rambu-card group bg-lightGray p-2.5 md:p-4 rounded-xl md:rounded-2xl border-t-[3px] md:border-t-[4px] border-yellow-400 text-center cursor-pointer hover:bg-yellow-50 transition-all anim anim-scale d3">
                                 <div class="w-10 h-10 md:w-16 md:h-16 mx-auto mb-1.5 md:mb-2 group-hover:scale-110 transition-transform">
                                     <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><polygon points="50,5 95,50 50,95 5,50" fill="#FFD700" stroke="#1a1a1a" stroke-width="5"/><text x="50" y="65" text-anchor="middle" font-size="50" font-weight="bold" fill="#1a1a1a">!</text></svg>
                                 </div>
@@ -489,7 +525,7 @@
                                 <span class="text-[9px] md:text-[10px] text-amber font-bold uppercase tracking-widest">Detail ▾</span>
                             </div>
                             <!-- Larangan -->
-                            <div onclick="toggleRambu('larangan')" id="card-larangan" class="rambu-card group bg-lightGray p-2.5 md:p-4 rounded-xl md:rounded-2xl border-t-[3px] md:border-t-[4px] border-red-500 text-center cursor-pointer hover:bg-red-50 transition-all">
+                            <div onclick="toggleRambu('larangan')" id="card-larangan" class="rambu-card group bg-lightGray p-2.5 md:p-4 rounded-xl md:rounded-2xl border-t-[3px] md:border-t-[4px] border-red-500 text-center cursor-pointer hover:bg-red-50 transition-all anim anim-scale d4">
                                 <div class="w-10 h-10 md:w-16 md:h-16 mx-auto mb-1.5 md:mb-2 group-hover:scale-110 transition-transform">
                                     <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="44" fill="white" stroke="#DC2626" stroke-width="8"/><text x="50" y="64" text-anchor="middle" font-size="48" font-weight="bold" fill="#1a1a1a">P</text><line x1="14" y1="86" x2="86" y2="14" stroke="#DC2626" stroke-width="8" stroke-linecap="round"/></svg>
                                 </div>
@@ -497,7 +533,7 @@
                                 <span class="text-[9px] md:text-[10px] text-red-500 font-bold uppercase tracking-widest">Detail ▾</span>
                             </div>
                             <!-- Perintah -->
-                            <div onclick="toggleRambu('perintah')" id="card-perintah" class="rambu-card group bg-lightGray p-2.5 md:p-4 rounded-xl md:rounded-2xl border-t-[3px] md:border-t-[4px] border-blue-500 text-center cursor-pointer hover:bg-blue-50 transition-all">
+                            <div onclick="toggleRambu('perintah')" id="card-perintah" class="rambu-card group bg-lightGray p-2.5 md:p-4 rounded-xl md:rounded-2xl border-t-[3px] md:border-t-[4px] border-blue-500 text-center cursor-pointer hover:bg-blue-50 transition-all anim anim-scale d5">
                                 <div class="w-10 h-10 md:w-16 md:h-16 mx-auto mb-1.5 md:mb-2 group-hover:scale-110 transition-transform">
                                     <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="44" fill="#1D4ED8" stroke="white" stroke-width="6"/><polygon points="55,18 55,55 72,55 50,88 28,55 45,55 45,18" fill="white"/></svg>
                                 </div>
@@ -505,7 +541,7 @@
                                 <span class="text-[9px] md:text-[10px] text-blue-500 font-bold uppercase tracking-widest">Detail ▾</span>
                             </div>
                             <!-- Petunjuk -->
-                            <div onclick="toggleRambu('petunjuk')" id="card-petunjuk" class="rambu-card group bg-lightGray p-2.5 md:p-4 rounded-xl md:rounded-2xl border-t-[3px] md:border-t-[4px] border-green-500 text-center cursor-pointer hover:bg-green-50 transition-all">
+                            <div onclick="toggleRambu('petunjuk')" id="card-petunjuk" class="rambu-card group bg-lightGray p-2.5 md:p-4 rounded-xl md:rounded-2xl border-t-[3px] md:border-t-[4px] border-green-500 text-center cursor-pointer hover:bg-green-50 transition-all anim anim-scale d6">
                                 <div class="w-10 h-10 md:w-16 md:h-16 mx-auto mb-1.5 md:mb-2 group-hover:scale-110 transition-transform">
                                     <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="46" fill="#0EA5E9" stroke="white" stroke-width="4"/><text x="50" y="42" text-anchor="middle" font-size="28" font-weight="bold" fill="white">30</text><text x="50" y="64" text-anchor="middle" font-size="14" font-weight="bold" fill="white">km</text></svg>
                                 </div>
@@ -513,7 +549,7 @@
                                 <span class="text-[9px] md:text-[10px] text-green-500 font-bold uppercase tracking-widest">Detail ▾</span>
                             </div>
                             <!-- Garis Putus -->
-                            <div onclick="toggleRambu('putus')" id="card-putus" class="rambu-card group bg-lightGray p-2.5 md:p-4 rounded-xl md:rounded-2xl border-t-[3px] md:border-t-[4px] border-gray-500 text-center cursor-pointer hover:bg-gray-100 transition-all">
+                            <div onclick="toggleRambu('putus')" id="card-putus" class="rambu-card group bg-lightGray p-2.5 md:p-4 rounded-xl md:rounded-2xl border-t-[3px] md:border-t-[4px] border-gray-500 text-center cursor-pointer hover:bg-gray-100 transition-all anim anim-scale d7">
                                 <div class="w-10 h-10 md:w-16 md:h-16 mx-auto mb-1.5 md:mb-2 group-hover:scale-110 transition-transform">
                                     <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="100" height="100" rx="10" fill="#D1D5DB"/><rect x="20" y="8" width="6" height="16" rx="3" fill="#4B5563"/><rect x="20" y="32" width="6" height="16" rx="3" fill="#4B5563"/><rect x="20" y="56" width="6" height="16" rx="3" fill="#4B5563"/><rect x="20" y="80" width="6" height="14" rx="3" fill="#4B5563"/><rect x="47" y="14" width="6" height="16" rx="3" fill="#4B5563"/><rect x="47" y="38" width="6" height="16" rx="3" fill="#4B5563"/><rect x="47" y="62" width="6" height="16" rx="3" fill="#4B5563"/><rect x="47" y="86" width="6" height="10" rx="3" fill="#4B5563"/><rect x="74" y="8" width="6" height="16" rx="3" fill="#4B5563"/><rect x="74" y="32" width="6" height="16" rx="3" fill="#4B5563"/><rect x="74" y="56" width="6" height="16" rx="3" fill="#4B5563"/><rect x="74" y="80" width="6" height="14" rx="3" fill="#4B5563"/></svg>
                                 </div>
@@ -521,7 +557,7 @@
                                 <span class="text-[9px] md:text-[10px] text-gray-500 font-bold uppercase tracking-widest">Detail ▾</span>
                             </div>
                             <!-- Garis Utuh -->
-                            <div onclick="toggleRambu('utuh')" id="card-utuh" class="rambu-card group bg-lightGray p-2.5 md:p-4 rounded-xl md:rounded-2xl border-t-[3px] md:border-t-[4px] border-gray-900 text-center cursor-pointer hover:bg-gray-200 transition-all">
+                            <div onclick="toggleRambu('utuh')" id="card-utuh" class="rambu-card group bg-lightGray p-2.5 md:p-4 rounded-xl md:rounded-2xl border-t-[3px] md:border-t-[4px] border-gray-900 text-center cursor-pointer hover:bg-gray-200 transition-all anim anim-scale d8">
                                 <div class="w-10 h-10 md:w-16 md:h-16 mx-auto mb-1.5 md:mb-2 group-hover:scale-110 transition-transform">
                                     <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="100" height="100" rx="10" fill="#D1D5DB"/><rect x="18" y="6" width="6" height="88" rx="3" fill="#1a1a1a"/><rect x="47" y="6" width="6" height="88" rx="3" fill="#1a1a1a"/><rect x="76" y="6" width="6" height="88" rx="3" fill="#1a1a1a"/></svg>
                                 </div>
@@ -549,7 +585,7 @@
                             <!-- Empty state -->
                             <div id="detail-empty" class="flex-1 flex flex-col items-center justify-center text-center px-4 md:px-6 pb-6 md:pb-8">
                                 <div class="w-14 h-14 md:w-20 md:h-20 rounded-xl md:rounded-2xl bg-amber/10 flex items-center justify-center mb-3 md:mb-4">
-                                    <i class="fa-solid fa-hand-pointer text-amber text-xl md:text-2xl"></i>
+                                    <i class="fa-solid fa-hand-pointer text-amber text-xl md:text-2xl hand-pulse"></i>
                                 </div>
                                 <p class="text-gray-400 font-medium text-xs md:text-sm">Pilih salah satu kategori rambu di sebelah kiri</p>
                                 <p class="text-gray-300 text-[10px] md:text-xs mt-1">untuk melihat detail dan daftar rambu</p>
@@ -575,7 +611,9 @@
                             <span class="text-amber font-bold text-[10px] md:text-sm tracking-widest uppercase">Materi Kelima</span>
                         </div>
                         <h2 class="font-heading font-black text-2xl md:text-4xl text-navy mb-1 md:mb-2 leading-tight anim anim-up d3">Etika <span class="text-amber">Berkendara</span></h2>
-                        <p class="text-gray-400 text-xs md:text-sm mb-4 md:mb-6">Prinsip dasar kesopanan dan keselamatan di jalan raya</p>
+                        <button onclick="document.getElementById('etika-modal').classList.remove('hidden')" class="inline-flex items-center gap-2 bg-amber/10 hover:bg-amber/20 border-2 border-amber text-amber hover:text-navy px-4 py-2 md:px-5 md:py-2.5 rounded-xl font-bold text-xs md:text-sm transition-all duration-300 mb-4 md:mb-6 cursor-pointer group">
+                            Lihat Tujuan & Prinsip Etika <i class="fa-solid fa-arrow-right text-[10px] md:text-xs group-hover:translate-x-1 transition-transform"></i>
+                        </button>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
                             <div class="p-3 md:p-5 bg-green-50/80 rounded-xl md:rounded-2xl border border-green-200/60 anim anim-left d4">
                                 <div class="flex items-center gap-2 md:gap-3 mb-2.5 md:mb-4">
@@ -681,22 +719,118 @@
                         <p class="text-[9px] md:text-[11px] text-gray-500 leading-relaxed">Model setelan agar tidak tersangkut roda.</p>
                     </div>
                 </div>
+                <div class="mt-4 md:mt-6 bg-navy rounded-2xl md:rounded-2xl p-4 md:p-6 border border-gray-800 anim anim-up d4">
+                    <div class="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
+                        <div class="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-amber flex items-center justify-center"><i class="fa-solid fa-shield-heart text-navy text-sm md:text-base"></i></div>
+                        <h4 class="font-heading font-bold text-sm md:text-lg text-white">Manfaat Safety Riding</h4>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3">
+                        <div class="flex items-start gap-2 bg-white/5 rounded-xl p-2.5 md:p-3 border border-white/10">
+                            <i class="fa-solid fa-circle-check text-amber text-sm md:text-base mt-0.5 flex-shrink-0"></i>
+                            <p class="text-[11px] md:text-sm text-gray-300 leading-snug">Mengurangi risiko kecelakaan</p>
+                        </div>
+                        <div class="flex items-start gap-2 bg-white/5 rounded-xl p-2.5 md:p-3 border border-white/10">
+                            <i class="fa-solid fa-circle-check text-amber text-sm md:text-base mt-0.5 flex-shrink-0"></i>
+                            <p class="text-[11px] md:text-sm text-gray-300 leading-snug">Melindungi diri & orang lain</p>
+                        </div>
+                        <div class="flex items-start gap-2 bg-white/5 rounded-xl p-2.5 md:p-3 border border-white/10">
+                            <i class="fa-solid fa-circle-check text-amber text-sm md:text-base mt-0.5 flex-shrink-0"></i>
+                            <p class="text-[11px] md:text-sm text-gray-300 leading-snug">Lalu lintas lebih tertib</p>
+                        </div>
+                        <div class="flex items-start gap-2 bg-white/5 rounded-xl p-2.5 md:p-3 border border-white/10">
+                            <i class="fa-solid fa-circle-check text-amber text-sm md:text-base mt-0.5 flex-shrink-0"></i>
+                            <p class="text-[11px] md:text-sm text-gray-300 leading-snug">Meningkatkan kenyamanan</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- ==================== SECTION 7: SIMULASI BERKENDARA ==================== -->
-        <section id="sec-7" class="snap-section flex items-center bg-navy text-white overflow-hidden">
+        <!-- ==================== SECTION 7: KENDARAAN PRIORITAS ==================== -->
+        <section id="sec-7" class="snap-section flex items-center bg-white overflow-hidden">
+            <div class="blob w-96 h-96 bg-navy -top-48 right-0"></div>
+            <div class="blob w-64 h-64 bg-amber bottom-10 -left-32 opacity-60"></div>
+            <span class="section-num text-navy">07</span>
+            <div class="w-full max-w-7xl mx-auto px-4 md:px-12 py-12 md:py-0 relative z-10">
+                <div class="bg-lightGray rounded-2xl md:rounded-[2rem] p-5 md:p-10 shadow-lg border border-gray-100 relative overflow-hidden anim anim-scale d1">
+                    <div class="absolute top-0 right-0 w-48 md:w-72 h-48 md:h-72 bg-gradient-to-bl from-navy/8 to-transparent rounded-bl-full"></div>
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-2 md:gap-3 mb-3 md:mb-5 anim anim-up d2">
+                            <div class="w-9 h-9 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-navy flex items-center justify-center text-amber font-heading font-black text-sm md:text-lg shadow-lg shadow-navy/30">07</div>
+                            <div class="h-[2px] w-8 md:w-12 bg-navy/20"></div>
+                            <span class="text-navy font-bold text-[10px] md:text-sm tracking-widest uppercase">Materi Ketujuh</span>
+                        </div>
+                        <h2 class="font-heading font-black text-2xl md:text-4xl text-navy mb-1 md:mb-2 leading-tight anim anim-up d3">Kendaraan <span class="text-amber">Prioritas</span></h2>
+                        <p class="text-gray-400 text-xs md:text-sm mb-4 md:mb-6">Berdasarkan Pasal 134, berikut pengguna jalan yang memperoleh hak utama:</p>
+                        <div class="space-y-2 md:space-y-3 anim anim-up d4">
+                            <div class="flex items-center gap-3 md:gap-4 p-3 md:p-4 bg-white rounded-xl border border-gray-100 hover:border-amber/40 hover:shadow-md transition-all group anim anim-left d4">
+                                <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-red-500 flex items-center justify-center flex-shrink-0 shadow-md shadow-red-500/20"><span class="font-heading font-black text-white text-sm md:text-lg">1</span></div>
+                                <div>
+                                    <h4 class="font-bold text-navy text-sm md:text-base">Pemadam Kebakaran</h4>
+                                    <p class="text-[10px] md:text-xs text-gray-500">Sedang bertugas memadamkan kebakaran</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 md:gap-4 p-3 md:p-4 bg-white rounded-xl border border-gray-100 hover:border-amber/40 hover:shadow-md transition-all group anim anim-left d5">
+                                <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-green-500 flex items-center justify-center flex-shrink-0 shadow-md shadow-green-500/20"><span class="font-heading font-black text-white text-sm md:text-lg">2</span></div>
+                                <div>
+                                    <h4 class="font-bold text-navy text-sm md:text-base">Ambulans</h4>
+                                    <p class="text-[10px] md:text-xs text-gray-500">Mengangkut orang sakit atau dalam keadaan darurat</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 md:gap-4 p-3 md:p-4 bg-white rounded-xl border border-gray-100 hover:border-amber/40 hover:shadow-md transition-all group anim anim-left d6">
+                                <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-orange-500 flex items-center justify-center flex-shrink-0 shadow-md shadow-orange-500/20"><span class="font-heading font-black text-white text-sm md:text-lg">3</span></div>
+                                <div>
+                                    <h4 class="font-bold text-navy text-sm md:text-base">Pertolongan Kecelakaan</h4>
+                                    <p class="text-[10px] md:text-xs text-gray-500">Kendaraan petugas kecelakaan lalu lintas</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 md:gap-4 p-3 md:p-4 bg-white rounded-xl border border-gray-100 hover:border-amber/40 hover:shadow-md transition-all group anim anim-left d7">
+                                <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-navy flex items-center justify-center flex-shrink-0 shadow-md shadow-navy/20"><span class="font-heading font-black text-amber text-sm md:text-lg">4</span></div>
+                                <div>
+                                    <h4 class="font-bold text-navy text-sm md:text-base">Pimpinan Lembaga Negara RI</h4>
+                                    <p class="text-[10px] md:text-xs text-gray-500">Kendaraan resmi pimpinan lembaga negara</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 md:gap-4 p-3 md:p-4 bg-white rounded-xl border border-gray-100 hover:border-amber/40 hover:shadow-md transition-all group anim anim-left d8">
+                                <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-blue-600 flex items-center justify-center flex-shrink-0 shadow-md shadow-blue-600/20"><span class="font-heading font-black text-white text-sm md:text-lg">5</span></div>
+                                <div>
+                                    <h4 class="font-bold text-navy text-sm md:text-base">Tamu Negara / Pejabat Asing</h4>
+                                    <p class="text-[10px] md:text-xs text-gray-500">Kendaraan tamu negara atau pejabat asing</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 md:gap-4 p-3 md:p-4 bg-white rounded-xl border border-gray-100 hover:border-amber/40 hover:shadow-md transition-all group anim anim-left d9">
+                                <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gray-700 flex items-center justify-center flex-shrink-0 shadow-md shadow-gray-700/20"><span class="font-heading font-black text-white text-sm md:text-lg">6</span></div>
+                                <div>
+                                    <h4 class="font-bold text-navy text-sm md:text-base">Iring-iringan Pengantar Jenazah</h4>
+                                    <p class="text-[10px] md:text-xs text-gray-500">Konvoi kendaraan pengiring jenazah</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 md:gap-4 p-3 md:p-4 bg-white rounded-xl border border-gray-100 hover:border-amber/40 hover:shadow-md transition-all group anim anim-left d10">
+                                <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-amber flex items-center justify-center flex-shrink-0 shadow-md shadow-amber/20"><span class="font-heading font-black text-navy text-sm md:text-lg">7</span></div>
+                                <div>
+                                    <h4 class="font-bold text-navy text-sm md:text-base">Konvoi Kepentingan Tertentu</h4>
+                                    <p class="text-[10px] md:text-xs text-gray-500">Memperoleh izin dari kepolisian</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 8: SIMULASI BERKENDARA ==================== -->
+        <section id="sec-8" class="snap-section flex items-center bg-navy text-white overflow-hidden">
             <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
             <div class="blob w-96 h-96 bg-amber -top-48 -right-48 opacity-20"></div>
             <div class="blob w-64 h-64 bg-blue-500 bottom-10 -left-32 opacity-10"></div>
-            <span class="section-num text-white/5">07</span>
+            <span class="section-num text-white/5">08</span>
             <div class="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-12 py-12 md:py-0">
 
                 <!-- Header -->
                 <div class="flex items-center gap-2 md:gap-3 mb-3 md:mb-5">
-                    <div class="w-9 h-9 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-amber flex items-center justify-center text-navy font-heading font-black text-sm md:text-lg shadow-lg shadow-amber/30">07</div>
+                    <div class="w-9 h-9 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-amber flex items-center justify-center text-navy font-heading font-black text-sm md:text-lg shadow-lg shadow-amber/30">08</div>
                     <div class="h-[2px] w-8 md:w-12 bg-amber/40"></div>
-                    <span class="text-amber font-bold text-[10px] md:text-sm tracking-widest uppercase">Materi Ketujuh</span>
+                    <span class="text-amber font-bold text-[10px] md:text-sm tracking-widest uppercase">Materi Kedelapan</span>
                 </div>
 
                 <!-- Main Content: Video + Rangkuman -->
@@ -954,6 +1088,52 @@
         });
     </script>
     <script src="js/rambu-data.js"></script>
+
+    <!-- ETIKA BERKENDARA MODAL -->
+    <div id="etika-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4 etika-modal-backdrop" onclick="if(event.target===this)this.classList.add('hidden')">
+        <div class="etika-modal-content bg-white rounded-2xl md:rounded-[2rem] shadow-2xl border border-gray-100 w-full max-w-lg max-h-[85vh] overflow-hidden flex flex-col">
+            <div class="flex items-center justify-between p-4 md:p-6 border-b border-gray-100 flex-shrink-0">
+                <div class="flex items-center gap-2 md:gap-3">
+                    <div class="w-9 h-9 md:w-11 md:h-11 rounded-xl bg-amber flex items-center justify-center"><i class="fa-solid fa-award text-navy text-sm md:text-base"></i></div>
+                    <div>
+                        <h3 class="font-heading font-bold text-base md:text-xl text-navy">Tujuan & Prinsip Etika</h3>
+                        <p class="text-[10px] md:text-xs text-gray-400">Etika Berkendara di Jalan Raya</p>
+                    </div>
+                </div>
+                <button onclick="document.getElementById('etika-modal').classList.add('hidden')" class="w-8 h-8 md:w-9 md:h-9 rounded-lg bg-gray-100 hover:bg-red-500 hover:text-white flex items-center justify-center transition flex-shrink-0">
+                    <i class="fa-solid fa-xmark text-xs md:text-sm"></i>
+                </button>
+            </div>
+            <div class="p-4 md:p-6 overflow-y-auto flex-1 space-y-4 md:space-y-5">
+                <div class="bg-amber/5 border border-amber/20 rounded-xl md:rounded-2xl p-3 md:p-5">
+                    <div class="flex items-center gap-2 mb-2.5 md:mb-3">
+                        <div class="w-7 h-7 md:w-8 md:h-8 rounded-lg bg-amber flex items-center justify-center"><i class="fa-solid fa-bullseye text-navy text-[10px] md:text-xs"></i></div>
+                        <h4 class="font-heading font-bold text-sm md:text-base text-navy">Tujuan</h4>
+                    </div>
+                    <ul class="space-y-1.5 md:space-y-2">
+                        <li class="flex items-start gap-2 text-xs md:text-sm text-gray-600"><i class="fa-solid fa-check text-amber text-[10px] md:text-xs mt-0.5 flex-shrink-0"></i> Mengurangi risiko kecelakaan</li>
+                        <li class="flex items-start gap-2 text-xs md:text-sm text-gray-600"><i class="fa-solid fa-check text-amber text-[10px] md:text-xs mt-0.5 flex-shrink-0"></i> Menciptakan keamanan dan ketertiban lalu lintas</li>
+                        <li class="flex items-start gap-2 text-xs md:text-sm text-gray-600"><i class="fa-solid fa-check text-amber text-[10px] md:text-xs mt-0.5 flex-shrink-0"></i> Menumbuhkan sikap saling menghormati antar pengguna jalan</li>
+                        <li class="flex items-start gap-2 text-xs md:text-sm text-gray-600"><i class="fa-solid fa-check text-amber text-[10px] md:text-xs mt-0.5 flex-shrink-0"></i> Meningkatkan kesadaran keselamatan berlalu lintas</li>
+                        <li class="flex items-start gap-2 text-xs md:text-sm text-gray-600"><i class="fa-solid fa-check text-amber text-[10px] md:text-xs mt-0.5 flex-shrink-0"></i> Membentuk karakter disiplin pengguna jalan</li>
+                    </ul>
+                </div>
+                <div class="bg-navy/5 border border-navy/10 rounded-xl md:rounded-2xl p-3 md:p-5">
+                    <div class="flex items-center gap-2 mb-2.5 md:mb-3">
+                        <div class="w-7 h-7 md:w-8 md:h-8 rounded-lg bg-navy flex items-center justify-center"><i class="fa-solid fa-scale-balanced text-amber text-[10px] md:text-xs"></i></div>
+                        <h4 class="font-heading font-bold text-sm md:text-base text-navy">Prinsip</h4>
+                    </div>
+                    <ul class="space-y-1.5 md:space-y-2">
+                        <li class="flex items-start gap-2 text-xs md:text-sm text-gray-600"><i class="fa-solid fa-star text-navy text-[10px] md:text-xs mt-0.5 flex-shrink-0"></i> Mematuhi peraturan lalu lintas yang berlaku</li>
+                        <li class="flex items-start gap-2 text-xs md:text-sm text-gray-600"><i class="fa-solid fa-star text-navy text-[10px] md:text-xs mt-0.5 flex-shrink-0"></i> Menghormati pengguna jalan lainnya</li>
+                        <li class="flex items-start gap-2 text-xs md:text-sm text-gray-600"><i class="fa-solid fa-star text-navy text-[10px] md:text-xs mt-0.5 flex-shrink-0"></i> Mengutamakan keselamatan di atas segalanya</li>
+                        <li class="flex items-start gap-2 text-xs md:text-sm text-gray-600"><i class="fa-solid fa-star text-navy text-[10px] md:text-xs mt-0.5 flex-shrink-0"></i> Bersikap sabar dalam situasi apapun di jalan</li>
+                        <li class="flex items-start gap-2 text-xs md:text-sm text-gray-600"><i class="fa-solid fa-star text-navy text-[10px] md:text-xs mt-0.5 flex-shrink-0"></i> Bertanggung jawab atas tindakan di jalan raya</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
