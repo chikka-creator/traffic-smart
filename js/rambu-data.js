@@ -1,200 +1,245 @@
 const rambuData = {
     peringatan: {
         title: "Rambu Peringatan",
-        desc: "Rambu berbentuk segitiga dengan sudut membulat, berwarna dasar kuning dengan garis tepi hitam dan lambang berwarna hitam. Berfungsi memberi peringatan kepada pengemudi tentang bahaya atau kondisi jalan berbahaya di depan. Berdasarkan Permenhub No. 13 Tahun 2014.",
+        desc: "Rambu berbentuk belah ketupat/segitiga berwarna dasar kuning dengan lambang hitam. Berfungsi memberi peringatan bahaya atau kondisi jalan berbahaya di depan.",
         items: [
             {
-                name: "Persimpangan Berbentuk Y",
-                desc: "Menandakan adanya persimpangan berbentuk huruf Y di depan. Pengemudi harus waspada dan memilih arah yang benar sesuai tujuan.",
+                name: "Peringatan Lampu Lalu Lintas",
+                desc: "Menandakan ada persimpangan dengan alat pemberi isyarat lalu lintas di depan. Bersiaplah untuk berhenti jika lampu merah.",
+                img: "rambu/tandalalulintas.webp"
+            },
+            {
+                name: "Peringatan Banyak Anak-anak",
+                desc: "Menandakan kawasan yang sering dilalui anak-anak, seperti area sekolah atau taman. Kurangi kecepatan dan tingkatkan kewaspadaan.",
+                img: "rambu/Peringatan Banyak Anak-anak.webp"
+            },
+            {
+                name: "Peringatan Jalan Licin",
+                desc: "Menandakan permukaan jalan licin, terutama saat basah atau hujan. Kurangi kecepatan dan hindari pengereman mendadak.",
+                img: "rambu/Peringatan Jalan Licin.webp"
+            },
+            {
+                name: "Persimpangan Tiga Serong Kiri",
+                desc: "Memberi peringatan bahwa ada pertemuan jalan yang serong (tidak tegak lurus) dari arah kiri di depan. Pengendara harus waspada dan siap untuk menyesuaikan arah atau kecepatan.",
                 img: "rambu/WhatsApp Image 2026-08-02 at 13.16.07.webp"
             },
             {
-                name: "Persimpangan dengan Jalan Samping Kanan",
-                desc: "Menandakan ada jalan samping yang masuk dari arah kanan. Waspada terhadap kendaraan yang keluar dari jalan samping.",
+                name: "Persimpangan Jalan Samping Kiri",
+                desc: "Menandakan ada persimpangan jalan tegak lurus dari arah kiri.",
                 img: "rambu/WhatsApp Image 2026-08-02 at 13.16.07 (1).webp"
             },
             {
-                name: "Persimpangan dengan Jalan Samping Kiri",
-                desc: "Menandakan ada jalan samping yang masuk dari arah kiri. Waspada terhadap kendaraan yang keluar dari jalan samping.",
+                name: "Persimpangan Tiga Serong Kanan",
+                desc: "Memberi peringatan bahwa ada pertemuan jalan yang serong (tidak tegak lurus) dari arah kanan di depan. Pengendara harus waspada dan siap untuk menyesuaikan arah atau kecepatan.",
                 img: "rambu/WhatsApp Image 2026-08-02 at 13.16.07 (2).webp"
             },
             {
-                name: "Jalan Buntu / Persimpangan T",
-                desc: "Jalan yang di depan tidak memiliki kelanjutan (buntu) atau berbentuk huruf T. Pengemudi wajib belok ke kiri atau kanan.",
+                name: "Persimpangan T ",
+                desc: "Menandakan pertemuan jalan yang berbentuk huruf T di depan. Pengemudi wajib belok ke kiri atau kanan.",
                 img: "rambu/WhatsApp Image 2026-08-02 at 13.16.08.webp"
             },
             {
-                name: "Persimpangan Bersilang",
-                desc: "Menandakan adanya pertemuan dua jalan yang bersilang (bentuk +). Waspada dan perhatikan arah lalu lintas dari semua sisi.",
-                img: "rambu/WhatsApp Image 2026-08-02 at 13.16.09.webp"
+                name: "Persimpangan Empat Bersilang",
+                desc: "Menandakan adanya pertemuan jalan yang bersilang (+). Waspada dari semua sisi.",
+                img: "rambu/simpanganempatbersilang.webp"
             },
             {
                 name: "Bundaran (Rotary)",
-                desc: "Di depan terdapat bundaran atau bulatan lalu lintas. Pengemudi wajib mengikuti arah bundaran dan mendahulukan kendaraan yang sudah berada di dalam bundaran.",
+                desc: "Di depan terdapat bundaran lalu lintas. Wajib mengikuti putaran bundaran.",
                 img: "rambu/WhatsApp Image 2026-08-02 at 13.16.09 (1).webp"
             },
             {
                 name: "Tikungan Tajam ke Kiri",
-                desc: "Jalan berbelok tajam ke arah kiri. Kurangi kecepatan sebelum memasuki tikungan dan nyalakan lampu sein kiri.",
+                desc: "Jalan berbelok tajam ke arah kiri. Kurangi kecepatan.",
                 img: "rambu/WhatsApp Image 2026-08-02 at 13.16.10 (1).webp"
             },
             {
                 name: "Tikungan Tajam ke Kanan",
-                desc: "Jalan berbelok tajam ke arah kanan. Kurangi kecepatan sebelum memasuki tikungan dan nyalakan lampu sein kanan.",
+                desc: "Jalan berbelok tajam ke arah kanan. Kurangi kecepatan.",
                 img: "rambu/WhatsApp Image 2026-08-02 at 13.16.11.webp"
             },
             {
-                name: "Tikungan Ganda (Zigzag / S-Curve)",
-                desc: "Jalan memiliki dua tikungan beruntun membentuk huruf S. Waspada dan jaga kecepatan rendah sepanjang tikungan.",
+                name: "Tikungan Ganda Pertama Kiri",
+                desc: "Jalan berbelok ke kiri kemudian ke kanan. Waspada dan jaga kecepatan.",
                 img: "rambu/WhatsApp Image 2026-08-02 at 13.16.12.webp"
             },
             {
                 name: "Tanjakan Curam",
-                desc: "Jalan menanjak dengan kemiringan tinggi di depan. Gunakan gigi rendah dan jaga jarak aman dengan kendaraan di depan.",
-                img: "rambu/WhatsApp Image 2026-08-02 at 13.16.13 (1).webp"
-            },
-            {
-                name: "Turunan Curam",
-                desc: "Jalan menurun dengan kemiringan tinggi di depan. Gunakan gigi rendah untuk memanfaatkan engine brake, jangan rem terus-menerus.",
+                desc: "Jalan menanjak curam di depan. Gunakan gigi rendah.",
                 img: "rambu/WhatsApp Image 2026-08-02 at 13.16.13.webp"
             },
             {
+                name: "Turunan Curam",
+                desc: "Jalan menurun curam di depan. Gunakan engine brake.",
+                img: "rambu/WhatsApp Image 2026-08-02 at 13.16.13 (1).webp"
+            },
+            {
                 name: "Jalan Menyempit di Kedua Sisi",
-                desc: "Ruas jalan menyempit dari arah kiri dan kanan secara bersamaan. Kurangi kecepatan dan beri jalan kendaraan dari arah berlawanan.",
+                desc: "Ruas jalan menyempit dari arah kiri dan kanan bersamaan.",
                 img: "rambu/WhatsApp Image 2026-08-02 at 13.16.14.webp"
             },
             {
-                name: "Jalan Menyempit di Kiri",
-                desc: "Ruas jalan menyempit dari arah kiri. Pindah ke kanan secara bertahap dan beri jalan kendaraan dari arah berlawanan.",
+                name: "Jalan Menyempit di Kanan",
+                desc: "Ruas jalan menyempit dari sisi kanan.",
                 img: "rambu/WhatsApp Image 2026-08-02 at 13.16.14 (2).webp"
             },
             {
-                name: "Jalan Menyempit di Kanan",
-                desc: "Ruas jalan menyempit dari arah kanan. Pindah ke kiri secara bertahap dan beri jalan kendaraan dari arah berlawanan.",
+                name: "Jalan Menyempit di Kiri",
+                desc: "Ruas jalan menyempit dari sisi kiri.",
                 img: "rambu/WhatsApp Image 2026-08-02 at 13.16.15 (1).webp"
             }
         ]
     },
     larangan: {
         title: "Rambu Larangan",
-        desc: "Rambu berbentuk lingkaran dengan garis tepi merah, berwarna dasar putih dengan lambang berwarna hitam. Menyatakan perbuatan yang dilarang dilakukan oleh pengguna jalan. Berdasarkan Permenhub No. 13 Tahun 2014.",
+        desc: "Rambu berbentuk lingkaran dengan garis tepi merah. Menyatakan perbuatan yang dilarang dilakukan pengguna jalan.",
         items: [
             {
-                name: "Dilarang Bus",
-                desc: "Kendaraan berupa bus dilarang melintas di ruas jalan ini. Biasa dipasang di jalan sempit atau kawasan permukiman.",
-                img: "rambu/WhatsApp Image 2026-08-02 at 13.16.05.webp"
-            },
-            {
-                name: "Dilarang Becak",
-                desc: "Becak dilarang melintas di ruas jalan ini. Biasa dipasang di jalan utama atau jalan nasional.",
-                img: "rambu/WhatsApp Image 2026-08-02 at 13.16.05 (1).webp"
+                name: "Dilarang Masuk (Verboden)",
+                desc: "Semua jenis kendaraan bermotor maupun tidak bermotor dilarang masuk ke jalan atau jalur ini.",
+                img: "rambu/rambudilarangmasuk.webp"
             },
             {
                 name: "Dilarang Parkir",
-                desc: "Pengendara dilarang memarkirkan kendaraan di ruas jalan ini. Kendaraan yang parkir dapat ditindak atau diderek.",
+                desc: "Kendaraan dilarang parkir di sepanjang area atau jalan ini. Berhenti sejenak tanpa meninggalkan kendaraan mungkin diizinkan.",
+                img: "rambu/dilarang parkir.webp"
+            },
+            {
+                name: "Wajib Berhenti (STOP)",
+                desc: "Pengendara wajib berhenti sejenak sebelum garis henti, memastikan kondisi aman, baru melanjutkan perjalanan.",
+                img: "rambu/Rambu STOP.webp"
+            },
+            {
+                name: "Dilarang Mendahului",
+                desc: "Kendaraan dilarang mendahului kendaraan lain di area yang ditandai rambu ini karena berbahaya.",
+                img: "rambu/Dilarang Mendahului.webp"
+            },
+            {
+                name: "Dilarang Putar Balik",
+                desc: "Kendaraan dilarang melakukan putaran balik (U-Turn) di titik ini.",
+                img: "rambu/dilarangputarbalik.webp"
+            },
+            {
+                name: "Dilarang Bus",
+                desc: "Kendaraan berupa bus dilarang melintas di ruas jalan ini.",
+                img: "rambu/WhatsApp Image 2026-08-02 at 13.16.05.webp"
+            },
+            {
+                name: "Dilarang Gerobak / Pedati",
+                desc: "Kendaraan tidak bermotor seperti pedati atau gerobak dilarang melintas.",
+                img: "rambu/WhatsApp Image 2026-08-02 at 13.16.05 (1).webp"
+            },
+            {
+                name: "Dilarang Berhenti",
+                desc: "Kendaraan dilarang berhenti di sepanjang jalan yang dipasangi rambu ini.",
                 img: "rambu/WhatsApp Image 2026-08-02 at 13.16.05 (2).webp"
             },
             {
-                name: "Dilarang Truk",
-                desc: "Kendaraan berupa truk dilarang melintas di ruas jalan ini. Biasa dipasang di jalan dalam kota atau kawasan permukiman.",
-                img: "rambu/WhatsApp Image 2026-08-02 at 13.16.06.webp"
+                name: "Dilarang Sepeda Motor",
+                desc: "Kendaraan bermotor roda dua (sepeda motor) dilarang masuk.",
+                img: "rambu/dilarang sepeda motor.webp"
             },
             {
                 name: "Dilarang Pejalan Kaki",
-                desc: "Pejalan kaki dilarang melintas di ruas jalan ini. Biasa dipasang di jalan tol atau jalan bebas hambatan.",
+                desc: "Pejalan kaki dilarang melintas di ruas jalan ini (biasanya di jalan tol atau jalan cepat).",
                 img: "rambu/WhatsApp Image 2026-08-02 at 13.16.06 (1).webp"
             },
             {
-                name: "Dilarang Sepeda Motor",
-                desc: "Kendaraan bermotor roda dua dilarang melintas di ruas jalan ini. Biasa dipasang di jalan khusus pejalan kaki atau taman.",
+                name: "Dilarang Mobil Barang / Truk",
+                desc: "Kendaraan angkutan barang/truk dilarang melintas di jalan ini.",
                 img: "rambu/WhatsApp Image 2026-08-02 at 13.16.06 (2).webp"
             }
         ]
     },
     perintah: {
         title: "Rambu Perintah",
-        desc: "Rambu berbentuk lingkaran berwarna dasar biru dengan lambang berwarna putih. Menyatakan perintah yang wajib dilakukan oleh pengguna jalan. Berdasarkan Permenhub No. 13 Tahun 2014.",
+        desc: "Rambu berbentuk lingkaran berwarna dasar biru dengan lambang putih. Menyatakan perintah wajib bagi pengguna jalan.",
         items: [
             {
                 name: "Wajib Belok Kiri",
-                desc: "Pengendara wajib berbelok ke kiri di persimpangan. Tidak diperbolehkan lurus atau belok kanan.",
+                desc: "Pengendara wajib berbelok ke arah kiri.",
                 img: "rambu/WhatsApp Image 2026-08-02 at 13.16.16.webp"
             },
             {
                 name: "Wajib Belok Kanan",
-                desc: "Pengendara wajib berbelok ke kanan di persimpangan. Tidak diperbolehkan lurus atau belok kiri.",
+                desc: "Pengendara wajib berbelok ke arah kanan.",
                 img: "rambu/WhatsApp Image 2026-08-02 at 13.16.16 (1).webp"
             },
             {
-                name: "Wajib Lurus Saja",
-                desc: "Pengendara wajib melanjutkan perjalanan lurus. Tidak diperbolehkan berbelok ke kiri atau kanan.",
+                name: "Wajib Belok sesuai petunjuk",
+                desc: "Pengendara wajib berbelok sesuai petunjuk.",
+                img: "rambu/WhatsApp Image 2026-08-02 at 13.16.16 (2).webp"
+            },
+            {
+                name: "Wajib Lurus",
+                desc: "Pengendara wajib meneruskan perjalanan lurus ke depan.",
                 img: "rambu/WhatsApp Image 2026-08-02 at 13.16.17 (1).webp"
             },
             {
-                name: "Wajib Putar Balik (U-Turn)",
-                desc: "Pengendara wajib melakukan putar balik di titik yang telah ditentukan. Tidak diperbolehkan lurus.",
+                name: "Wajib Mengitari Bundaran",
+                desc: "Pengendara wajib mengikuti arah putaran bundaran.",
                 img: "rambu/WhatsApp Image 2026-08-02 at 13.16.17 (2).webp"
             },
             {
                 name: "Wajib Lurus atau Belok Kiri",
-                desc: "Pengendara hanya diperbolehkan lurus atau berbelok ke kiri. Tidak diperbolehkan belok kanan.",
+                desc: "Pengendara diwajibkan untuk meneruskan perjalanan lurus atau berbelok ke kiri.",
                 img: "rambu/WhatsApp Image 2026-08-02 at 13.16.18.webp"
             },
             {
-                name: "Wajib Belok Kiri atau Kanan",
-                desc: "Pengendara wajib berbelok ke kiri atau kanan. Tidak diperbolehkan lurus.",
+                name: "Wajib Lurus atau Belok Kanan",
+                desc: "Pengendara diwajibkan untuk meneruskan perjalanan lurus atau berbelok ke kanan.",
                 img: "rambu/WhatsApp Image 2026-08-02 at 13.16.18 (1).webp"
             },
             {
-                name: "Jalur Khusus Sepeda",
-                desc: "Jalur ini khusus digunakan oleh pesepeda. Kendaraan bermotor tidak diperbolehkan masuk jalur ini.",
+                name: "Wajib Melewati Sisi Kiri",
+                desc: "Pengendara wajib melewati sisi kiri dari pulau lalu lintas atau rintangan.",
+                img: "rambu/WhatsApp Image 2026-08-02 at 13.16.18 (2).webp"
+            },
+            {
+                name: "Wajib Melewati Sisi Kanan",
+                desc: "Pengendara wajib melewati sisi kanan dari pulau lalu lintas atau rintangan.",
                 img: "rambu/WhatsApp Image 2026-08-02 at 13.16.19.webp"
             },
             {
-                name: "Batas Kecepatan 30 km/jam",
-                desc: "Kecepatan maksimal yang diperbolehkan di ruas jalan ini adalah 30 km/jam. Berlaku di kawasan permukiman atau sekolah.",
+                name: "Wajib Melewati Salah Satu Sisi",
+                desc: "Pengendara dapat melewati sisi kiri atau kanan dari rintangan di depan.",
                 img: "rambu/WhatsApp Image 2026-08-02 at 13.16.19 (1).webp"
             },
             {
-                name: "Batas Kecepatan 30 km/jam Dicabut",
-                desc: "Batas kecepatan 30 km/jam di ruas jalan ini telah dicabut. Pengemudi kembali mengikuti batas kecepatan umum.",
+                name: "Kawasan Pejalan Kaki (Perintah)",
+                desc: "Kawasan yang dikhususkan dan diwajibkan untuk pejalan kaki.",
                 img: "rambu/WhatsApp Image 2026-08-02 at 13.16.19 (2).webp"
             },
             {
-                name: "Wajib Berhati-hati Pejalan Kaki",
-                desc: "Pengendara wajib berhati-hati terhadap pejalan kaki yang menyeberang. Biasa dipasang di dekat sekolah atau area publik.",
+                name: "Jalur Khusus Becak",
+                desc: "Jalur ini diwajibkan khusus untuk kendaraan tidak bermotor (becak).",
                 img: "rambu/WhatsApp Image 2026-08-02 at 13.16.20.webp"
+            },
+            {
+                name: "Kecepatan Minimum 30 km/jam",
+                desc: "Kecepatan kendaraan tidak boleh kurang dari 30 km/jam di jalur ini.",
+                img: "rambu/WhatsApp Image 2026-08-02 at 13.16.20 (1).webp"
+            },
+            {
+                name: "Wajib Menggunakan Rantai Ban",
+                desc: "Kendaraan wajib dipasangi rantai ban (untuk wilayah bersalju/ekstrem).",
+                img: "rambu/WhatsApp Image 2026-08-02 at 13.16.21.webp"
+            },
+            {
+                name: "Batas Akhir wajib memakai rantai pada ban",
+                desc: "Kewajiban memakai rantai pada ban telah berakhir.",
+                img: "rambu/WhatsApp Image 2026-08-02 at 13.16.21 (1).webp"
             }
         ]
     },
     petunjuk: {
         title: "Rambu Petunjuk",
-        desc: "Rambu berbentuk persegi panjang berwarna hijau (jalan umum) atau biru (jalan tol) dengan tulisan/lambang berwarna putih. Memberikan petunjuk arah, lokasi, jarak, atau fasilitas umum. Berdasarkan Permenhub No. 13 Tahun 2014.",
+        desc: "Rambu berbentuk persegi panjang atau bujur sangkar berwarna dasar biru, hijau, atau cokelat. Memberikan petunjuk arah, lokasi, fasilitas umum, atau informasi lalu lintas.",
         items: [
             {
-                name: "Petunjuk Arah Kiri",
-                desc: "Menunjukkan arah tujuan berada di sebelah kiri. Pengendara harus bersiap untuk belok kiri.",
-                img: "rambu/WhatsApp Image 2026-08-02 at 13.16.16 (2).webp"
-            },
-            {
-                name: "Petunjuk Arah Kanan",
-                desc: "Menunjukkan arah tujuan berada di sebelah kanan. Pengendara harus bersiap untuk belok kanan.",
-                img: "rambu/WhatsApp Image 2026-08-02 at 13.16.18 (2).webp"
-            },
-            {
-                name: "Arah ke Kiri dan Kanan",
-                desc: "Menunjukkan arah tujuan bisa ke kiri atau ke kanan. Pengendara memilih arah sesuai tujuan.",
-                img: "rambu/WhatsApp Image 2026-08-02 at 13.16.20 (1).webp"
-            },
-            {
-                name: "Jalur Sepeda",
-                desc: "Menunjukkan adanya jalur khusus sepeda di ruas jalan ini. Pesepeda wajib menggunakan jalur ini.",
-                img: "rambu/WhatsApp Image 2026-08-02 at 13.16.21.webp"
-            },
-            {
-                name: "Kawasan Pejalan Kaki",
-                desc: "Menunjukkan kawasan yang dikhususkan untuk pejalan kaki. Kendaraan bermotor dilarang masuk.",
-                img: "rambu/WhatsApp Image 2026-08-02 at 13.16.21 (1).webp"
+                name: "Tempat Putar Balik (U-Turn)",
+                desc: "Menunjukkan lokasi atau area yang secara resmi diperbolehkan bagi kendaraan untuk melakukan putar balik (U-Turn).",
+                img: "rambu/Rambu Tempat Berputar Balik.webp"
             }
         ]
     },
