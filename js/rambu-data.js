@@ -255,16 +255,6 @@ const rambuData = {
         desc: "Kecepatan kendaraan tidak boleh kurang dari 30 km/jam di jalur ini.",
         img: "rambu/WhatsApp Image 2026-08-02 at 13.16.20 (1).webp",
       },
-      {
-        name: "Wajib Menggunakan Rantai Ban",
-        desc: "Kendaraan wajib dipasangi rantai ban (untuk wilayah bersalju/ekstrem).",
-        img: "rambu/WhatsApp Image 2026-08-02 at 13.16.21.webp",
-      },
-      {
-        name: "Batas Akhir wajib memakai rantai pada ban",
-        desc: "Kewajiban memakai rantai pada ban telah berakhir.",
-        img: "rambu/WhatsApp Image 2026-08-02 at 13.16.21 (1).webp",
-      },
     ],
   },
   petunjuk: {
