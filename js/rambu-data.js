@@ -267,8 +267,8 @@ const rambuData = {
         img: "rambu/Rambu Tempat Berputar Balik.webp",
       },
       {
-        name: "Petunjuk Gereja",
-        desc: "Menunjukkan lokasi atau arah menuju gereja.",
+        name: "Petunjuk Masjid ",
+        desc: "Menunjukkan lokasi atau arah menuju masjid.",
         img: "rambu/rambupetunjuk/1.webp",
       },
       {
@@ -277,8 +277,8 @@ const rambuData = {
         img: "rambu/rambupetunjuk/2.webp",
       },
       {
-        name: "Petunjuk Masjid ",
-        desc: "Menunjukkan lokasi atau arah menuju masjid.",
+        name: "Petunjuk Gereja",
+        desc: "Menunjukkan lokasi atau arah menuju gereja.",
         img: "rambu/rambupetunjuk/3.webp",
       },
       {
@@ -287,13 +287,13 @@ const rambuData = {
         img: "rambu/rambupetunjuk/4.webp",
       },
       {
-        name: "Petunjuk SPBU",
-        desc: "Menunjukkan lokasi atau arah menuju SPBU.",
+        name: "Petunjuk Bandara",
+        desc: "Menunjukkan lokasi atau arah menuju bandar udara.",
         img: "rambu/rambupetunjuk/5.webp",
       },
       {
-        name: "Petunjuk Bandara",
-        desc: "Menunjukkan lokasi atau arah menuju bandar udara.",
+        name: "Petunjuk SPBU",
+        desc: "Menunjukkan lokasi atau arah menuju SPBU.",
         img: "rambu/rambupetunjuk/6.webp",
       },
       {
